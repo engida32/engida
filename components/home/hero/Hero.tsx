@@ -13,7 +13,7 @@ export const Hero = () => {
         <div className={styles.copyWrapper}>
           <Reveal>
             <h1 className={styles.title}>
-              Hi, I&apos;m JC<span>.</span>
+              Hi, I&apos;m Engida<span>.</span>
             </h1>
           </Reveal>
           <Reveal>
@@ -23,14 +23,16 @@ export const Hero = () => {
           </Reveal>
           <Reveal>
             <p className={styles.aboutCopy}>
-              I&apos;ve spent the last 3 years building and scaling applications for
-              some pretty cool companies and individuals. I also create interesting self projects on my spare time.
-              Let&apos;s connect!
+              I&apos;ve spent the last 4 years building and scaling applications
+              for some pretty cool companies and individuals. I also create
+              interesting self projects on my spare time. Let&apos;s connect!
             </p>
           </Reveal>
           <Reveal>
             <StandardButton
-              onClick={() => document.getElementById("contact")?.scrollIntoView()}
+              onClick={() =>
+                document.getElementById("contact")?.scrollIntoView()
+              }
             >
               Contact me
             </StandardButton>
@@ -39,7 +41,8 @@ export const Hero = () => {
         <motion.div
           initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}>
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
           <Image
             className={styles.profile}
             src={Profile}
