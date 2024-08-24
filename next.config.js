@@ -3,6 +3,9 @@ const nextConfig = {
   output: "export", // <=== enables static exports
   reactStrictMode: true,
   basePath: "/engida",
+  images: {
+    unoptimized: true,
+  },
 };
 
 module.exports = nextConfig;
