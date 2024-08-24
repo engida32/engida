@@ -1,33 +1,54 @@
 import Head from "next/head";
-import { Home } from "@/components/home/Home";
+import { Home } from "../components/home/Home";
 
 export default function home() {
   return (
     <>
       <Head>
-        <title>John Carlo Devera | Frontend Developer</title>
+        <title>Engida Lishan | Software Developer</title>
         <link rel="shortcut icon" href="/favicon.png" />
-        <meta name="description" content="John Carlo Devera | Frontend Developer" />
+        <meta name="description" content="Engida Lishan | Software Developer" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content="John Carlo Devera | Frontend Developer" />
-        <meta name="description" content="Hey! I'm John Carlo Devera, and I'm a Bachelor of Science in Information Technology graduate." />
+        <meta
+          property="og:title"
+          content="Engida Lishan | Software Developer"
+        />
+        <meta
+          name="description"
+          content="Hey! I'm Engida Lishan, and I'm a Computer Science and Engineering Bachelor's degree graduate."
+        />
 
-        <meta property="og:title" content="John Carlo Devera | Frontend Developer" />
+        <meta
+          property="og:title"
+          content="Engida Lishan | Software Developer"
+        />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://deverajc.com/" />
-        <meta property="og:image" content="https://deverajc.com/screenshot.png" />
-        <meta property="og:description" content="Hey! I'm John Carlo Devera, and I'm a Bachelor of Science in Information Technology graduate." />
+        <meta property="og:image" content="https://engida.com/screenshot.png" />
+        <meta property="og:image" content="https://engida.com/screenshot.png" />
+        <meta
+          property="og:description"
+          content="Hey! I'm Engida Lishan, and I'm a Computer Science and Engineering Bachelor's degree graduate."
+        />
 
-        <meta name="twitter:card" content="summary"/>
-        <meta name="twitter:site" content="@jc_devz"/>
-        <meta name="twitter:title" content="John Carlo Devera | Frontend Developer"/>
-        <meta name="twitter:description" content="Hey! I'm John Carlo Devera, and I'm a Bachelor of Science in Information Technology graduate."/>
-        <meta name="twitter:creator" content="@jc_devz"/>
-        <meta name="twitter:image" content="https://deverajc.com/screenshot.png"/>
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@engida_lish" />
+        <meta
+          name="twitter:title"
+          content="Engida Lishan | Software Developer"
+        />
+        <meta
+          name="twitter:description"
+          content="Hey! I'm Engida Lishan, and I'm a Computer Science and Engineering Bachelor's degree graduate."
+        />
+        <meta name="twitter:creator" content="@engida_lish" />
+        <meta
+          name="twitter:image"
+          content="https://engida.com/screenshot.png"
+        />
 
-        {/* <meta itemprop="name" content="John Carlo Devera | Frontend Developer"/>
-        <meta itemprop="description" content="Hey! I'm John Carlo Devera, and I'm a Bachelor of Science in Information Technology graduate."/>
-        <meta itemprop="image" content="https://deverajc.com/screenshot.png"/> */}
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Engida Lishan" />
+        <meta name="keywords" content="Engida Lishan, Software Developer" />
       </Head>
       <Home />
     </>

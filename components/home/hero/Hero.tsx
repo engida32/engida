@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { StandardButton } from "@/components/buttons/StandardButton";
-import { Reveal } from "@/components/utils/Reveal";
+
 import { DotGrid } from "./DotGrid";
 import styles from "./hero.module.scss";
-import Profile from "@/public/jc.jpg";
+import Profile from "@/public/Profile.jpg";
+import { Reveal } from "../../utils/Reveal";
+import { StandardButton } from "../../buttons/StandardButton";
 
 export const Hero = () => {
   return (
@@ -18,12 +19,12 @@ export const Hero = () => {
           </Reveal>
           <Reveal>
             <h2 className={styles.subTitle}>
-              I&apos;m a <span>Frontend Developer</span>
+              I&apos;m a <span>Software Developer</span>
             </h2>
           </Reveal>
           <Reveal>
             <p className={styles.aboutCopy}>
-              I&apos;ve spent the last 4 years building and scaling applications
+              I&apos;ve spent the last 5 years building and scaling applications
               for some pretty cool companies and individuals. I also create
               interesting self projects on my spare time. Let&apos;s connect!
             </p>
@@ -47,7 +48,7 @@ export const Hero = () => {
             className={styles.profile}
             src={Profile}
             priority
-            alt="John Carlo Devera | Frontend Developer"
+            alt="Engida, Software Developer"
             width={250}
             height={250}
           />

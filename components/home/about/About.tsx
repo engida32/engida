@@ -13,28 +13,37 @@ export const About = () => {
         <div>
           <Reveal>
             <p className={`${styles.aboutText} ${styles.highlightFirstLetter}`}>
-              Howdy! I&apos;m John Carlo Devera, and I&apos;m a Bachelor of Science in Information Technology graduate.
-              <br/><br/>
-              I have experience working in both the mobile and web development worlds, with a focus on frontend development. I&apos;m passionate about creating beautiful, responsive websites that provide a great user experience.
-             </p>
-          </Reveal>
-          <Reveal>
-            <p className={styles.aboutText}>
-              My skills include HTML, CSS, JavaScript, and various frontend frameworks like React and Vue.js. 
-              I&apos;ve also worked with backend technologies like Node.js, Firebase, MongoDB and PHP/Laravel , allowing me to build full-stack applications.
+              Hello ! I&apos;m Engida Lishan, and I&apos;m a software developer
+              based in Addis Ababa, Ethiopia.
+              <br />
+              <br />I have experience working in both the Frontend and Backend
+              development worlds, with a focus on frontend development. I&apos;m
+              passionate about creating beautiful, responsive websites that
+              provide a great user experience.
             </p>
           </Reveal>
           <Reveal>
             <p className={styles.aboutText}>
-              When I&apos;m not coding, I enjoy digital painting. 
-              I believe that maintaining a healthy work-life balance is crucial for staying productive and motivated.
+              My skills include HTML, CSS, JavaScript, and various frontend
+              frameworks like React,Next and Vue.js. I&apos;ve also worked with
+              backend technologies like Node.js, Firebase, MongoDB and Nest.js ,
+              allowing me to build full-stack applications.
             </p>
           </Reveal>
           <Reveal>
             <p className={styles.aboutText}>
-              I&apos;m always looking for new challenges and opportunities to learn and grow as a developer. 
-              If you&apos;re interested in working together or have any questions, please don&apos;t hesitate to get in touch!
-              🔗
+              {/* When I&apos;m not coding, I enjoy digital painting. I believe that
+              maintaining a healthy work-life balance is crucial for staying
+              productive and motivated. */}
+              When I&apos;m not coding, I learn new technologies, read books,
+            </p>
+          </Reveal>
+          <Reveal>
+            <p className={styles.aboutText}>
+              I’m constantly seeking new challenges and opportunities to expand
+              my skills and grow as a developer. If you&apos;re looking for a
+              dedicated and versatile developer to bring your project to life,
+              or if you have any questions, feel free to reach out! 🔗
             </p>
           </Reveal>
           <Reveal>

@@ -3,9 +3,10 @@ import {
   AiFillLinkedin,
   AiFillGithub,
   AiFillInstagram,
-  AiFillYoutube,
-  AiFillSkype
+  AiFillTwitterCircle,
 } from "react-icons/ai";
+import { FaTelegram } from "react-icons/fa";
+
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -17,18 +18,12 @@ export const MyLinks = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.0 }}
       >
-        <Link href="https://www.linkedin.com/in/john-carlo-devera-5240761b6/" target="_blank" rel="nofollow">
+        <Link
+          href="https://linkedin.com/in/engida"
+          target="_blank"
+          rel="nofollow"
+        >
           <AiFillLinkedin size="2.4rem" />
-        </Link>
-      </motion.span>
-      
-      <motion.span
-        initial={{ y: -30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-      >
-        <Link href="https://join.skype.com/invite/vKVMgi5SGjvM" target="_blank" rel="nofollow">
-          <AiFillSkype size="2.4rem" />
         </Link>
       </motion.span>
 
@@ -37,28 +32,40 @@ export const MyLinks = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <Link href="https://github.com/jcdevz-dev" target="_blank" rel="nofollow">
+        <Link href="https://github.com/engida32" target="_blank" rel="nofollow">
           <AiFillGithub size="2.4rem" />
         </Link>
       </motion.span>
-
       <motion.span
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <Link href="https://www.instagram.com/aluckyfin/" target="_blank" rel="nofollow">
-          <AiFillInstagram size="2.4rem" />
+        <Link href="https://t.me/engida32" target="_blank" rel="nofollow">
+          <FaTelegram size="2.4rem" color="white" />
+        </Link>
+      </motion.span>
+      <motion.span
+        initial={{ y: -30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        <Link href="https://x.com/engida_lish" target="_blank" rel="nofollow">
+          <AiFillTwitterCircle size="2.4rem" />
         </Link>
       </motion.span>
 
       {/* <motion.span
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <Link href="https://www.youtube.com/@aluckyfinsenpai2622" target="_blank" rel="nofollow">
-          <AiFillYoutube size="2.4rem" />
+        <Link
+          href="https://www.instagram.com/engida_lg/"
+          target="_blank"
+          rel="nofollow"
+        >
+          <AiFillInstagram size="2.4rem" />
         </Link>
       </motion.span> */}
     </div>
