@@ -14,74 +14,75 @@ export const Experience = () => {
 
 const experience = [
   {
-    title: "Rocky Mountain West Insurance LLC.",
-    position: "React Developer",
-    time: "Aug 2022 - October 2023",
-    location: "Grand Junction, CO",
+    title: "Kifiya Financial Technology",
+    position: "Senior Front-end Developer",
+    time: "Aug 2022 - Present",
+    location: "Addis Ababa, Ethiopia",
     description:
-      "Create functional, high-level, dynamic and reusable components based on mock-up given using Next JS. Coordinated on team for QA, bug fixes, features and code refactoring.",
-    tech: [
-      "Next JS",
-      "React",
-      "MongoDB",
-      "Postgres",
-      "Python",
-      "Git",
-      "Github",
-    ],
+      "Working on developing the front-end of a B2B e-commerce web application. The application has already welcomed 800 retailers and merchants.",
+    tech: ["Next JS", "React", "MongoDB", "Postgres", "Git", "Github"],
   },
   {
-    title: "Advance Technologies Integration, LLC.",
-    position: "Javascript Developer",
-    time: "May 2023 - August 2023",
-    location: "Rocklin, California 95765",
+    title: "KeplerLab Co. Ltd",
+    position: "Senior Front-end Developer",
+    time: "July 2023 - Aug 2024",
+    location: "Remote",
     description:
-      "I help build and scale core javascript functions and created test units. Also created reusable components for the front end and Azure API integrations.",
-    tech: ["JavaScript", "Vuejs", "Azure API", "Git", "GitLab"],
-  },
-  {
-    title: "Advance Technologies Integration, LLC.",
-    position: "Javascript Developer",
-    time: "Apr 2022 - Jun 2022",
-    location: "Rocklin, California 95765",
-    description:
-      "I help build and scale core javascript functions and created test units. Also created reusable components for the front end and Azure API integrations.",
-    tech: ["JavaScript", "Vuejs", "Azure API", "Git", "GitLab"],
-  },
-  {
-    title: "Rocky Mountain West Insurance LLC.",
-    position: "Vuejs Developer",
-    time: "Aug 2021 - Jan 2022",
-    location: "Grand Junction, CO",
-    description:
-      "Vuejs Developer for Rocky Mountain West Insurance LLC. Created dashboard, reusable components from scratch and integrate api.",
-    tech: ["Vuejs", "MongoDB", "Postgres", "Python", "Git", "Github"],
-  },
-  {
-    title: "Simple Cloudology",
-    position: "React Developer",
-    time: "Jan 2020 - April 2021",
-    location: "Sheridan, Wyoming",
-    description:
-      "Worked as a developer and created dynamic reusable components, integrate calendly, messaging functionality and project management features.",
+      "Led front-end development for an AI product. Developed sound processing web application using Open AI API and integrated it with another AI model for text processing and sound generation.",
     tech: [
       "React",
       "Nextjs",
-      "Sytled Components",
-      "Firebase Auth",
-      "Websockets",
-      "Calendly",
-      "Git",
-      "Github",
+      "Redux",
+      "Material UI",
+      "React Query",
+      "AWS",
+      "Docker",
     ],
   },
+
   {
-    title: "IFormat Logic",
-    position: "Fullstack Developer",
-    time: "Aug 2020 - Dec 2020",
-    location: "Palanginan, Zambales",
+    title: "JaktTech Engineering",
+    position: "Lead Front-end Developer",
+    time: "Sep 2022 - Nov 2023",
+    location: "Addis Ababa, Ethiopia",
     description:
-      "Managed and created complex projects from start to finish and also collaborated with other developers. Translated requirements into polished, high-level web application.",
-    tech: ["Vuejs", "Laravel", "Tailwind", "Git", "Github"],
+      "Worked on the development of enterprise web applications for major banks and insurance companies. Automated manual processes and enhancing operational efficiency. Spearheaded the creation of a comprehensive SMS gateway management system, featuring a web application, client dashboard, and multi-role management interface.",
+    tech: [
+      "React",
+      "Nextjs",
+      "Redux",
+      "Chakra UI",
+      "Tailwind",
+      "React Query",
+      "AWS",
+      "Docker",
+    ],
+  },
+
+  {
+    title: "2F-Capital",
+    position: "Front-end Developer",
+    time: "Mar 2021 - Sep 2022",
+    location: "Addis Ababa, Ethiopia",
+    description:
+      "Developed a taxi-hailing app that manages users, drivers, transactions, and accounts. It includes street pickup management integrated with Google Maps, report management, and journey tracking, reimbursement features for transaction issues and manages registered company profiles. Built the Sewasew ( an Ethiopian music streaming platform connecting fans with artists) and CNCM (the web application and dashboard for an Ethiopian copyright society)",
+    tech: [
+      "React",
+      "Nextjs",
+      "Redux",
+      "Material UI",
+      "Tailwind",
+      "React Query",
+    ],
+  },
+
+  {
+    title: "UpScale",
+    position: "Full Stack Developer",
+    time: "Mar 2019 - Jan 2021",
+    location: "Addis Ababa, Ethiopia",
+    description:
+      "Developed a Learning Management System for a local high school as a backend developer. Developed the landing page and admin management for Adama FC as FullStack.",
+    tech: ["PHP", "Laravel", "Bootstrap", "MySQL"],
   },
 ];
