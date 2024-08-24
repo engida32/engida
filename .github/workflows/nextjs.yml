@@ -81,7 +81,6 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-
   # Deployment job
   deploy:
     environment:
@@ -93,3 +92,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          path: ./dist
