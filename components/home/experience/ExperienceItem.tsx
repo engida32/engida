@@ -10,14 +10,7 @@ interface Props {
   tech: string[];
 }
 
-export const ExperienceItem = ({
-  title,
-  position,
-  time,
-  location,
-  description,
-  tech,
-}: Props) => {
+export const ExperienceItem = ({ title, position, time, location, description, tech }: Props) => {
   return (
     <div className={styles.experience}>
       <div className={styles.heading}>
@@ -25,7 +18,7 @@ export const ExperienceItem = ({
           <span className={styles.title}>{title}</span>
         </Reveal>
         <Reveal>
-          <span>{time}</span>
+          <span className={styles.meta}>{time}</span>
         </Reveal>
       </div>
 
@@ -34,12 +27,14 @@ export const ExperienceItem = ({
           <span className={styles.position}>{position}</span>
         </Reveal>
         <Reveal>
-          <span>{location}</span>
+          <span className={styles.meta}>{location}</span>
         </Reveal>
       </div>
+
       <Reveal>
         <p className={styles.description}>{description}</p>
       </Reveal>
+
       <Reveal>
         <div className={styles.tech}>
           {tech.map((item) => (

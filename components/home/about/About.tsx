@@ -10,40 +10,25 @@ export const About = () => {
     <section id="about" className="section-wrapper">
       <SectionHeader title="About" dir="l" />
       <div className={styles.about}>
-        <div>
+        <div className={styles.copyBlock}>
           <Reveal>
             <p className={`${styles.aboutText} ${styles.highlightFirstLetter}`}>
-              Hello ! I&apos;m Engida Lishan, and I&apos;m a software developer
-              based in Addis Ababa, Ethiopia.
-              <br />
-              <br />I have experience working in both the Frontend and Backend
-              development worlds, with a focus on frontend development. I&apos;m
-              passionate about creating beautiful, responsive websites that
-              provide a great user experience.
+              I&apos;m Engida Lishan, a software developer based in Addis Ababa,
+              Ethiopia, building interfaces that are as thoughtful as they are fast.
             </p>
           </Reveal>
           <Reveal>
             <p className={styles.aboutText}>
-              My skills include HTML, CSS, JavaScript, and various frontend
-              frameworks like React,Next and Vue.js. I&apos;ve also worked with
-              backend technologies like Node.js, Firebase, MongoDB and Nest.js ,
-              allowing me to build full-stack applications.
+              I work across frontend and product engineering, with a focus on
+              creating polished user experiences, clear interactions, and scalable UI
+              systems for real-world products.
             </p>
           </Reveal>
           <Reveal>
             <p className={styles.aboutText}>
-              {/* When I&apos;m not coding, I enjoy digital painting. I believe that
-              maintaining a healthy work-life balance is crucial for staying
-              productive and motivated. */}
-              When I&apos;m not coding, I learn new technologies, read books,
-            </p>
-          </Reveal>
-          <Reveal>
-            <p className={styles.aboutText}>
-              I’m constantly seeking new challenges and opportunities to expand
-              my skills and grow as a developer. If you&apos;re looking for a
-              dedicated and versatile developer to bring your project to life,
-              or if you have any questions, feel free to reach out! 🔗
+              My toolkit includes React, Next.js, TypeScript, Node.js, Firebase,
+              MongoDB, and a handful of modern frontend stacks used to ship dependable
+              digital experiences.
             </p>
           </Reveal>
           <Reveal>
@@ -56,6 +41,7 @@ export const About = () => {
             </div>
           </Reveal>
         </div>
+
         <Stats />
       </div>
     </section>

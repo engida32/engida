@@ -1,4 +1,9 @@
 .home {
-  display: grid;
-  grid-template-columns: 60px 1fr;
+  min-height: 100vh;
+}
+
+.main {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  padding-bottom: 7rem;
 }

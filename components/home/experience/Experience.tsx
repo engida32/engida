@@ -19,7 +19,7 @@ const experience = [
     time: "Aug 2022 - Present",
     location: "Addis Ababa, Ethiopia",
     description:
-      "Working on developing the front-end of a B2B e-commerce web application. The application has already welcomed 800 retailers and merchants.",
+      "Leading frontend work for a B2B commerce platform serving 800+ retailers and merchants, with a focus on scale, usability, and operational clarity.",
     tech: ["Next JS", "React", "MongoDB", "Postgres", "Git", "Github"],
   },
   {
@@ -28,61 +28,34 @@ const experience = [
     time: "July 2023 - Aug 2024",
     location: "Remote",
     description:
-      "Led front-end development for an AI product. Developed sound processing web application using Open AI API and integrated it with another AI model for text processing and sound generation.",
-    tech: [
-      "React",
-      "Nextjs",
-      "Redux",
-      "Material UI",
-      "React Query",
-      "AWS",
-      "Docker",
-    ],
+      "Built AI-driven product experiences, including audio and text-processing interfaces integrated with OpenAI-powered workflows.",
+    tech: ["React", "Nextjs", "Redux", "Material UI", "React Query", "AWS", "Docker"],
   },
-
   {
     title: "JaktTech Engineering",
     position: "Lead Front-end Developer",
     time: "Sep 2022 - Nov 2023",
     location: "Addis Ababa, Ethiopia",
     description:
-      "Worked on the development of enterprise web applications for major banks and insurance companies. Automated manual processes and enhancing operational efficiency. Spearheaded the creation of a comprehensive SMS gateway management system, featuring a web application, client dashboard, and multi-role management interface.",
-    tech: [
-      "React",
-      "Nextjs",
-      "Redux",
-      "Chakra UI",
-      "Tailwind",
-      "React Query",
-      "AWS",
-      "Docker",
-    ],
+      "Drove the frontend architecture for enterprise systems across banking and insurance workflows, improving operational efficiency and digital adoption.",
+    tech: ["React", "Nextjs", "Redux", "Chakra UI", "Tailwind", "React Query", "AWS", "Docker"],
   },
-
   {
     title: "2F-Capital",
     position: "Front-end Developer",
     time: "Mar 2021 - Sep 2022",
     location: "Addis Ababa, Ethiopia",
     description:
-      "Developed a taxi-hailing app that manages users, drivers, transactions, and accounts. It includes street pickup management integrated with Google Maps, report management, and journey tracking, reimbursement features for transaction issues and manages registered company profiles. Built the Sewasew ( an Ethiopian music streaming platform connecting fans with artists) and CNCM (the web application and dashboard for an Ethiopian copyright society)",
-    tech: [
-      "React",
-      "Nextjs",
-      "Redux",
-      "Material UI",
-      "Tailwind",
-      "React Query",
-    ],
+      "Developed a full taxi-hailing workflow including account management, geolocation tracking, reports, and transaction processing.",
+    tech: ["React", "Nextjs", "Redux", "Material UI", "Tailwind", "React Query"],
   },
-
   {
     title: "UpScale",
     position: "Full Stack Developer",
     time: "Mar 2019 - Jan 2021",
     location: "Addis Ababa, Ethiopia",
     description:
-      "Developed a Learning Management System for a local high school as a backend developer. Developed the landing page and admin management for Adama FC as FullStack.",
+      "Built a learning management system and multiple web products for education and local business use cases, covering both frontend and backend work.",
     tech: ["PHP", "Laravel", "Bootstrap", "MySQL"],
   },
 ];

@@ -1,94 +1,136 @@
 .hero {
-  margin-top: 4rem;
-  margin-bottom: 25rem;
-  padding: 4rem 2.5rem;
-  @media (max-width: 980px) {
-    padding: 0 2rem;
-    margin-top: 1.5rem;
-    margin-bottom: 4.8rem;
-  }
+  position: relative;
+  padding-top: 7rem;
+  padding-bottom: 9rem;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(220px, 420px);
+  gap: 4rem;
+  align-items: center;
 }
 
 .copyWrapper {
   position: relative;
-  z-index: 10;
+  z-index: 2;
+}
 
-  width: fit-content;
-  margin: 4.8rem 0;
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text-soft);
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .title {
-  font-size: var(--text-xl);
-  font-weight: 900;
-  line-height: 1.1;
-
-  span {
-    color: var(--brand);
-  }
-
-  @media (max-width: 768px) {
-    font-size: var(--text-xl);
-  }
-}
-
-.subTitle {
-  font-size: var(--text-lg);
-  line-height: 1.1;
-  margin-top: 1.6rem;
-  font-weight: 200;
-
-  span {
-    font-weight: bold;
-    color: var(--brand);
-  }
+  margin-top: 2rem;
+  font-size: clamp(4.2rem, 7vw, 8.4rem);
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+  font-weight: 800;
+  max-width: 720px;
 }
 
 .aboutCopy {
-  margin: 2.4rem 0;
-  max-width: 700px;
-  font-weight: 200;
+  margin-top: 2rem;
+  max-width: 61rem;
+  color: var(--text-soft);
+  font-size: clamp(1.7rem, 2vw, 2.1rem);
+  line-height: 1.6;
+}
+
+.actionsRow {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 3.2rem;
+}
+
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 4.8rem;
+  padding: 0 2rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text);
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.secondaryCta:hover,
+.secondaryCta:focus-visible {
+  border-color: rgba(17, 17, 17, 0.18);
+  transform: translateY(-1px);
+}
+
+.profileWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.profileFrame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(100%, 30rem);
+  aspect-ratio: 1;
+  border-radius: 2.4rem;
+  background: linear-gradient(135deg, var(--background-soft), rgba(255, 255, 255, 0.35));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.profileFrame::before {
+  content: "";
+  position: absolute;
+  inset: 1.2rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(17, 17, 17, 0.08);
 }
 
 .profile {
-  margin: 2rem;
-  z-index: 10;
   position: relative;
-  margin-right: 9rem;
-  border-radius: 50%;
-  outline: solid;
-  outline-width: 3px;
-  outline-color: var(--brand);
-  outline-offset: 6px;
-  transition: .4s;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2rem;
+}
 
-  &:hover {
-    outline: dotted;
-    outline-color: var(--brand);
-    outline-offset: 10px;
-    transform: scale(105%);
+@media (max-width: 860px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .profileWrap {
+    order: -1;
+  }
+
+  .profileFrame {
+    width: min(100%, 22rem);
   }
 }
 
-.heroGrid {
-  gap: 1.5rem;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+  }
 
-  @media (max-width: 980px) {
-    flex-direction: column-reverse;
-    align-items: start;
-    flex-wrap: wrap;
-
-    .profile {
-      height: 166px;
-      width: 150px;
-      margin-right: 0;
-      margin-bottom: -30px;
-      margin-top: 3rem;
-      margin-left: 1.5rem;
-    }
+  .actionsRow {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

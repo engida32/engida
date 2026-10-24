@@ -1,16 +1,26 @@
 .links {
   display: flex;
-  gap: 1.6rem;
-  padding-top: 10px;
+  align-items: center;
+  gap: 0.8rem;
+}
 
-  a {
-    opacity: 0.5;
-    position: relative;
-    z-index: 20;
-  }
+.links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--text-soft);
+  transition: all 0.2s ease;
+}
 
-  a:hover {
-    color: var(--brand);
-    opacity: 1;
-  }
+.links a:hover,
+.links a:focus-visible {
+  color: var(--text);
+  border-color: rgba(17, 17, 17, 0.2);
+  background: rgba(255, 255, 255, 0.42);
+  transform: translateY(-1px);
 }

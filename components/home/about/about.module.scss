@@ -1,42 +1,52 @@
 .about {
   display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 2.4rem;
+  grid-template-columns: minmax(0, 1.4fr) minmax(220px, 320px);
+  gap: 3rem;
+  align-items: start;
+}
 
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-  }
+.copyBlock {
+  display: grid;
+  gap: 1.4rem;
 }
 
 .aboutText {
-  margin-bottom: 2.4rem;
-  font-weight: 200;
+  max-width: 66rem;
+  color: var(--text-soft);
+  font-size: clamp(1.7rem, 2vw, 2.1rem);
+  line-height: 1.7;
 }
 
 .links {
   display: flex;
   align-items: center;
   gap: 1.6rem;
+  margin-top: 0.8rem;
+  flex-wrap: wrap;
 }
 
 .linksText {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-
-  font-size: var(--text-sm);
-  color: var(--brand);
+  font-weight: 600;
+  color: var(--text);
 }
 
 .highlightFirstLetter:first-letter {
-  background: var(--background-light);
-  padding: 1rem;
-  border-radius: 0.4rem;
-
-  font-size: var(--text-md);
-  font-weight: bold;
-
-  margin-right: 0.6rem;
-
   float: left;
+  margin-right: 0.8rem;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  background: var(--brand-soft);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 2.8rem;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-
 import { DotGrid } from "./DotGrid";
 import styles from "./hero.module.scss";
 import Profile from "@/public/Profile.jpg";
@@ -13,45 +12,49 @@ export const Hero = () => {
       <div className={styles.heroGrid}>
         <div className={styles.copyWrapper}>
           <Reveal>
+            <span className={styles.eyebrow}>Frontend engineer • product-minded</span>
+          </Reveal>
+          <Reveal>
             <h1 className={styles.title}>
-              Hi, I&apos;m Engida<span>.</span>
+              I build calm,
+              <br />
+              thoughtful digital experiences.
             </h1>
           </Reveal>
           <Reveal>
-            <h2 className={styles.subTitle}>
-              I&apos;m a <span>Software Developer</span>
-            </h2>
-          </Reveal>
-          <Reveal>
             <p className={styles.aboutCopy}>
-              I&apos;ve spent the last 5 years building and scaling applications
-              for some pretty cool companies and individuals. I also create
-              interesting self projects on my spare time. Let&apos;s connect!
+              I&apos;m Engida Lishan — a software developer focused on elegant,
+              high-performing interfaces for products, startups, and growing brands.
             </p>
           </Reveal>
           <Reveal>
-            <StandardButton
-              onClick={() =>
-                document.getElementById("contact")?.scrollIntoView()
-              }
-            >
-              Contact me
-            </StandardButton>
+            <div className={styles.actionsRow}>
+              <StandardButton onClick={() => document.getElementById("contact")?.scrollIntoView()}>
+                Let&apos;s talk
+              </StandardButton>
+              <a href="#projects" className={styles.secondaryCta}>
+                View work
+              </a>
+            </div>
           </Reveal>
         </div>
+
         <motion.div
           initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className={styles.profileWrap}
         >
-          <Image
-            className={styles.profile}
-            src={Profile}
-            priority
-            alt="Engida, Software Developer"
-            width={250}
-            height={250}
-          />
+          <div className={styles.profileFrame}>
+            <Image
+              className={styles.profile}
+              src={Profile}
+              priority
+              alt="Engida, Software Developer"
+              width={260}
+              height={260}
+            />
+          </div>
         </motion.div>
       </div>
       <DotGrid />
