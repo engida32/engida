@@ -51,10 +51,10 @@ export function CaseStudyPage({
             <Section title="Decisions" items={study.decisions} />
           ) : null}
           {study.scope ? <Section title="Scope" items={[study.scope]} /> : null}
-          {study.validation ? <Section title="Validation" items={study.validation} /> : null}
+          {study.validation?.length ? <Section title="Validation" items={study.validation} /> : null}
           {study.result ? <Section title="Result" items={[study.result]} /> : null}
           {study.tradeoff ? <Section title="Tradeoff" items={[study.tradeoff]} /> : null}
-          {study.next ? <Section title="What comes next" items={study.next} /> : null}
+          {study.next?.length ? <Section title="What comes next" items={study.next} /> : null}
 
           {study.screenshots.length > 0 ? (
             <section className="mt-10">

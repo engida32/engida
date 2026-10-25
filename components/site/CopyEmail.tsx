@@ -1,18 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 export function CopyEmail({ email }: { email: string }) {
   const [copied, setCopied] = useState(false);
+  const timeout = useRef<number | undefined>(undefined);
+
+  useEffect(() => {
+    return () => window.clearTimeout(timeout.current);
+  }, []);
 
   async function copy() {
     try {
       await navigator.clipboard.writeText(email);
       setCopied(true);
-      window.setTimeout(() => setCopied(false), 2000);
+      window.clearTimeout(timeout.current);
+      timeout.current = window.setTimeout(() => setCopied(false), 2000);
     } catch {
       window.location.href = `mailto:${email}`;
     }

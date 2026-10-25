@@ -18,11 +18,12 @@ test("mobile navigation opens and closes", async ({ page }) => {
   await expect(page.getByRole("dialog")).toBeHidden();
 });
 
-test("copy email reports success without a tooltip", async ({ page, context }) => {
+test("copy email announces success in a live region", async ({ page, context }) => {
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto("/");
   await page.getByRole("button", { name: "Copy email address" }).click();
   await expect(page.getByRole("status")).toContainText("Copied");
+  await expect(page.getByRole("tooltip").filter({ hasText: "Copied" })).toHaveCount(0);
 });
 
 test("content is visible without JavaScript", async ({ browser }) => {
@@ -37,5 +38,13 @@ test("content is visible without JavaScript", async ({ browser }) => {
 test("reduced motion shows content immediately", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  await expect(page.locator("[data-reveal]").first()).toHaveCSS("opacity", "1");
+  const reveals = page.locator("[data-reveal]");
+  await expect(reveals).toHaveCount(4);
+  for (let i = 0; i < 4; i += 1) {
+    const reveal = reveals.nth(i);
+    await expect(reveal).toHaveClass(/is-visible/);
+    await expect(reveal).toHaveCSS("opacity", "1");
+    await expect(reveal).toHaveCSS("transform", "none");
+    await expect(reveal).toHaveCSS("transition-duration", "0s");
+  }
 });

@@ -145,7 +145,8 @@ a {
   border-top: 1px solid var(--site-border);
 }
 
-.section:first-of-type {
+.shell > [data-reveal]:first-child .section,
+.shell.section {
   border-top: 0;
 }
 
