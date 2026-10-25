@@ -5,7 +5,7 @@ export type PageMetaInput = {
   title: string;
   description: string;
   path: string;
-  type?: "website" | "article";
+  type?: "website" | "article" | "profile";
   absoluteTitle?: boolean;
 };
 
