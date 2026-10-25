@@ -1,15 +1,22 @@
-<!-- generate read me  by saying 'welcome to my portfolio site ' and add how to run the project by considering content of package.json file 
-  
--->
-# Welcome to my portfolio site
-## How to run the project
-```bash 
-  cd portfolio-3.0
-  yarn
-  yarn dev 
+# Engida Lishan portfolio
+
+Static portfolio and case studies for Engida Lishan: https://engida.is-a.dev/
+
+Built with Next.js App Router, Tailwind CSS, and shadcn/ui. The site exports to static HTML for GitHub Pages.
+
+## Local development
+
+```bash
+npm install
+npm run dev
 ```
 
+## Checks
 
+```bash
+npm run check
+```
 
+## Deployment
 
-   
+Pushes to `main` deploy to GitHub Pages. `DEPLOY_TARGET` selects the staging or production build.
