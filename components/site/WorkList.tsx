@@ -28,7 +28,10 @@ export function WorkList({ items }: { items: WorkItem[] }) {
                     rel="noopener noreferrer"
                     className="text-sm text-site-accent underline-offset-4 hover:underline"
                   >
-                    Live<span className="sr-only"> (opens in a new tab)</span>
+                    <span aria-hidden="true">Live</span>
+                    <span className="sr-only">
+                      Live: {item.title} (opens in a new tab)
+                    </span>
                   </a>
                 ) : null}
                 {item.sourceUrl ? (
@@ -38,7 +41,10 @@ export function WorkList({ items }: { items: WorkItem[] }) {
                     rel="noopener noreferrer"
                     className="text-sm text-site-accent underline-offset-4 hover:underline"
                   >
-                    Source<span className="sr-only"> (opens in a new tab)</span>
+                    <span aria-hidden="true">Source</span>
+                    <span className="sr-only">
+                      Source: {item.title} (opens in a new tab)
+                    </span>
                   </a>
                 ) : null}
               </div>
