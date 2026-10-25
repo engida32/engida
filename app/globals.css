@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -147,6 +148,10 @@ a {
   border-top: 0;
 }
 
+.section.pt-10 {
+  padding-top: 40px;
+}
+
 .label-row {
   display: flex;
   align-items: center;
@@ -175,6 +180,12 @@ a {
 
 .js [data-js-only] {
   display: block;
+}
+
+@media (min-width: 640px) {
+  .js [data-js-only].sm\:hidden {
+    display: none;
+  }
 }
 
 .js [data-no-js-nav] {
