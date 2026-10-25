@@ -102,12 +102,44 @@ describe("approved content", () => {
     }
   });
 
-  it("anchors every client, project, and case study in PROVENANCE.md", () => {
+  it("anchors every client and project row", () => {
     const provenance = readFileSync("PROVENANCE.md", "utf8");
-    for (const item of [...clients, ...projects]) {
-      expect(provenance, item.title).toContain(item.title);
+    for (const item of clients) expect(provenance, item.title).toContain(`Client: ${item.title}`);
+    for (const item of projects) expect(provenance, item.title).toContain(`Project: ${item.title}`);
+  });
+
+  it("anchors every client year exactly", () => {
+    const provenance = readFileSync("PROVENANCE.md", "utf8");
+    for (const client of clients) {
+      expect(provenance, client.title).toContain(
+        `Client year: ${client.title} ${client.year}`,
+      );
     }
-    for (const study of caseStudies) expect(provenance, study.slug).toContain(study.slug);
+  });
+
+  it("anchors every case-study problem, role, and status", () => {
+    const provenance = readFileSync("PROVENANCE.md", "utf8");
+    for (const study of caseStudies) {
+      for (const label of ["problem", "role", "status"]) {
+        expect(provenance, `${study.slug} ${label}`).toContain(`${study.slug} ${label}`);
+      }
+    }
+  });
+
+  it("freezes the published metrics", () => {
+    expect(profile.about).toContain("500+ merchants");
+    expect(profile.about).toContain("100,000+ users");
+
+    const kifiya = experience.find((item) => item.company === "Kifiya");
+    expect(kifiya?.scope).toContain("500+ merchants");
+    expect(kifiya?.outcome).toBe(
+      "30% faster loads, 25% higher adoption, and releases 50% faster.",
+    );
+
+    const capital = experience.find((item) => item.company === "2F Capital");
+    expect(capital?.scope).toContain("100,000+ users");
+    expect(capital?.scope).toContain("10,000+ drivers");
+    expect(capital?.outcome).toBe("50,000+ transactions processed through the app.");
   });
 
   it("keeps client title and year aligned with its case study", () => {

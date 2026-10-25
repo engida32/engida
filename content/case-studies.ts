@@ -39,7 +39,7 @@ export const caseStudies: CaseStudy[] = [
       "Authors need to publish and sell books, while readers need a storefront that handles payments and long-form content without a second system.",
     ],
     build: [
-      "Storefront and reading pages, an author publishing flow, Stripe checkout, a Sanity content model for books and authors, and a separate admin dashboard.",
+      "Storefront and reading pages, an author publishing flow, Stripe checkout UI, a Sanity content model for books and authors, and a separate admin dashboard.",
     ],
     decisions: [
       "Book content lives in Sanity.",
