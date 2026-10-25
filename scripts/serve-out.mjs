@@ -6,9 +6,13 @@ const root = resolve("out");
 const port = Number(process.env.PORT ?? 4173);
 
 const mime = {
+  ".avif": "image/avif",
   ".css": "text/css; charset=utf-8",
+  ".gif": "image/gif",
   ".html": "text/html; charset=utf-8",
   ".ico": "image/x-icon",
+  ".jpeg": "image/jpeg",
+  ".jpg": "image/jpeg",
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
   ".map": "application/json; charset=utf-8",
@@ -28,16 +32,27 @@ function safePath(pathname) {
   return candidate;
 }
 
-createServer(async (request, response) => {
-  const url = new URL(request.url ?? "/", `http://${request.headers.host ?? "localhost"}`);
-  let filePath = safePath(decodeURIComponent(url.pathname));
+async function handle(request, response) {
+  let pathname;
+  try {
+    const url = new URL(request.url ?? "/", `http://${request.headers.host ?? "localhost"}`);
+    pathname = decodeURIComponent(url.pathname);
+  } catch {
+    response.writeHead(400, { "content-type": "text/plain; charset=utf-8" });
+    response.end("Bad request");
+    return;
+  }
+
+  let filePath = safePath(pathname);
   if (!filePath) {
     response.writeHead(403, { "content-type": "text/plain; charset=utf-8" });
     response.end("Forbidden");
     return;
   }
+
   const info = await stat(filePath).catch(() => null);
   if (info?.isDirectory()) filePath = join(filePath, "index.html");
+
   try {
     const body = await readFile(filePath);
     response.writeHead(200, {
@@ -54,6 +69,15 @@ createServer(async (request, response) => {
       response.end("Not found");
     }
   }
+}
+
+createServer((request, response) => {
+  handle(request, response).catch(() => {
+    if (!response.headersSent) {
+      response.writeHead(500, { "content-type": "text/plain; charset=utf-8" });
+    }
+    response.end("Internal error");
+  });
 }).listen(port, () => {
   console.log(`Preview: http://localhost:${port}`);
 });
