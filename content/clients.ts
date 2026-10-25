@@ -6,14 +6,14 @@ export const clients: WorkItem[] = [
     year: "2024",
     description:
       "Customer delivery site and rider onboarding for a delivery service in Australia.",
-    stack: ["Next.js", "React", "MUI", "AWS S3"],
+    stack: ["Next.js", "React", "MUI", "S3 uploads"],
     caseStudySlug: "bellboy",
   },
   {
     title: "BookBridge",
     year: "2024",
     description:
-      "Book publishing and reading platform with Stripe checkout and a Sanity-backed catalog.",
+      "Book publishing and reading platform with Stripe checkout UI and a Sanity-backed catalog.",
     stack: ["Next.js", "React", "MUI", "Stripe", "Sanity"],
     caseStudySlug: "bookbridge",
   },

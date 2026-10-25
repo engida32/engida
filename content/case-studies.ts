@@ -33,7 +33,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Storefront and admin",
     status: "Client work",
     summary:
-      "Book publishing and reading platform with Stripe checkout and a Sanity-backed catalog.",
+      "Book publishing and reading platform with Stripe checkout UI and a Sanity-backed catalog.",
     stack: ["Next.js", "React", "MUI", "Stripe", "Sanity", "react-query"],
     problem: [
       "Authors need to publish and sell books, while readers need a storefront that handles payments and long-form content without a second system.",
