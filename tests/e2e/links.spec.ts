@@ -7,15 +7,17 @@ const routes = [
   "/work/serpentine/",
   "/work/vector-search-studio/",
   "/work/signal-engine/",
+  "/404.html",
 ];
 
 for (const route of routes) {
   test(`external links open safely and say so at ${route}`, async ({ page }) => {
     await page.goto(route);
-    const externals = page.locator('a[href^="http"]');
+    const externals = page.locator('a[href^="http"], a[target="_blank"]');
     const count = await externals.count();
     for (let index = 0; index < count; index += 1) {
       const link = externals.nth(index);
+      await expect(link).toHaveAttribute("href", /^https:\/\//);
       await expect(link).toHaveAttribute("target", "_blank");
       const rel = await link.getAttribute("rel");
       expect(rel).toContain("noopener");
