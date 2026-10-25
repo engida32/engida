@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MobileNav } from "@/components/site/MobileNav";
+import { ThemeToggle } from "@/components/site/ThemeToggle";
 import { profile } from "@/content/profile";
 import { basePath } from "@/lib/site";
 
@@ -16,19 +17,24 @@ export function Header() {
       <Link href="/" className="font-semibold text-site-text hover:text-site-accent">
         EL
       </Link>
-      <nav aria-label="Primary" className="hidden sm:block">
-        <ul className="flex items-center gap-5 text-sm">
-          {links.map((link) => (
-            <li key={link.label}>
-              <a className="hover:text-site-accent" href={link.href}>
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <div className="sm:hidden" data-js-only>
-        <MobileNav links={links} />
+      <div className="flex items-center gap-3">
+        <nav aria-label="Primary" className="hidden sm:block">
+          <ul className="flex items-center gap-5 text-sm">
+            {links.map((link) => (
+              <li key={link.label}>
+                <a className="hover:text-site-accent" href={link.href}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div data-js-only>
+          <ThemeToggle />
+        </div>
+        <div className="sm:hidden" data-js-only>
+          <MobileNav links={links} />
+        </div>
       </div>
       <nav aria-label="Primary" className="sm:hidden" data-no-js-nav>
         <ul className="flex flex-wrap gap-3 text-xs">
