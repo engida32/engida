@@ -90,6 +90,7 @@
   --color-site-accent: var(--site-accent);
   --color-site-accent-dim: var(--site-accent-dim);
   --color-site-warning: var(--site-warning);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
   --font-heading: var(--font-jetbrains-mono);
   --radius-sm: 2px;
@@ -113,11 +114,20 @@ html.dark {
 body {
   background: var(--site-bg);
   color: var(--site-text);
-  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   font-size: 16px;
-  line-height: 1.75;
-  font-feature-settings: "liga" 0;
+  line-height: 1.7;
   text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+.font-mono,
+.label-row,
+.tabular {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-feature-settings: "liga" 0;
 }
 
 ::selection {
@@ -135,7 +145,7 @@ a {
 
 .shell {
   width: 100%;
-  max-width: 720px;
+  max-width: 960px;
   margin-inline: auto;
   padding-inline: 24px;
 }

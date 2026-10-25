@@ -5,10 +5,10 @@ Every public claim maps to a source file and date. Values without a source stay 
 | Claim | Value | Source | Source date | Notes |
 |---|---|---|---|---|
 | Name, email, location | Engida Lishan, engida32lishan@gmail.com, Addis Ababa | career-ops/cv.md | 2026-10-18 | Email only; no phone on the site |
-| Headline | Full-stack engineer turning agentic AI into shipped products | career-ops/config/profile.yml | 2026-10-18 | Narrative headline |
-| Availability | Senior full-stack and AI roles; remote or Addis Ababa | career-ops/config/profile.yml | 2026-10-18 | From location_flexibility and visa_status |
-| Supporting line | Five years from fintech and commerce interfaces to agent platforms | career-ops/cv.md | 2026-10-18 | Summary of role history |
-| About facts | 500+ merchants, 100,000+ users, two years of agent platforms | career-ops/cv.md | 2026-10-18 | Matches experience rows |
+| Headline | I build full-stack products, including AI features that survive production | User-approved copy 2026-10-25 | 2026-10-25 | Reframed from profile.yml; same claim |
+| Availability | Senior full-stack or AI engineering role; remote or Addis Ababa | career-ops/config/profile.yml | 2026-10-18 | From location_flexibility and visa_status |
+| Supporting line | Five years across fintech, commerce, and AI products | career-ops/cv.md | 2026-10-18 | Summary of role history |
+| About facts | 500+ merchants, 100,000+ users, two years of AI platforms | career-ops/cv.md | 2026-10-18 | Matches experience rows |
 | GitHub and LinkedIn | github.com/engida32, linkedin.com/in/engida | career-ops/config/profile.yml | 2026-10-18 | Profile links |
 | X handle | x.com/engida_lish | docs/superpowers/specs/2026-10-25-portfolio-site-design.md | 2026-10-25 | User-supplied positioning |
 | CV path | /cv/engida-lishan-cv.pdf | docs/superpowers/plans/2026-10-25-portfolio-site.md | 2026-10-25 | Task 8 generates a sanitized PDF; master phone is removed and checked with pdftotext. Binary is not in Task 3 |
@@ -16,7 +16,7 @@ Every public claim maps to a source file and date. Values without a source stay 
 | Kifiya metrics | 500+ merchants, 30% faster loads, 25% adoption, 50% faster releases | career-ops/cv.md | 2026-10-18 | Company link confirmed |
 | Kepler Lab | Jan 2023 to Dec 2023, 40% faster render | career-ops/cv.md | 2026-10-18 | Remote South Korea |
 | 2F Capital | 100,000+ users, 10,000+ drivers, 50,000+ transactions | career-ops/cv.md | 2026-10-18 | Company link confirmed |
-| Client: Bellboy | Customer delivery site and rider onboarding | /home/emmrc-02/work/belboy/landing-site/package.json at 689c78c and /home/emmrc-02/work/belboy/rider-application-form/package.json at e76571c | 2026-10-25 | Stack from both package.json files |
+| Client: Bellboy | Delivery booking site and rider onboarding | /home/emmrc-02/work/belboy/landing-site/package.json at 689c78c and /home/emmrc-02/work/belboy/rider-application-form/package.json at e76571c | 2026-10-25 | Stack from both package.json files |
 | Client year: Bellboy 2024 | 2024 | /home/emmrc-02/work/belboy/admin-web at 17a3611, landing-site at 689c78c, rider-application-form at e76571c | 2026-10-25 | Year is the user-provided timeline, corroborated by repo commit dates in 2024 |
 | Bellboy stack | Next.js, React, MUI, S3 uploads | /home/emmrc-02/work/belboy/landing-site/package.json at 689c78c, admin-web/package.json at 17a3611, rider-application-form/package.json at e76571c | 2026-10-25 | @aws-sdk/client-s3 in rider-application-form |
 | Client: BookBridge | Book publishing and reading platform | /home/emmrc-02/work/book_bridge/package.json at 5148e08 | 2026-10-25 | Stack from package.json |
@@ -41,11 +41,12 @@ Every public claim maps to a source file and date. Values without a source stay 
 | Project: Vector Search Studio | Semantic search over Supabase docs | /home/emmrc-02/personal-works/vector-search-studio/README.md at 720ceb3 | 2026-10-25 | Source only |
 | Vector Search Studio stack | Next.js, TypeScript, pgvector, HNSW, Vitest | /home/emmrc-02/personal-works/vector-search-studio/README.md at 720ceb3 | 2026-10-25 | README names vector(384), HNSW, and Vitest |
 | Project: Real-time signal engine | BTC prediction-market engine and terminal dashboard | /home/emmrc-02/OpenCode Workspace/btc-signal-engine/README.md | 2026-10-25 | Private, in progress; no repo link |
-| Signal engine result | 48 to 50% out of sample on spot models | /home/emmrc-02/OpenCode Workspace/btc-signal-engine/README.md | 2026-10-25 | README states out-of-sample spot models land at 48 to 50% |
+| Signal engine result | 48 to 50% out-of-sample on spot models | /home/emmrc-02/OpenCode Workspace/btc-signal-engine/README.md | 2026-10-25 | README states out-of-sample spot models land at 48 to 50% |
 | bellboy problem | Quote inputs and verified rider onboarding | User-provided case-study brief 2026-10-25 | 2026-10-25 | Business problem is user-supplied; no repo proves it |
 | bellboy role | Front end and admin | User-provided case-study brief 2026-10-25 | 2026-10-25 | Role is user-supplied |
 | bellboy status | Client work | User-provided case-study brief 2026-10-25 | 2026-10-25 | Status is user-supplied |
 | bellboy scope | Front end and admin only | User-provided case-study brief 2026-10-25 | 2026-10-25 | Backend and payments built by another developer; the directory alone does not prove scope |
+| Bellboy team context | NestJS/Prisma backend with RabbitMQ, Adyen, S3, Firebase, Twilio | /home/emmrc-02/work/belboy/backend at a3ed4b0 | 2026-10-25 | Backend authored by other developers; user built front end and admin against its APIs |
 | bellboy build and decisions | Quote inputs, OTP onboarding, admin rate cards, separate apps | User-provided case-study brief 2026-10-25 | 2026-10-25 | Design decisions, not file facts |
 | bookbridge problem | Authors publish and sell books while readers buy and read | User-provided case-study brief 2026-10-25 | 2026-10-25 | Business problem is user-supplied; no repo proves it |
 | bookbridge role | Storefront and admin | User-provided case-study brief 2026-10-25 | 2026-10-25 | Role is user-supplied |

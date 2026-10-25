@@ -12,12 +12,20 @@ export function WorkList({ items }: { items: WorkItem[] }) {
             <div className="min-w-0">
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                 {caseHref ? (
-                  <Link
-                    href={caseHref}
-                    className="font-semibold text-site-text underline-offset-4 hover:text-site-accent hover:underline"
-                  >
-                    {item.title}
-                  </Link>
+                  <span className="inline-flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                    <Link
+                      href={caseHref}
+                      className="font-semibold text-site-text underline-offset-4 hover:text-site-accent hover:underline"
+                    >
+                      {item.title}
+                    </Link>
+                    <span
+                      aria-hidden="true"
+                      className="font-mono text-[10px] uppercase tracking-[0.1em] text-site-muted"
+                    >
+                      Case study <span className="text-site-accent">-&gt;</span>
+                    </span>
+                  </span>
                 ) : (
                   <span className="font-semibold">{item.title}</span>
                 )}
@@ -49,7 +57,7 @@ export function WorkList({ items }: { items: WorkItem[] }) {
                 ) : null}
               </div>
               <p className="mt-1 max-w-[62ch] text-sm">{item.description}</p>
-              <p className="mt-1 text-xs text-site-muted">{item.stack.join(" / ")}</p>
+              <p className="mt-1 font-mono text-[11px] text-site-muted">{item.stack.join(" / ")}</p>
               {item.note ? <p className="mt-1 text-xs text-site-warning">{item.note}</p> : null}
             </div>
           </li>

@@ -25,6 +25,12 @@ export type CaseStudyLink = {
   href: string;
 };
 
+export type CaseStudyDiagram = {
+  title: string;
+  kind: "flow" | "group";
+  items: string[];
+};
+
 export type CaseStudyScreenshot = {
   src: string;
   alt: string;
@@ -45,6 +51,8 @@ export type CaseStudy = {
   build: string[];
   decisions?: string[];
   scope?: string;
+  context?: string;
+  diagram?: CaseStudyDiagram;
   validation?: string[];
   result?: string;
   tradeoff?: string;

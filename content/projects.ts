@@ -15,7 +15,7 @@ export const projects: WorkItem[] = [
     title: "Vector Search Studio",
     year: "2026",
     description:
-      "Semantic search over Supabase docs with pgvector and a self-contained embedder.",
+      "Semantic search over Supabase docs with pgvector and a local embedder. No API keys.",
     stack: ["Next.js", "TypeScript", "pgvector", "HNSW"],
     caseStudySlug: "vector-search-studio",
     sourceUrl: "https://github.com/engida32/vector-search-studio",

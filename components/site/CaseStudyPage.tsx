@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CopyEmail } from "@/components/site/CopyEmail";
 import { Reveal } from "@/components/site/Reveal";
 import { profile } from "@/content/profile";
-import type { CaseStudy } from "@/content/types";
+import type { CaseStudy, CaseStudyDiagram } from "@/content/types";
 
 function Section({ title, items }: { title: string; items: string[] }) {
   return (
@@ -11,6 +11,28 @@ function Section({ title, items }: { title: string; items: string[] }) {
       <div className="space-y-3">
         {items.map((item) => <p key={item} className="max-w-[62ch]">{item}</p>)}
       </div>
+    </section>
+  );
+}
+
+function Diagram({ diagram }: { diagram: CaseStudyDiagram }) {
+  return (
+    <section className="mt-10">
+      <h2 className="mb-3 text-lg font-semibold">{diagram.title}</h2>
+      <ol className="flex flex-wrap items-center gap-2">
+        {diagram.items.map((item, index) => (
+          <li key={item} className="flex items-center gap-2">
+            <span className="border border-site-border bg-site-surface px-3 py-2 font-mono text-[11px] uppercase tracking-[0.06em]">
+              {item}
+            </span>
+            {diagram.kind === "flow" && index < diagram.items.length - 1 ? (
+              <span aria-hidden="true" className="font-mono text-xs text-site-muted">
+                -&gt;
+              </span>
+            ) : null}
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }
@@ -35,11 +57,11 @@ export function CaseStudyPage({
       </Reveal>
 
       <Reveal delay={40}>
-        <dl className="mt-8 grid grid-cols-2 gap-4 border-y border-site-border py-5 text-sm sm:grid-cols-4">
-          <div><dt className="text-site-muted">Year</dt><dd>{study.year}</dd></div>
-          <div><dt className="text-site-muted">Role</dt><dd>{study.role}</dd></div>
-          <div><dt className="text-site-muted">Status</dt><dd>{study.status}</dd></div>
-          <div><dt className="text-site-muted">Stack</dt><dd>{study.stack.join(", ")}</dd></div>
+        <dl className="mt-8 grid grid-cols-2 gap-4 border-y border-site-border py-5 font-mono text-xs sm:grid-cols-4">
+          <div><dt className="uppercase tracking-[0.08em] text-site-muted">Year</dt><dd className="mt-1">{study.year}</dd></div>
+          <div><dt className="uppercase tracking-[0.08em] text-site-muted">Role</dt><dd className="mt-1">{study.role}</dd></div>
+          <div><dt className="uppercase tracking-[0.08em] text-site-muted">Status</dt><dd className="mt-1">{study.status}</dd></div>
+          <div><dt className="uppercase tracking-[0.08em] text-site-muted">Stack</dt><dd className="mt-1">{study.stack.join(", ")}</dd></div>
         </dl>
       </Reveal>
 
@@ -47,10 +69,12 @@ export function CaseStudyPage({
         <div>
           <Section title="The problem" items={study.problem} />
           <Section title="What I built" items={study.build} />
+          {study.diagram ? <Diagram diagram={study.diagram} /> : null}
           {study.decisions?.length ? (
             <Section title="Decisions" items={study.decisions} />
           ) : null}
           {study.scope ? <Section title="Scope" items={[study.scope]} /> : null}
+          {study.context ? <Section title="Team context" items={[study.context]} /> : null}
           {study.validation?.length ? <Section title="Validation" items={study.validation} /> : null}
           {study.result ? <Section title="Result" items={[study.result]} /> : null}
           {study.tradeoff ? <Section title="Tradeoff" items={[study.tradeoff]} /> : null}

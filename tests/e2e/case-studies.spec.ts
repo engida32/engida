@@ -4,7 +4,7 @@ const cases = [
   [
     "bellboy",
     "Bellboy",
-    "Customer delivery site and rider onboarding for a delivery service in Australia.",
+    "Delivery booking site and rider onboarding for a delivery company in Australia.",
   ],
   [
     "bookbridge",
@@ -19,7 +19,7 @@ const cases = [
   [
     "vector-search-studio",
     "Vector Search Studio",
-    "Semantic search over Supabase docs with pgvector and a self-contained embedder.",
+    "Semantic search over Supabase docs with pgvector and a local embedder. No API keys.",
   ],
   [
     "signal-engine",
@@ -59,4 +59,16 @@ for (const [slug, title, summary] of cases) {
 test("links to the next project", async ({ page }) => {
   await page.goto("/work/serpentine/");
   await expect(page.getByRole("link", { name: /Next: Vector Search Studio/ })).toBeVisible();
+});
+
+test("shows team context and system diagrams", async ({ page }) => {
+  await page.goto("/work/bellboy/");
+  await expect(page.getByRole("heading", { name: "Team context" })).toBeVisible();
+  await expect(page.getByText(/NestJS\/Prisma service/)).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Surfaces" })).toBeVisible();
+  await expect(page.getByText("Team API", { exact: true })).toBeVisible();
+
+  await page.goto("/work/signal-engine/");
+  await expect(page.getByRole("heading", { name: "Pipeline" })).toBeVisible();
+  await expect(page.getByText("Maker simulator", { exact: true })).toBeVisible();
 });

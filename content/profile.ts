@@ -1,12 +1,13 @@
 export const profile = {
   name: "Engida Lishan",
-  headline: "Full-stack engineer turning agentic AI into shipped products.",
+  headline:
+    "I build full-stack products, including AI features that survive production.",
   availability:
-    "Open to senior full-stack and AI engineering roles. Remote, or Addis Ababa.",
+    "I'm looking for a senior full-stack or AI engineering role, remote or in Addis Ababa.",
   supporting:
-    "Five years from fintech and commerce interfaces to agent platforms that run multi-step work in production.",
+    "Five years across fintech, commerce, and AI products. I work on the state that decides whether a product feels reliable: failed requests, bad model output, and the edge cases in between.",
   about:
-    "The early work was school dashboards. Then a commerce platform for 500+ merchants, a taxi app with 100,000+ users, and two years of agent platforms. The through line is state: what happens when a request fails, when a model is wrong, when a merchant publishes at the wrong moment. Looking for a senior full-stack or AI engineering role where that matters.",
+    "I started with school dashboards. Then a commerce platform for 500+ merchants, a taxi app with 100,000+ users, and two years of AI platforms. Most of my work comes down to state: what happens when a request fails, a model is wrong, or a publish lands at the wrong moment. I'm looking for a senior full-stack or AI engineering role where that matters.",
   location: "Addis Ababa, Ethiopia",
   email: "engida32lishan@gmail.com",
   github: "https://github.com/engida32",

@@ -47,7 +47,7 @@ describe("content integrity", () => {
   });
 
   it("keeps the signal-engine result exact", () => {
-    expect(caseStudyBySlug("signal-engine")?.result?.startsWith("48 to 50% out of sample")).toBe(
+    expect(caseStudyBySlug("signal-engine")?.result?.startsWith("48 to 50% out-of-sample")).toBe(
       true,
     );
   });
@@ -100,6 +100,12 @@ describe("approved content", () => {
       expect(study?.scope, slug).toMatch(/another developer/i);
       expect(study?.scope, slug).toMatch(/backend/i);
     }
+  });
+
+  it("attributes the Bellboy backend in team context", () => {
+    const bellboy = caseStudyBySlug("bellboy");
+    expect(bellboy?.context).toContain("NestJS/Prisma");
+    expect(bellboy?.context).toContain("I built the front end and admin");
   });
 
   it("anchors every client and project row", () => {

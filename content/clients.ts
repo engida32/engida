@@ -5,7 +5,7 @@ export const clients: WorkItem[] = [
     title: "Bellboy",
     year: "2024",
     description:
-      "Customer delivery site and rider onboarding for a delivery service in Australia.",
+      "Delivery booking site and rider onboarding for a delivery company in Australia.",
     stack: ["Next.js", "React", "MUI", "S3 uploads"],
     caseStudySlug: "bellboy",
   },
