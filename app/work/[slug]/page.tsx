@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CaseStudyPage } from "@/components/site/CaseStudyPage";
+import { JsonLd } from "@/components/site/JsonLd";
 import { caseStudies, caseStudyBySlug } from "@/content/case-studies";
 import { pageMetadata } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site";
 
 type Params = { slug: string };
 
@@ -30,5 +32,21 @@ export default async function WorkPage({ params }: { params: Promise<Params> }) 
   if (!study) notFound();
   const index = caseStudies.findIndex((item) => item.slug === study.slug);
   const next = caseStudies[(index + 1) % caseStudies.length];
-  return <CaseStudyPage study={study} next={next} />;
+  return (
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: study.title,
+          description: study.summary,
+          url: absoluteUrl(`/work/${study.slug}/`),
+          dateCreated: study.year,
+          creator: { "@id": absoluteUrl("/#person") },
+          keywords: study.stack.join(", "),
+        }}
+      />
+      <CaseStudyPage study={study} next={next} />
+    </>
+  );
 }

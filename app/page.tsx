@@ -1,5 +1,6 @@
 import { CopyEmail } from "@/components/site/CopyEmail";
 import { ExperienceList } from "@/components/site/ExperienceList";
+import { JsonLd } from "@/components/site/JsonLd";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionLabel } from "@/components/site/SectionLabel";
 import { WorkList } from "@/components/site/WorkList";
@@ -7,10 +8,12 @@ import { clients } from "@/content/clients";
 import { experience } from "@/content/experience";
 import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
+import { homeJsonLd } from "@/lib/jsonld";
 
 export default function HomePage() {
   return (
     <div className="shell">
+      <JsonLd data={homeJsonLd()} />
       <Reveal delay={0}>
         <section className="section pt-10">
           <h1 className="text-balance">
