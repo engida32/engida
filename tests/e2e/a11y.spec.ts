@@ -4,7 +4,10 @@ import { expect, test } from "@playwright/test";
 const routes = [
   "/",
   "/work/bellboy/",
-  "/work/bookbridge/",
+  "/work/turing-agent-platform/",
+  "/work/che/",
+  "/work/sewasew/",
+  "/work/ride-plus/",
   "/work/serpentine/",
   "/work/vector-search-studio/",
   "/work/signal-engine/",

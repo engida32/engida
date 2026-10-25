@@ -1,16 +1,17 @@
 import { expect, test, type Locator } from "@playwright/test";
 
 const workTitles = [
-  "Bellboy", "BookBridge", "Central Plaza", "Ride Plus", "Nib", "Aemro Motors",
-  "Serpentine Arcade", "Vector Search Studio", "Real-time signal engine",
-];
-
-const caseStudyTitles = [
-  "Bellboy", "BookBridge", "Serpentine Arcade", "Vector Search Studio",
+  "Turing agent platform", "Bellboy", "Che", "Sewasew", "Ride Plus", "Central Plaza",
+  "Nib", "Aemro Motors", "Serpentine Arcade", "Vector Search Studio",
   "Real-time signal engine",
 ];
 
-const plainTitles = ["Central Plaza", "Ride Plus", "Nib", "Aemro Motors"];
+const caseStudyTitles = [
+  "Turing agent platform", "Bellboy", "Che", "Sewasew", "Ride Plus",
+  "Serpentine Arcade", "Vector Search Studio", "Real-time signal engine",
+];
+
+const plainTitles = ["Central Plaza", "Nib", "Aemro Motors"];
 
 const roles = [
   "Full-Stack Developer and AI Engineer",
@@ -72,16 +73,21 @@ test("shows every selected row and four roles", async ({ page }) => {
   }
 });
 
-test("shows client work before independent work", async ({ page }) => {
+test("shows platform, client, then independent work", async ({ page }) => {
   await page.goto("/");
+  const platformHeading = page.getByRole("heading", { name: "Platform work" });
   const clientHeading = page.getByRole("heading", { name: "Client work" });
   const independentHeading = page.getByRole("heading", { name: "Independent" });
+  await expect(platformHeading).toBeVisible();
   await expect(clientHeading).toBeVisible();
   await expect(independentHeading).toBeVisible();
 
+  const turingRow = page.locator("#work li").filter({ hasText: "Turing agent platform" });
   const bellboyRow = page.locator("#work li").filter({ hasText: "Bellboy" });
   const serpentineRow = page.locator("#work li").filter({ hasText: "Serpentine Arcade" });
 
+  await expectDocumentOrder(platformHeading, turingRow);
+  await expectDocumentOrder(turingRow, clientHeading);
   await expectDocumentOrder(bellboyRow, independentHeading);
   await expectDocumentOrder(independentHeading, serpentineRow);
 });

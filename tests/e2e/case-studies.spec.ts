@@ -2,14 +2,29 @@ import { expect, test } from "@playwright/test";
 
 const cases = [
   [
+    "turing-agent-platform",
+    "Turing agent evaluation platform",
+    "An internal platform for releasing and evaluating browser-based agent environments for AI labs.",
+  ],
+  [
     "bellboy",
     "Bellboy",
     "Delivery booking site and rider onboarding for a delivery company in Australia.",
   ],
   [
-    "bookbridge",
-    "BookBridge",
-    "Book publishing and reading platform with Stripe checkout UI and a Sanity-backed catalog.",
+    "che",
+    "Che",
+    "B2B commerce front end for 500+ retailers and merchants, built with Next.js 14 and TypeScript.",
+  ],
+  [
+    "sewasew",
+    "Sewasew",
+    "Web music streaming experience and subscription management for an Ethiopian streaming service.",
+  ],
+  [
+    "ride-plus",
+    "Ride Plus",
+    "Admin dashboard, rider and driver tools, and passenger surfaces for a taxi platform.",
   ],
   [
     "serpentine",
@@ -62,6 +77,13 @@ test("links to the next project", async ({ page }) => {
 });
 
 test("shows team context and system diagrams", async ({ page }) => {
+  await page.goto("/work/turing-agent-platform/");
+  await expect(page.getByRole("heading", { name: "Lifecycle" })).toBeVisible();
+  await expect(page.getByText("Assertions and judge", { exact: true })).toBeVisible();
+
+  await page.goto("/work/ride-plus/");
+  await expect(page.getByText(/The dashboard handled 42K\+ driver records/)).toBeVisible();
+
   await page.goto("/work/bellboy/");
   await expect(page.getByRole("heading", { name: "Team context" })).toBeVisible();
   await expect(page.getByText(/NestJS\/Prisma service/)).toBeVisible();

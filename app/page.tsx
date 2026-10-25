@@ -7,6 +7,7 @@ import { WorkList } from "@/components/site/WorkList";
 import { Button } from "@/components/ui/button";
 import { clients } from "@/content/clients";
 import { experience } from "@/content/experience";
+import { platforms } from "@/content/platforms";
 import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
 import { homeJsonLd } from "@/lib/jsonld";
@@ -75,7 +76,9 @@ export default function HomePage() {
       <Reveal delay={40}>
         <section id="work" className="section">
           <SectionLabel>Selected work</SectionLabel>
-          <h2 className="mb-4 text-xl font-semibold">Client work</h2>
+          <h2 className="mb-4 text-xl font-semibold">Platform work</h2>
+          <WorkList items={platforms} />
+          <h2 className="mb-4 mt-12 text-xl font-semibold">Client work</h2>
           <WorkList items={clients} />
           <h2 className="mb-4 mt-12 text-xl font-semibold">Independent</h2>
           <WorkList items={projects} />

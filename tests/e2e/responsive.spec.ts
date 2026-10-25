@@ -3,7 +3,10 @@ import { expect, test } from "@playwright/test";
 const homeWidths = [320, 375, 768, 1024, 1440];
 const compactRoutes = [
   "/work/bellboy/",
-  "/work/bookbridge/",
+  "/work/turing-agent-platform/",
+  "/work/che/",
+  "/work/sewasew/",
+  "/work/ride-plus/",
   "/work/serpentine/",
   "/work/vector-search-studio/",
   "/work/signal-engine/",

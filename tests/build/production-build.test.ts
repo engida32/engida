@@ -4,7 +4,16 @@ import { describe, expect, it } from "vitest";
 
 const out = join(process.cwd(), "out");
 const site = "https://engida.is-a.dev";
-const cases = ["bellboy", "bookbridge", "serpentine", "vector-search-studio", "signal-engine"];
+const cases = [
+  "turing-agent-platform",
+  "bellboy",
+  "che",
+  "sewasew",
+  "ride-plus",
+  "serpentine",
+  "vector-search-studio",
+  "signal-engine",
+];
 
 function walk(dir: string): string[] {
   return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -57,7 +66,7 @@ const htmlFiles = existsSync(out)
   : [];
 
 describe("production build", () => {
-  it("emits the home page, five case studies, 404, and CNAME", () => {
+  it("emits the home page, eight case studies, 404, and CNAME", () => {
     expect(existsSync(join(out, "index.html"))).toBe(true);
     expect(existsSync(join(out, "404.html"))).toBe(true);
     for (const slug of cases) expect(existsSync(join(out, "work", slug, "index.html"))).toBe(true);
@@ -90,9 +99,9 @@ describe("production build", () => {
     }
   });
 
-  it("ships a six-URL sitemap and an allowing robots file", () => {
+  it("ships a nine-URL sitemap and an allowing robots file", () => {
     const sitemap = readFileSync(join(out, "sitemap.xml"), "utf8");
-    expect((sitemap.match(/<url>/g) ?? []).length).toBe(6);
+    expect((sitemap.match(/<url>/g) ?? []).length).toBe(9);
     expect(sitemap).toContain("https://engida.is-a.dev/");
     expect(sitemap).not.toContain("github.io");
     expect(sitemap).not.toContain("localhost");

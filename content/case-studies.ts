@@ -2,6 +2,68 @@ import type { CaseStudy } from "@/content/types";
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "turing-agent-platform",
+    title: "Turing agent evaluation platform",
+    year: "2024-2026",
+    role: "Full-stack and AI engineering",
+    status: "Turing, internal",
+    summary:
+      "An internal platform for releasing and evaluating browser-based agent environments for AI labs.",
+    stack: [
+      "FastAPI",
+      "React",
+      "PostgreSQL",
+      "GCP Cloud Build",
+      "Cloud Run",
+      "GitHub",
+      "LLM-as-judge",
+    ],
+    problem: [
+      "Agent work needs realistic software to act in, a clean starting state, and a clear pass or fail signal.",
+      "Each environment also needs its own release path, access rules, and logs that explain a failed run.",
+      "Doing that across several apps by hand does not scale.",
+    ],
+    build: [
+      "Built the control plane: register a gym, connect its GitHub repo, provision Cloud Build, cut release branches and tags, deploy to Cloud Run, and stream build logs.",
+      "Added redeploy and cancel controls, back-merge tracking, access walls, notifications, audit history, and release notes.",
+      "Built task and prompt workflows, assertion-based state checks, rubric scoring, LLM-as-judge review, golden reviews, and batch end-to-end runs.",
+      "Worked across four environment families: support desk, email, CRM, and sales. Client examples included NVIDIA, Amazon, Salesforce, and Microsoft.",
+    ],
+    decisions: [
+      "Releases are branch and tag based, so every environment has a reproducible version.",
+      "Assertions decide pass or fail; the judge adds a qualitative read, not the only signal.",
+      "Each run starts from a clean state, so one session does not leak into the next.",
+      "Access is scoped per environment, not shared across every gym.",
+    ],
+    scope:
+      "I worked across the platform and the gym environments: release and deployment flows, task and assertion tooling, evaluation screens, access management, and client-specific variants. The platform was a team effort; the case study describes the system and the parts I built.",
+    diagram: {
+      title: "Lifecycle",
+      kind: "flow",
+      items: [
+        "GitHub repo",
+        "Cloud Build",
+        "Cloud Run",
+        "Task prompt",
+        "Agent run",
+        "Assertions and judge",
+      ],
+    },
+    validation: [
+      "Assertion checks against application state.",
+      "Rubric scoring and LLM-as-judge review.",
+      "Human review on golden runs.",
+      "Batch end-to-end runs across environments.",
+      "Release logs, audit history, and access checks.",
+    ],
+    result:
+      "One workflow now covers register, release, run, inspect, and score. Client variants reused the same control plane instead of rebuilding the release path.",
+    tradeoff:
+      "The platform is internal, so the case study shows architecture and workflow rather than a public demo.",
+    links: [],
+    screenshots: [],
+  },
+  {
     slug: "bellboy",
     title: "Bellboy",
     year: "2024",
@@ -36,34 +98,113 @@ export const caseStudies: CaseStudy[] = [
     screenshots: [],
   },
   {
-    slug: "bookbridge",
-    title: "BookBridge",
-    year: "2024",
-    role: "Storefront and admin",
+    slug: "che",
+    title: "Che",
+    year: "2023-2024",
+    role: "Senior Front-End Developer",
     status: "Client work",
     summary:
-      "Book publishing and reading platform with Stripe checkout UI and a Sanity-backed catalog.",
-    stack: ["Next.js", "React", "MUI", "Stripe", "Sanity", "react-query"],
+      "B2B commerce front end for 500+ retailers and merchants, built with Next.js 14 and TypeScript.",
+    stack: [
+      "Next.js 14",
+      "TypeScript",
+      "Redux",
+      "TailwindCSS",
+      "Node.js APIs",
+      "PostgreSQL",
+      "AWS",
+    ],
     problem: [
-      "Authors need to publish and sell books, while readers need a storefront that handles payments and long-form content without a second system.",
+      "A B2B commerce platform serving 500+ retailers and merchants needed a front end that stayed fast as catalog and order data grew.",
     ],
     build: [
-      "The storefront handles discovery and reading.",
-      "Authors publish through a separate flow, with books and authors modeled in Sanity.",
-      "Checkout uses Stripe's UI, and the admin dashboard stays out of the storefront bundle.",
+      "Built the front end in Next.js 14, TypeScript, Redux, and TailwindCSS, with a modular structure for shared commerce screens.",
+      "Used the App Router and React Server Components for server rendering and real-time data sync.",
+      "Connected the front end to Node.js and PostgreSQL APIs.",
+      "Automated the AWS release path, cutting release cycles by 50%.",
     ],
     decisions: [
-      "Book content lives in Sanity.",
-      "Payments live in Stripe.",
-      "Admin stays out of the storefront bundle.",
+      "Server rendering for catalog pages, with client state only where interaction needed it.",
+      "Shared components for repeated merchant workflows.",
+      "Release automation instead of manual deploys.",
     ],
-    scope: "I built the storefront and admin. Another developer built the backend.",
+    scope:
+      "I led the front end and worked with backend engineers on the API contract. The credit, underwriting, and distributor operations systems were outside my scope.",
+    context:
+      "The platform is part of Kifiya's Che retail ecosystem, which connects manufacturers, distributors, and retailers with commerce, credit, and payment services.",
+    diagram: {
+      title: "Front-end path",
+      kind: "flow",
+      items: ["Next.js App Router", "Redux state", "Commerce APIs", "AWS release"],
+    },
+    result: "Page loads fell 30%, merchant adoption rose 25%, and releases shipped 50% faster.",
+    links: [{ label: "Che", href: "https://kifiya.com/che/" }],
+    screenshots: [],
+  },
+  {
+    slug: "sewasew",
+    title: "Sewasew",
+    year: "2021-2022",
+    role: "Front-end developer",
+    status: "Client work",
+    summary:
+      "Web music streaming experience and subscription management for an Ethiopian streaming service.",
+    stack: ["Web front end", "REST APIs", "Subscription flows"],
+    problem: [
+      "A streaming service needed a web player and a subscription flow that worked together, not as two separate products.",
+    ],
+    build: [
+      "Built the web listening experience and subscription management screens.",
+      "Connected the front end to the streaming APIs and handled loading, empty, and error states.",
+      "Worked with backend engineers on API integration and UI performance.",
+    ],
+    decisions: [
+      "Subscription state stayed visible in the account flow.",
+      "The web player and account screens shared the same state model.",
+    ],
+    scope:
+      "I worked on the web application and subscription management, not the native mobile apps.",
+    context:
+      "Sewasew is an Ethiopian music streaming service with 500K+ Google Play downloads and a 4.2 rating. Those figures describe the product, not my work.",
     diagram: {
       title: "Surfaces",
       kind: "group",
-      items: ["Storefront", "Reading", "Admin", "Sanity", "Stripe"],
+      items: ["Web player", "Subscription management", "Streaming APIs"],
     },
-    links: [],
+    links: [{ label: "Sewasew", href: "https://sewasew.com" }],
+    screenshots: [],
+  },
+  {
+    slug: "ride-plus",
+    title: "Ride Plus",
+    year: "2022-2023",
+    role: "Front-end developer",
+    status: "Client work",
+    summary:
+      "Admin dashboard, rider and driver tools, and passenger surfaces for a taxi platform.",
+    stack: ["React", "MUI data grids", "Docker", "REST APIs"],
+    problem: [
+      "Dispatch teams needed one view of drivers, trips, and payments while riders and drivers used separate surfaces.",
+    ],
+    build: [
+      "Built the admin dashboard with driver records, trip views, and operational controls.",
+      "Worked on rider, driver, and passenger-facing screens.",
+      "Used MUI data grids for large operational tables and Docker for local and deploy environments.",
+    ],
+    decisions: [
+      "Operational data stayed in dense tables instead of cards.",
+      "Admin, rider, and driver surfaces shared the same API contract.",
+    ],
+    scope: "I worked on the dashboard, rider and driver tools, and passenger surfaces.",
+    context:
+      "Ride Plus is part of RIDE 8294, a taxi platform operating in Ethiopia and Djibouti. The admin view I worked on held 42K+ driver records.",
+    diagram: {
+      title: "Surfaces",
+      kind: "group",
+      items: ["Admin dashboard", "Rider app", "Driver tools", "Dispatch APIs"],
+    },
+    result: "The dashboard handled 42K+ driver records alongside trip and payment views.",
+    links: [{ label: "Ride Plus", href: "https://ride8294.com/ride-plus/" }],
     screenshots: [],
   },
   {

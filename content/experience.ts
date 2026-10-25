@@ -8,9 +8,9 @@ export const experience: ExperienceItem[] = [
     end: "Sep 2026",
     location: "Remote",
     scope:
-      "Agent platform for global clients. pgvector retrieval, ReAct tool calls with schema validation, critic and human review loops, fine-tuning, AWS and Docker.",
+      "Agent evaluation platform for AI labs. Release and deployment flows, cloned SaaS environments, task assertions, LLM-as-judge scoring, and client variants for NVIDIA, Amazon, Salesforce, and Microsoft.",
     outcome:
-      "Multi-step work runs against real tools with checked inputs and a human escape hatch.",
+      "One control plane for releasing and grading agent environments, from GitHub to Cloud Run.",
   },
   {
     company: "Kifiya",
@@ -40,8 +40,7 @@ export const experience: ExperienceItem[] = [
     start: "Mar 2021",
     end: "Sep 2022",
     location: "Addis Ababa",
-    scope:
-      "Taxi app with 100,000+ users and 10,000+ drivers, plus Sewasew music streaming.",
+    scope: "Taxi platform with 100,000+ users, plus Sewasew music streaming.",
     outcome: "50,000+ transactions processed through the app.",
     companyUrl: "https://2f-capital.com/",
   },
