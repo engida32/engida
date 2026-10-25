@@ -44,6 +44,7 @@ export default async function WorkPage({ params }: { params: Promise<Params> }) 
           dateCreated: study.year,
           creator: { "@id": absoluteUrl("/#person") },
           keywords: study.stack.join(", "),
+          isPartOf: { "@id": absoluteUrl("/#website") },
         }}
       />
       <CaseStudyPage study={study} next={next} />

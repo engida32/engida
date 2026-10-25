@@ -43,9 +43,7 @@ export const metadata: Metadata = {
       "Full-stack engineer in Addis Ababa building agentic AI, commerce, and fintech products with Next.js, Python, and pgvector.",
     images: [absoluteUrl("/og.png")],
   },
-  robots: allowIndexing()
-    ? { index: true, follow: true }
-    : { index: false, follow: false },
+  robots: allowIndexing() ? undefined : { index: false, follow: false },
   verification: {
     ...(googleVerification ? { google: googleVerification } : {}),
     ...(bingVerification ? { other: { "msvalidate.01": bingVerification } } : {}),
