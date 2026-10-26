@@ -8,7 +8,7 @@ export default function NotFound() {
       <p className="mt-4 max-w-[62ch] text-site-muted">
         That page does not exist. The work index is a good place to restart.
       </p>
-      <Link href="/#work" className="mt-8 inline-block text-site-accent underline-offset-4 hover:underline">
+      <Link href="/#work" className="prose-link mt-8 inline-block">
         Back to selected work
       </Link>
     </div>

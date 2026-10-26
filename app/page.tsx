@@ -17,8 +17,11 @@ export default function HomePage() {
     <div className="shell">
       <JsonLd data={homeJsonLd()} />
       <Reveal delay={0}>
-        <section className="section pt-10">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(260px,5fr)] lg:gap-12">
+        <section className="section pt-10 hero-section">
+          <div
+            data-hero-grid
+            className="grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(260px,5fr)] lg:gap-12"
+          >
             <div>
               <h1 className="text-balance">
                 <span className="block font-mono text-xs uppercase tracking-[0.16em] text-site-accent">
@@ -58,7 +61,7 @@ export default function HomePage() {
               </div>
             </div>
             <aside aria-label="Quick facts" className="lg:pt-8">
-              <dl className="grid grid-cols-1 gap-px overflow-hidden border border-site-border bg-site-border sm:grid-cols-2 lg:grid-cols-1">
+              <dl className="grid grid-cols-1 gap-px overflow-hidden border border-site-border bg-site-border sm:grid-cols-2">
                 <div className="bg-site-bg px-4 py-3">
                   <dt className="font-mono text-[10px] uppercase tracking-[0.12em] text-site-muted">Based in</dt>
                   <dd className="mt-1 text-sm leading-6">{profile.location}</dd>
@@ -82,7 +85,7 @@ export default function HomePage() {
       </Reveal>
 
       <Reveal delay={40}>
-        <section id="work" aria-labelledby="work-label" className="section">
+        <section id="work" aria-labelledby="work-label" className="section work-section">
           <SectionLabel id="work-label">Selected work</SectionLabel>
           <WorkList items={workItems} />
         </section>
@@ -101,7 +104,7 @@ export default function HomePage() {
           <p className="max-w-[62ch]">{profile.about}</p>
           <a
             href={`${basePath()}/about/`}
-            className="mt-3 inline-block font-mono text-xs uppercase tracking-[0.08em] text-site-accent underline-offset-4 hover:underline"
+            className="prose-link mt-3 inline-block font-mono text-xs uppercase tracking-[0.08em]"
           >
             More about how I work
           </a>

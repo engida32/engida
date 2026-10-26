@@ -65,10 +65,10 @@ export default function AboutPage() {
 
       <Reveal delay={200}>
         <div className="mt-12 flex flex-wrap items-center gap-4 text-sm">
-          <a href={`${basePath()}/#work`} className="text-site-accent underline-offset-4 hover:underline">
+          <a href={`${basePath()}/#work`} className="prose-link">
             See selected work
           </a>
-          <a href={`mailto:${profile.email}`} className="text-site-accent underline-offset-4 hover:underline">
+          <a href={`mailto:${profile.email}`} className="prose-link">
             Email me
           </a>
           <CopyEmail email={profile.email} />

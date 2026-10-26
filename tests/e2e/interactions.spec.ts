@@ -102,3 +102,41 @@ test("copy email uses the utility control", async ({ page }) => {
   expect(Number.parseFloat(border.width)).toBeGreaterThanOrEqual(1);
   expect(border.color).not.toBe("rgba(0, 0, 0, 0)");
 });
+
+test("links use the navigation and prose treatments", async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem("theme", "light"));
+  await page.emulateMedia({ colorScheme: "light" });
+  await page.goto("/");
+
+  const navWork = page
+    .getByRole("navigation", { name: "Primary" })
+    .getByRole("link", { name: "Work" });
+  await expect(navWork).toHaveCSS("text-decoration-line", "none");
+  await navWork.hover();
+  await expect(navWork).toHaveCSS("text-decoration-line", "underline");
+  await expect(navWork).toHaveCSS("color", "rgb(11, 122, 72)");
+
+  const footerEmail = page
+    .getByRole("contentinfo")
+    .getByRole("link", { name: "Email" });
+  await expect(footerEmail).toHaveCSS("text-decoration-line", "underline");
+
+  const prose = page.getByRole("link", { name: "More about how I work" });
+  await expect(prose).toHaveCSS("text-decoration-line", "underline");
+});
+
+test("work rows show a surface on hover and focus-within", async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem("theme", "light"));
+  await page.emulateMedia({ colorScheme: "light" });
+  await page.goto("/");
+
+  const row = page.locator("#work li").first();
+  await expect(row).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+
+  await row.hover();
+  await expect(row).toHaveCSS("background-color", "rgb(239, 239, 232)");
+
+  await page.mouse.move(0, 0);
+  await row.getByRole("link").first().focus();
+  await expect(row).toHaveCSS("background-color", "rgb(239, 239, 232)");
+});

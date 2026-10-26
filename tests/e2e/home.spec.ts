@@ -91,3 +91,54 @@ test("shows one selected work list with category labels", async ({ page }) => {
   await expectDocumentOrder(turingRow, bellboyRow);
   await expectDocumentOrder(bellboyRow, serpentineRow);
 });
+
+test("work rows put category above the title and keep an 80px date gutter", async ({ page }) => {
+  await page.setViewportSize({ width: 768, height: 900 });
+  await page.goto("/");
+
+  const row = page.locator("#work li").filter({ hasText: "Turing agent platform" });
+  const date = row.locator("[data-work-date]");
+  const category = row.getByText("Platform", { exact: true });
+  const title = row.getByRole("link", { name: "Turing agent platform" });
+
+  await expectDocumentOrder(category, title);
+
+  const template = await row.evaluate(
+    (element) => getComputedStyle(element).gridTemplateColumns,
+  );
+  expect(template.startsWith("80px")).toBe(true);
+
+  const dateBox = await date.boundingBox();
+  const titleBox = await title.boundingBox();
+  expect(dateBox).not.toBeNull();
+  expect(titleBox).not.toBeNull();
+  expect(titleBox!.x).toBeGreaterThan(dateBox!.x + 60);
+});
+
+test("hero spacing and quick facts match the hierarchy", async ({ page }) => {
+  await page.setViewportSize({ width: 1024, height: 1000 });
+  await page.goto("/");
+
+  const gap = await page.evaluate(() => {
+    const hero = document.querySelector("[data-hero-grid]")!.getBoundingClientRect();
+    const label = document.querySelector("#work-label")!.getBoundingClientRect();
+    return Math.round(label.top - hero.bottom);
+  });
+  expect(gap).toBeGreaterThanOrEqual(79);
+  expect(gap).toBeLessThanOrEqual(82);
+
+  const cells = page.locator('aside[aria-label="Quick facts"] dl > div');
+  const wideBoxes = await Promise.all(
+    [0, 1, 2, 3].map((index) => cells.nth(index).boundingBox()),
+  );
+  expect(Math.abs(wideBoxes[0]!.y - wideBoxes[1]!.y)).toBeLessThan(1);
+  expect(wideBoxes[2]!.y).toBeGreaterThan(wideBoxes[0]!.y);
+
+  await page.setViewportSize({ width: 375, height: 1000 });
+  await page.reload();
+  const narrowBoxes = await Promise.all(
+    [0, 1, 2, 3].map((index) => cells.nth(index).boundingBox()),
+  );
+  expect(Math.abs(narrowBoxes[0]!.x - narrowBoxes[1]!.x)).toBeLessThan(1);
+  expect(narrowBoxes[1]!.y).toBeGreaterThan(narrowBoxes[0]!.y);
+});

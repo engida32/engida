@@ -3,20 +3,28 @@ import type { WorkItem } from "@/content/types";
 
 export function WorkList({ items }: { items: WorkItem[] }) {
   return (
-    <ul className="divide-y divide-site-border border-y border-site-border">
+    <ul data-stagger="work" className="divide-y divide-site-border border-y border-site-border">
       {items.map((item) => {
         const caseHref = item.caseStudySlug ? `/work/${item.caseStudySlug}/` : undefined;
         return (
-          <li key={item.title} className="grid gap-2 py-5 sm:grid-cols-[56px_1fr] sm:gap-4">
-            <span className="tabular text-sm text-site-muted">{item.year}</span>
+          <li
+            key={item.title}
+            data-stagger-item
+            className="relative -mx-3 grid gap-2 px-3 py-5 transition-[background-color] duration-150 hover:bg-site-surface focus-within:bg-site-surface sm:grid-cols-[80px_1fr] sm:gap-4"
+          >
+            <span data-work-date className="whitespace-nowrap tabular text-sm text-site-muted">
+              {item.year}
+            </span>
             <div className="min-w-0">
+              {item.category ? (
+                <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.08em] text-site-muted">
+                  {item.category}
+                </p>
+              ) : null}
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                 {caseHref ? (
                   <span className="inline-flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                    <Link
-                      href={caseHref}
-                      className="font-semibold text-site-text underline-offset-4 hover:text-site-accent hover:underline"
-                    >
+                    <Link href={caseHref} className="work-title font-semibold">
                       {item.title}
                     </Link>
                     <span
@@ -34,7 +42,7 @@ export function WorkList({ items }: { items: WorkItem[] }) {
                     href={item.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-site-accent underline-offset-4 hover:underline"
+                    className="prose-link text-sm text-site-accent"
                   >
                     <span aria-hidden="true">Live</span>
                     <span className="sr-only">
@@ -47,7 +55,7 @@ export function WorkList({ items }: { items: WorkItem[] }) {
                     href={item.sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-site-accent underline-offset-4 hover:underline"
+                    className="prose-link text-sm text-site-accent"
                   >
                     <span aria-hidden="true">Source</span>
                     <span className="sr-only">
@@ -56,16 +64,14 @@ export function WorkList({ items }: { items: WorkItem[] }) {
                   </a>
                 ) : null}
               </div>
-              <p className="mt-1 max-w-[62ch] text-sm">
-                {item.category ? (
-                  <span className="mr-2 font-mono text-[10px] uppercase tracking-[0.1em] text-site-muted">
-                    {item.category}
-                  </span>
-                ) : null}
-                {item.description}
-              </p>
+              <p className="mt-1 max-w-[62ch] text-sm">{item.description}</p>
               <p className="mt-1 font-mono text-[11px] text-site-muted">{item.stack.join(" / ")}</p>
-              {item.note ? <p className="mt-1 text-xs text-site-warning">{item.note}</p> : null}
+              {item.note ? (
+                <p className="mt-1 text-xs text-site-warning">
+                  <span className="font-mono uppercase tracking-[0.08em]">Note: </span>
+                  {item.note}
+                </p>
+              ) : null}
             </div>
           </li>
         );

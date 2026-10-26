@@ -48,7 +48,7 @@ export function CaseStudyPage({
     <article className="shell section pt-10">
       <Reveal delay={0}>
         <div>
-          <Link href="/#work" className="text-sm text-site-accent underline-offset-4 hover:underline">
+          <Link href="/#work" className="prose-link text-sm">
             Back to selected work
           </Link>
           <h1 className="mt-6 text-[32px] font-semibold leading-[1.15] sm:text-[40px]">{study.title}</h1>
@@ -104,7 +104,7 @@ export function CaseStudyPage({
           {study.links.length > 0 ? (
             <div className="mt-10 flex flex-wrap gap-4 text-sm">
               {study.links.map((link) => (
-                <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="text-site-accent underline-offset-4 hover:underline">
+                <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="prose-link">
                   {link.label}<span className="sr-only"> (opens in a new tab)</span>
                 </a>
               ))}
@@ -119,7 +119,7 @@ export function CaseStudyPage({
 
       <Reveal delay={120}>
         <nav aria-label="Next project" className="mt-16 border-t border-site-border pt-6">
-          <Link href={`/work/${next.slug}/`} className="text-site-accent underline-offset-4 hover:underline">
+          <Link href={`/work/${next.slug}/`} className="prose-link">
             Next: {next.title}
           </Link>
         </nav>

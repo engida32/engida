@@ -150,6 +150,59 @@ a {
   text-underline-offset: 0.2em;
 }
 
+.prose-link {
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 150ms ease-out, text-decoration-color 150ms ease-out;
+}
+
+.prose-link:hover,
+.prose-link:focus-visible {
+  color: var(--site-accent);
+  text-decoration-color: currentColor;
+}
+
+.nav-link {
+  text-decoration-line: none;
+  transition: color 150ms ease-out;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--site-accent);
+  text-decoration-line: underline;
+  text-underline-offset: 0.2em;
+}
+
+.footer-link {
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 150ms ease-out, text-decoration-color 150ms ease-out;
+}
+
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: var(--site-accent);
+  text-decoration-color: currentColor;
+}
+
+.work-title {
+  color: var(--site-text);
+  text-decoration-line: none;
+  transition: color 150ms ease-out;
+}
+
+.work-title:hover,
+.work-title:focus-visible {
+  color: var(--site-accent);
+  text-decoration-line: underline;
+  text-underline-offset: 0.2em;
+}
+
 :focus-visible {
   outline: 2px solid var(--site-accent);
   outline-offset: 2px;
@@ -173,6 +226,14 @@ a {
 }
 
 .section.pt-10 {
+  padding-top: 40px;
+}
+
+.section.hero-section {
+  padding-bottom: 40px;
+}
+
+.section.work-section {
   padding-top: 40px;
 }
 
@@ -246,6 +307,14 @@ a {
 
   .section {
     padding-block: 48px;
+  }
+
+  .section.hero-section {
+    padding-bottom: 32px;
+  }
+
+  .section.work-section {
+    padding-top: 32px;
   }
 }
 

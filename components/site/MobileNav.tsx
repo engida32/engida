@@ -43,7 +43,7 @@ export function MobileNav({ links }: { links: LinkItem[] }) {
                   <SheetClose asChild>
                     <a
                       href={link.href}
-                      className="block py-2 text-base hover:text-site-accent"
+                      className="nav-link block py-2 text-base"
                     >
                       {link.label}
                     </a>
@@ -66,7 +66,7 @@ export function MobileNav({ links }: { links: LinkItem[] }) {
                 href={profile.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-site-accent"
+                className="nav-link"
               >
                 GitHub<span className="sr-only"> (opens in a new tab)</span>
               </a>
@@ -76,7 +76,7 @@ export function MobileNav({ links }: { links: LinkItem[] }) {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-site-accent"
+                className="nav-link"
               >
                 LinkedIn<span className="sr-only"> (opens in a new tab)</span>
               </a>
@@ -86,7 +86,7 @@ export function MobileNav({ links }: { links: LinkItem[] }) {
                 href={profile.x}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-site-accent"
+                className="nav-link"
               >
                 X<span className="sr-only"> (opens in a new tab)</span>
               </a>

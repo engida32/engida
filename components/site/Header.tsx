@@ -16,7 +16,7 @@ const links = [
 export function Header() {
   return (
     <header className="site-header shell flex items-center justify-between gap-6 py-6">
-      <Link href="/" className="font-mono font-semibold text-site-text hover:text-site-accent">
+      <Link href="/" className="nav-link font-mono font-semibold text-site-text">
         EL
       </Link>
       <div className="flex items-center gap-3">
@@ -24,7 +24,7 @@ export function Header() {
           <ul className="flex items-center gap-5 font-mono text-xs uppercase tracking-[0.08em]">
             {links.map((link) => (
               <li key={link.label}>
-                <a className="hover:text-site-accent" href={link.href}>
+                <a className="nav-link" href={link.href}>
                   {link.label}
                 </a>
               </li>

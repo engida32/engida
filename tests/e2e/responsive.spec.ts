@@ -36,3 +36,27 @@ for (const route of compactRoutes) {
     });
   }
 }
+
+test("work dates stay on one line", async ({ page }) => {
+  for (const width of [320, 768, 1024, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+
+    const dates = page.locator("[data-work-date]");
+    const count = await dates.count();
+    expect(count).toBeGreaterThan(0);
+
+    for (let index = 0; index < count; index += 1) {
+      const metrics = await dates.nth(index).evaluate((element) => {
+        const computed = getComputedStyle(element);
+        return {
+          whiteSpace: computed.whiteSpace,
+          clientWidth: element.clientWidth,
+          scrollWidth: element.scrollWidth,
+        };
+      });
+      expect(metrics.whiteSpace).toBe("nowrap");
+      expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.clientWidth);
+    }
+  }
+});
