@@ -65,7 +65,7 @@ await page.setContent(`<!doctype html>
       <p>Product engineering, reliable systems, and interfaces that stay out of the way.</p>
     </main>
     <footer>
-      <span class="domain">engida.is-a.dev</span>
+      <span class="domain">engida.devs.et</span>
       <span>Portfolio</span>
     </footer>
   </body>

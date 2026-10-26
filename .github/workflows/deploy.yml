@@ -1,4 +1,4 @@
-name: Deploy portfolio to Pages
+name: Deploy portfolio
 
 on:
   push:
@@ -42,6 +42,26 @@ jobs:
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: out
+      - name: Mirror to WebDAV
+        env:
+          WEBDAV_URL: ${{ secrets.WEBDAV_URL }}
+          WEBDAV_USER: ${{ secrets.WEBDAV_USER }}
+          WEBDAV_PASSWORD: ${{ secrets.WEBDAV_PASSWORD }}
+        run: node scripts/deploy-webdav.mjs
+      - name: Upload .htaccess via FTPS
+        env:
+          FTP_URL: ${{ vars.FTP_URL }}
+          FTP_USER: ${{ secrets.WEBDAV_USER }}
+          FTP_PASSWORD: ${{ secrets.WEBDAV_PASSWORD }}
+        run: |
+          if [ -z "$FTP_URL" ] || [ -z "$FTP_USER" ] || [ -z "$FTP_PASSWORD" ]; then
+            echo "FTP_URL, WEBDAV_USER, and WEBDAV_PASSWORD must be configured" >&2
+            exit 1
+          fi
+          NETRC="$(mktemp)"
+          trap 'rm -f "$NETRC"' EXIT
+          node -e 'const fs=require("fs"); const u=new URL(process.env.FTP_URL); fs.writeFileSync(process.argv[1], `machine ${u.hostname}\nlogin ${process.env.FTP_USER}\npassword ${process.env.FTP_PASSWORD}\n`, {mode:0o600});' "$NETRC"
+          curl --fail --silent --show-error --netrc-file "$NETRC" --ssl-reqd --ftp-pasv --retry 3 --retry-delay 2 -T deploy/webdav/.htaccess "${FTP_URL%/}/.htaccess"
 
   deploy:
     needs: build

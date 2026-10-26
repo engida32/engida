@@ -50,7 +50,7 @@ for (const [slug, title, summary] of cases) {
     await expect(page.getByRole("heading", { level: 1, name: title })).toBeVisible();
     await expect(page.getByRole("link", { name: "Back to selected work" })).toBeVisible();
 
-    const productionCanonical = `https://engida.is-a.dev/work/${slug}/`;
+    const productionCanonical = `https://engida.devs.et/work/${slug}/`;
     const testCanonical = `http://localhost:4173/work/${slug}/`;
     const canonical = page.locator('link[rel="canonical"]');
     const canonicalHref = await canonical.getAttribute("href");

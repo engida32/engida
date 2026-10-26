@@ -20,15 +20,15 @@ describe("site URL", () => {
   });
 
   it("removes a trailing slash", () => {
-    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://engida.is-a.dev/");
-    expect(siteUrl()).toBe("https://engida.is-a.dev");
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://engida.devs.et/");
+    expect(siteUrl()).toBe("https://engida.devs.et");
   });
 
   it("builds a canonical with exactly one trailing slash", () => {
-    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://engida.is-a.dev");
-    expect(canonicalUrl("/")).toBe("https://engida.is-a.dev/");
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://engida.devs.et");
+    expect(canonicalUrl("/")).toBe("https://engida.devs.et/");
     expect(canonicalUrl("work/serpentine")).toBe(
-      "https://engida.is-a.dev/work/serpentine/",
+      "https://engida.devs.et/work/serpentine/",
     );
   });
 
@@ -40,8 +40,8 @@ describe("site URL", () => {
   });
 
   it("keeps file URLs free of a forced trailing slash", () => {
-    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://engida.is-a.dev");
-    expect(absoluteUrl("/og.png")).toBe("https://engida.is-a.dev/og.png");
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://engida.devs.et");
+    expect(absoluteUrl("/og.png")).toBe("https://engida.devs.et/og.png");
   });
 });
 
@@ -75,7 +75,7 @@ describe("indexing flag", () => {
 
 describe("page metadata", () => {
   it("builds absolute home and case-study metadata", () => {
-    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://engida.is-a.dev");
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://engida.devs.et");
     vi.stubEnv("NEXT_PUBLIC_ALLOW_INDEXING", "true");
 
     const home = pageMetadata({
@@ -92,12 +92,12 @@ describe("page metadata", () => {
 
     expect(home.openGraph).toMatchObject({ type: "profile", locale: "en" });
     expect(work.alternates?.canonical).toBe(
-      "https://engida.is-a.dev/work/bellboy/",
+      "https://engida.devs.et/work/bellboy/",
     );
     expect(work.openGraph).toMatchObject({
       type: "website",
       locale: "en",
-      url: "https://engida.is-a.dev/work/bellboy/",
+      url: "https://engida.devs.et/work/bellboy/",
     });
     expect(work.twitter).toMatchObject({
       card: "summary_large_image",

@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
 const out = join(process.cwd(), "out");
-const site = "https://engida.is-a.dev";
+const site = "https://engida.devs.et";
 const cases = [
   "turing-agent-platform",
   "bellboy",
@@ -79,7 +79,7 @@ describe("production build", () => {
       const html = readFileSync(file, "utf8");
       const canonicals = [...html.matchAll(/<link rel="canonical" href="([^"]+)"/g)].map((m) => m[1]);
       expect(canonicals.length, file).toBe(1);
-      expect(canonicals[0], file).toMatch(/^https:\/\/engida\.is-a\.dev\/(?:[^/]+\/)*$/);
+      expect(canonicals[0], file).toMatch(/^https:\/\/engida\.devs\.et\/(?:[^/]+\/)*$/);
     }
     expect(htmlFiles.some((file) => readFileSync(file, "utf8").includes("github.io"))).toBe(false);
   });
@@ -107,13 +107,13 @@ describe("production build", () => {
   it("ships a ten-URL sitemap and an allowing robots file", () => {
     const sitemap = readFileSync(join(out, "sitemap.xml"), "utf8");
     expect((sitemap.match(/<url>/g) ?? []).length).toBe(10);
-    expect(sitemap).toContain("https://engida.is-a.dev/");
-    expect(sitemap).toContain("https://engida.is-a.dev/about/");
+    expect(sitemap).toContain("https://engida.devs.et/");
+    expect(sitemap).toContain("https://engida.devs.et/about/");
     expect(sitemap).not.toContain("github.io");
     expect(sitemap).not.toContain("localhost");
 
     const robots = readFileSync(join(out, "robots.txt"), "utf8");
-    expect(robots).toContain("Sitemap: https://engida.is-a.dev/sitemap.xml");
+    expect(robots).toContain("Sitemap: https://engida.devs.et/sitemap.xml");
     const robotsLines = robots.split(/\r?\n/).map((line) => line.trim());
     expect(robotsLines).not.toContain("Disallow: /");
   });
@@ -130,7 +130,7 @@ describe("production build", () => {
     expect(works).toHaveLength(cases.length);
 
     for (const node of [...nodesOfType(homeNodes, "Person"), ...nodesOfType(homeNodes, "WebSite"), ...works]) {
-      expect(node.url, JSON.stringify(node)).toMatch(/^https:\/\/engida\.is-a\.dev\//);
+      expect(node.url, JSON.stringify(node)).toMatch(/^https:\/\/engida\.devs\.et\//);
     }
     for (const slug of cases) {
       expect(
