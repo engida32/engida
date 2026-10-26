@@ -110,8 +110,10 @@
   --radius-lg: 4px;
 }
 
-* {
-  border-color: var(--site-border);
+@layer base {
+  * {
+    border-color: var(--site-border);
+  }
 }
 
 html {
@@ -279,8 +281,8 @@ a {
 
 .js [data-reveal] {
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 350ms ease, transform 350ms ease;
+  transform: translateY(6px);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
 }
 
 .js [data-reveal].is-visible {
@@ -288,15 +290,106 @@ a {
   transform: none;
 }
 
+.js [data-stagger] [data-stagger-item] {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    background-color 150ms ease-out,
+    opacity 300ms ease-out,
+    transform 300ms ease-out;
+  transition-delay: 0s, var(--stagger-delay, 0ms), var(--stagger-delay, 0ms);
+}
+
+.js [data-reveal].is-visible [data-stagger-item] {
+  opacity: 1;
+  transform: none;
+}
+
+.js [data-stagger="work"] > :nth-child(1),
+.js [data-stagger="experience"] > :nth-child(1) {
+  --stagger-delay: 0ms;
+}
+
+.js [data-stagger="work"] > :nth-child(2),
+.js [data-stagger="experience"] > :nth-child(2) {
+  --stagger-delay: 40ms;
+}
+
+.js [data-stagger="work"] > :nth-child(3),
+.js [data-stagger="experience"] > :nth-child(3) {
+  --stagger-delay: 80ms;
+}
+
+.js [data-stagger="work"] > :nth-child(4),
+.js [data-stagger="experience"] > :nth-child(4) {
+  --stagger-delay: 120ms;
+}
+
+.js [data-stagger="work"] > :nth-child(5),
+.js [data-stagger="experience"] > :nth-child(5) {
+  --stagger-delay: 160ms;
+}
+
+.js [data-stagger="work"] > :nth-child(n + 6),
+.js [data-stagger="experience"] > :nth-child(n + 6) {
+  --stagger-delay: 200ms;
+}
+
+.js [data-stagger="diagram"] > li:nth-child(1) {
+  --stagger-delay: 0ms;
+}
+
+.js [data-stagger="diagram"] > li:nth-child(2) {
+  --stagger-delay: 20ms;
+}
+
+.js [data-stagger="diagram"] > li:nth-child(3) {
+  --stagger-delay: 40ms;
+}
+
+.js [data-stagger="diagram"] > li:nth-child(4) {
+  --stagger-delay: 60ms;
+}
+
+.js [data-stagger="diagram"] > li:nth-child(5) {
+  --stagger-delay: 80ms;
+}
+
+.js [data-stagger="diagram"] > li:nth-child(6) {
+  --stagger-delay: 100ms;
+}
+
+.js [data-stagger="diagram"] > li:nth-child(7) {
+  --stagger-delay: 120ms;
+}
+
+.js [data-stagger="diagram"] > li:nth-child(8) {
+  --stagger-delay: 140ms;
+}
+
+.js [data-stagger="diagram"] > li:nth-child(9) {
+  --stagger-delay: 160ms;
+}
+
+.js [data-stagger="diagram"] > li:nth-child(10) {
+  --stagger-delay: 180ms;
+}
+
+.js [data-stagger="diagram"] > li:nth-child(n + 11) {
+  --stagger-delay: 200ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  .js [data-reveal] {
+  .js [data-reveal],
+  .js [data-stagger] [data-stagger-item] {
     opacity: 1;
     transform: none;
     transition: none;
+    transition-delay: 0s;
   }
 }
 
@@ -325,10 +418,12 @@ a {
     display: none !important;
   }
 
-  .js [data-reveal] {
+  .js [data-reveal],
+  .js [data-stagger] [data-stagger-item] {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+    transition-delay: 0s !important;
   }
 
   body {

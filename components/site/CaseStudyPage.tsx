@@ -19,10 +19,13 @@ function Diagram({ diagram }: { diagram: CaseStudyDiagram }) {
   return (
     <section className="mt-10">
       <h2 className="mb-3 text-lg font-semibold">{diagram.title}</h2>
-      <ol className="flex flex-wrap items-center gap-2">
+      <ol data-stagger="diagram" className="flex flex-wrap items-center gap-2">
         {diagram.items.map((item, index) => (
           <li key={item} className="flex items-center gap-2">
-            <span className="border border-site-border bg-site-surface px-3 py-2 font-mono text-[11px] uppercase tracking-[0.06em]">
+            <span
+              data-stagger-item
+              className="border border-site-border bg-site-surface px-3 py-2 font-mono text-[11px] uppercase tracking-[0.06em]"
+            >
               {item}
             </span>
             {diagram.kind === "flow" && index < diagram.items.length - 1 ? (

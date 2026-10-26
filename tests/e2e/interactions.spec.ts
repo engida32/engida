@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Locator } from "@playwright/test";
 
 test("theme choice persists across reloads", async ({ page }) => {
   await page.goto("/");
@@ -139,4 +139,102 @@ test("work rows show a surface on hover and focus-within", async ({ page }) => {
   await page.mouse.move(0, 0);
   await row.getByRole("link").first().focus();
   await expect(row).toHaveCSS("background-color", "rgb(239, 239, 232)");
+});
+
+test("reveal uses 300ms and a 6px rise, with a fallback", async ({ page }) => {
+  await page.addInitScript(() => {
+    class NoopIntersectionObserver {
+      observe() {}
+      unobserve() {}
+      disconnect() {}
+    }
+    Object.defineProperty(window, "IntersectionObserver", {
+      configurable: true,
+      writable: true,
+      value: NoopIntersectionObserver,
+    });
+  });
+
+  await page.goto("/");
+  const reveal = page.locator("[data-reveal]").first();
+  await expect(reveal).not.toHaveClass(/is-visible/);
+
+  const styles = await reveal.evaluate((element) => {
+    const computed = getComputedStyle(element);
+    return {
+      opacity: computed.opacity,
+      transform: computed.transform,
+      duration: computed.transitionDuration,
+    };
+  });
+  expect(styles.opacity).toBe("0");
+  expect(styles.transform).toBe("matrix(1, 0, 0, 1, 0, 6)");
+  expect(styles.duration).toContain("0.3s");
+
+  await page.addInitScript(() => {
+    Object.defineProperty(window, "IntersectionObserver", {
+      configurable: true,
+      writable: true,
+      value: undefined,
+    });
+  });
+  await page.reload();
+  await expect(page.locator("[data-reveal]").first()).toHaveClass(/is-visible/);
+});
+
+test("stagger delays use 40ms and 20ms steps and cap at 200ms", async ({ page }) => {
+  await page.addInitScript(() => {
+    class NoopIntersectionObserver {
+      observe() {}
+      unobserve() {}
+      disconnect() {}
+    }
+    Object.defineProperty(window, "IntersectionObserver", {
+      configurable: true,
+      writable: true,
+      value: NoopIntersectionObserver,
+    });
+  });
+
+  async function expectStaggerDelay(locator: Locator, expected: string) {
+    const delays = await locator.evaluate((element) =>
+      getComputedStyle(element)
+        .transitionDelay.split(",")
+        .map((value) => value.trim()),
+    );
+    expect(delays.slice(1).every((value) => value === expected)).toBe(true);
+  }
+
+  await page.goto("/");
+  const work = page.locator('[data-stagger="work"] > [data-stagger-item]');
+  await expectStaggerDelay(work.nth(0), "0s");
+  await expectStaggerDelay(work.nth(1), "0.04s");
+  await expectStaggerDelay(work.nth(5), "0.2s");
+  await expectStaggerDelay(work.nth(10), "0.2s");
+
+  await page.goto("/work/bellboy/");
+  const diagram = page.locator('[data-stagger="diagram"] [data-stagger-item]');
+  await expectStaggerDelay(diagram.nth(0), "0s");
+  await expectStaggerDelay(diagram.nth(1), "0.02s");
+
+  const count = await diagram.count();
+  if (count > 10) {
+    await expectStaggerDelay(diagram.nth(10), "0.2s");
+  }
+});
+
+test("reduced motion shows staggered items without delay", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+
+  const items = page.locator('[data-stagger="work"] > [data-stagger-item]');
+  const count = await items.count();
+  expect(count).toBeGreaterThan(0);
+
+  for (let index = 0; index < count; index += 1) {
+    await expect(items.nth(index)).toHaveCSS("opacity", "1");
+    await expect(items.nth(index)).toHaveCSS("transform", "none");
+    await expect(items.nth(index)).toHaveCSS("transition-duration", "0s");
+    await expect(items.nth(index)).toHaveCSS("transition-delay", "0s");
+  }
 });
