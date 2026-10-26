@@ -81,7 +81,9 @@ describe("production build", () => {
       expect(canonicals.length, file).toBe(1);
       expect(canonicals[0], file).toMatch(/^https:\/\/engida\.devs\.et\/(?:[^/]+\/)*$/);
     }
-    expect(htmlFiles.some((file) => readFileSync(file, "utf8").includes("github.io"))).toBe(false);
+    for (const file of htmlFiles) {
+      expect(readFileSync(file, "utf8"), file).not.toMatch(/\bgithub\.io\b/);
+    }
   });
 
   it("marks only not-found pages noindex", () => {
