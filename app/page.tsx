@@ -42,15 +42,15 @@ export default function HomePage() {
                 <Button
                   asChild
                   size="lg"
-                  className="h-10 w-full px-4 font-mono text-xs uppercase tracking-[0.08em] sm:w-auto"
+                  className="w-full font-mono text-xs uppercase tracking-[0.08em] sm:w-auto"
                 >
                   <a href={`mailto:${profile.email}`}>Email me</a>
                 </Button>
                 <Button
                   asChild
-                  variant="outline"
+                  variant="secondary"
                   size="lg"
-                  className="h-10 w-full px-4 font-mono text-xs uppercase tracking-[0.08em] sm:w-auto"
+                  className="w-full font-mono text-xs uppercase tracking-[0.08em] sm:w-auto"
                 >
                   <a href="#work">View work</a>
                 </Button>

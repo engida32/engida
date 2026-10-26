@@ -48,3 +48,57 @@ test("reduced motion shows content immediately", async ({ page }) => {
     await expect(reveal).toHaveCSS("transition-duration", "0s");
   }
 });
+
+test("controls are legible at rest", async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem("theme", "light"));
+  await page.emulateMedia({ colorScheme: "light" });
+  await page.goto("/");
+
+  const primary = page.locator('a[data-variant="default"]').first();
+  const secondary = page.locator('a[data-variant="secondary"]').first();
+  const utility = page.locator('button[data-variant="utility"]').first();
+
+  await expect(primary).toHaveCSS("background-color", "rgb(11, 122, 72)");
+  await expect(primary).toHaveCSS("border-top-width", "0px");
+  await expect(utility).toContainText("Copy email");
+
+  for (const control of [secondary, utility]) {
+    const styles = await control.evaluate((element) => {
+      const computed = getComputedStyle(element);
+      return {
+        borderWidth: computed.borderTopWidth,
+        borderStyle: computed.borderTopStyle,
+        borderColor: computed.borderTopColor,
+        transitionProperty: computed.transitionProperty,
+        transitionDuration: computed.transitionDuration,
+      };
+    });
+
+    expect(Number.parseFloat(styles.borderWidth)).toBeGreaterThanOrEqual(1);
+    expect(styles.borderStyle).not.toBe("none");
+    expect(styles.borderColor).not.toBe("rgba(0, 0, 0, 0)");
+    expect(styles.transitionProperty).not.toContain("all");
+    const durations = styles.transitionDuration
+      .split(",")
+      .map((value) => Number.parseFloat(value));
+    expect(durations.every((value) => Math.abs(value - 0.15) < 0.001)).toBe(true);
+  }
+});
+
+test("copy email uses the utility control", async ({ page }) => {
+  await page.goto("/");
+
+  const button = page.getByRole("button", { name: "Copy email address" });
+  await expect(button).toHaveAttribute("data-variant", "utility");
+  await expect(button).toContainText("Copy email");
+
+  const border = await button.evaluate((element) => {
+    const computed = getComputedStyle(element);
+    return {
+      width: computed.borderTopWidth,
+      color: computed.borderTopColor,
+    };
+  });
+  expect(Number.parseFloat(border.width)).toBeGreaterThanOrEqual(1);
+  expect(border.color).not.toBe("rgba(0, 0, 0, 0)");
+});

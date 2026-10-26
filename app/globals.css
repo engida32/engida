@@ -32,6 +32,10 @@
   --site-accent: #0b7a48;
   --site-accent-dim: #9fd3b8;
   --site-warning: #7a4b00;
+  --control-border: #7f8678;
+  --control-border-hover: #0b7a48;
+  --control-surface: #efefe8;
+  --control-surface-hover: #e8e8e0;
 }
 
 .dark {
@@ -61,6 +65,10 @@
   --site-accent: #7ee0a3;
   --site-accent-dim: #2f6b4a;
   --site-warning: #e0b25a;
+  --control-border: #6b736c;
+  --control-border-hover: #7ee0a3;
+  --control-surface: #121514;
+  --control-surface-hover: #181c1a;
 }
 
 @theme inline {
@@ -90,6 +98,10 @@
   --color-site-accent: var(--site-accent);
   --color-site-accent-dim: var(--site-accent-dim);
   --color-site-warning: var(--site-warning);
+  --color-control-border: var(--control-border);
+  --color-control-border-hover: var(--control-border-hover);
+  --color-control-surface: var(--control-surface);
+  --color-control-surface-hover: var(--control-surface-hover);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
   --font-heading: var(--font-jetbrains-mono);

@@ -29,11 +29,11 @@ export function CopyEmail({ email }: { email: string }) {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
-            variant="ghost"
-            size="sm"
+            variant="utility"
+            size="utility"
             onClick={copy}
             aria-label="Copy email address"
-            className="h-10 px-3 font-mono text-xs uppercase tracking-[0.08em]"
+            className="font-mono uppercase tracking-[0.08em]"
           >
             {copied ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
             <span className="hidden sm:inline">Copy email</span>
