@@ -56,7 +56,14 @@ export function WorkList({ items }: { items: WorkItem[] }) {
                   </a>
                 ) : null}
               </div>
-              <p className="mt-1 max-w-[62ch] text-sm">{item.description}</p>
+              <p className="mt-1 max-w-[62ch] text-sm">
+                {item.category ? (
+                  <span className="mr-2 font-mono text-[10px] uppercase tracking-[0.1em] text-site-muted">
+                    {item.category}
+                  </span>
+                ) : null}
+                {item.description}
+              </p>
               <p className="mt-1 font-mono text-[11px] text-site-muted">{item.stack.join(" / ")}</p>
               {item.note ? <p className="mt-1 text-xs text-site-warning">{item.note}</p> : null}
             </div>

@@ -1,6 +1,7 @@
 export type WorkItem = {
   title: string;
   year: string;
+  category?: "Platform" | "Client" | "Independent";
   description: string;
   stack: string[];
   caseStudySlug?: string;

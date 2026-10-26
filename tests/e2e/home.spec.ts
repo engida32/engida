@@ -74,21 +74,20 @@ test("shows every selected row and five roles", async ({ page }) => {
   }
 });
 
-test("shows platform, client, then independent work", async ({ page }) => {
+test("shows one selected work list with category labels", async ({ page }) => {
   await page.goto("/");
-  const platformHeading = page.getByRole("heading", { name: "Platform work" });
-  const clientHeading = page.getByRole("heading", { name: "Client work" });
-  const independentHeading = page.getByRole("heading", { name: "Independent" });
-  await expect(platformHeading).toBeVisible();
-  await expect(clientHeading).toBeVisible();
-  await expect(independentHeading).toBeVisible();
+  const workHeading = page.getByRole("heading", { name: "Selected work" });
+  await expect(workHeading).toBeVisible();
 
   const turingRow = page.locator("#work li").filter({ hasText: "Turing agent platform" });
   const bellboyRow = page.locator("#work li").filter({ hasText: "Bellboy" });
   const serpentineRow = page.locator("#work li").filter({ hasText: "Serpentine Arcade" });
 
-  await expectDocumentOrder(platformHeading, turingRow);
-  await expectDocumentOrder(turingRow, clientHeading);
-  await expectDocumentOrder(bellboyRow, independentHeading);
-  await expectDocumentOrder(independentHeading, serpentineRow);
+  await expect(turingRow.getByText("Platform", { exact: true })).toBeVisible();
+  await expect(bellboyRow.getByText("Client", { exact: true })).toBeVisible();
+  await expect(serpentineRow.getByText("Independent", { exact: true })).toBeVisible();
+
+  await expectDocumentOrder(workHeading, turingRow);
+  await expectDocumentOrder(turingRow, bellboyRow);
+  await expectDocumentOrder(bellboyRow, serpentineRow);
 });

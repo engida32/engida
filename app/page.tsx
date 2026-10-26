@@ -6,11 +6,9 @@ import { Reveal } from "@/components/site/Reveal";
 import { SectionLabel } from "@/components/site/SectionLabel";
 import { WorkList } from "@/components/site/WorkList";
 import { Button } from "@/components/ui/button";
-import { clients } from "@/content/clients";
 import { experience } from "@/content/experience";
-import { platforms } from "@/content/platforms";
 import { profile } from "@/content/profile";
-import { projects } from "@/content/projects";
+import { workItems } from "@/content/work";
 import { homeJsonLd } from "@/lib/jsonld";
 import { basePath } from "@/lib/site";
 
@@ -86,12 +84,7 @@ export default function HomePage() {
       <Reveal delay={40}>
         <section id="work" aria-labelledby="work-label" className="section">
           <SectionLabel id="work-label">Selected work</SectionLabel>
-          <h3 className="mb-4 text-xl font-semibold">Platform work</h3>
-          <WorkList items={platforms} />
-          <h3 className="mb-4 mt-12 text-xl font-semibold">Client work</h3>
-          <WorkList items={clients} />
-          <h3 className="mb-4 mt-12 text-xl font-semibold">Independent</h3>
-          <WorkList items={projects} />
+          <WorkList items={workItems} />
         </section>
       </Reveal>
 
