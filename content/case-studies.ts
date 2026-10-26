@@ -9,6 +9,8 @@ export const caseStudies: CaseStudy[] = [
     status: "Turing, internal",
     summary:
       "An internal platform for releasing and evaluating browser-based agent environments for AI labs.",
+    outcome:
+      "One control plane now covers register, release, run, inspect, and score across agent environments.",
     stack: [
       "FastAPI",
       "React",
@@ -71,6 +73,8 @@ export const caseStudies: CaseStudy[] = [
     status: "Client work",
     summary:
       "Delivery booking site and rider onboarding for a delivery company in Australia.",
+    outcome:
+      "A quote-to-booking flow and a rider onboarding flow that collects every required document before review.",
     stack: ["Next.js 14", "React", "MUI", "Tailwind", "react-query", "Formik", "Yup", "AWS S3"],
     problem: [
       "A delivery quote depends on distance, vehicle, and parcel size.",
@@ -105,6 +109,7 @@ export const caseStudies: CaseStudy[] = [
     status: "Client work",
     summary:
       "B2B commerce front end for 500+ retailers and merchants, built with Next.js 14 and TypeScript.",
+    outcome: "A faster storefront for 500+ merchants, with releases 50% faster.",
     stack: [
       "Next.js 14",
       "TypeScript",
@@ -149,6 +154,7 @@ export const caseStudies: CaseStudy[] = [
     status: "Client work",
     summary:
       "Web music streaming experience and subscription management for an Ethiopian streaming service.",
+    outcome: "A web player and subscription flow that share one state model.",
     stack: ["Web front end", "REST APIs", "Subscription flows"],
     problem: [
       "A streaming service needed a web player and a subscription flow that worked together, not as two separate products.",
@@ -182,6 +188,7 @@ export const caseStudies: CaseStudy[] = [
     status: "Client work",
     summary:
       "Admin dashboard, rider and driver tools, and passenger surfaces for a taxi platform.",
+    outcome: "One dashboard for 42K+ driver records, trips, and payments.",
     stack: ["React", "MUI data grids", "Docker", "REST APIs"],
     problem: [
       "Dispatch teams needed one view of drivers, trips, and payments while riders and drivers used separate surfaces.",
@@ -215,6 +222,7 @@ export const caseStudies: CaseStudy[] = [
     status: "Independent",
     summary:
       "Eight retro games in an offline-first PWA built for TV remotes and gamepads.",
+    outcome: "Eight games that work offline across TV remotes, keyboards, and gamepads.",
     stack: ["React", "TypeScript", "Vite", "Supabase", "Service Worker"],
     problem: [
       "TV browsers, a handful of remote buttons, unreliable networks, and no install flow.",
@@ -246,6 +254,7 @@ export const caseStudies: CaseStudy[] = [
     status: "Independent",
     summary:
       "Semantic search over Supabase docs with pgvector and a local embedder. No API keys.",
+    outcome: "Semantic search over Supabase docs with no API keys.",
     stack: ["Next.js", "TypeScript", "pgvector", "HNSW", "Vitest"],
     problem: ["Keyword search misses intent, and hosted embeddings add keys and cost."],
     build: [
@@ -272,6 +281,8 @@ export const caseStudies: CaseStudy[] = [
     status: "Private, in progress",
     summary:
       "A BTC prediction-market engine and terminal dashboard, from feature pipeline to execution simulator.",
+    outcome:
+      "A validation pipeline that reports 48 to 50% out-of-sample instead of claiming an edge.",
     stack: ["Python", "LightGBM", "FastAPI", "React", "WebSockets"],
     problem: [
       "Noisy one-second market data, thin edges, and execution assumptions that flatter a backtest.",

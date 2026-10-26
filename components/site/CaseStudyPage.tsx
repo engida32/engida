@@ -53,6 +53,12 @@ export function CaseStudyPage({
           </Link>
           <h1 className="mt-6 text-[32px] font-semibold leading-[1.15] sm:text-[40px]">{study.title}</h1>
           <p className="mt-3 max-w-[62ch] text-lg text-site-muted">{study.summary}</p>
+          {study.outcome ? (
+            <div className="mt-5 border-l-2 border-site-accent pl-4">
+              <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-site-muted">Outcome</p>
+              <p className="mt-1 max-w-[62ch]">{study.outcome}</p>
+            </div>
+          ) : null}
         </div>
       </Reveal>
 

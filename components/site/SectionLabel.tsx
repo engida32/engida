@@ -1,8 +1,10 @@
-export function SectionLabel({ children }: { children: React.ReactNode }) {
+import type { ReactNode } from "react";
+
+export function SectionLabel({ children, id }: { children: ReactNode; id?: string }) {
   return (
-    <div className="label-row">
+    <h2 id={id} className="label-row">
       <span aria-hidden="true">$</span>
       <span>{children}</span>
-    </div>
+    </h2>
   );
 }

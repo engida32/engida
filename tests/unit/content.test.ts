@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
+import { about } from "@/content/about";
 import { caseStudies, caseStudyBySlug } from "@/content/case-studies";
 import { clients } from "@/content/clients";
 import { experience } from "@/content/experience";
@@ -15,8 +16,8 @@ describe("content counts", () => {
     expect(caseStudies).toHaveLength(8);
   });
 
-  it("has four selected roles", () => {
-    expect(experience).toHaveLength(4);
+  it("has five selected roles", () => {
+    expect(experience).toHaveLength(5);
   });
 });
 
@@ -39,8 +40,44 @@ describe("content integrity", () => {
   });
 
   it("does not publish a phone number", () => {
-    const all = JSON.stringify({ profile, experience, platforms, clients, projects, caseStudies });
+    const all = JSON.stringify({
+      profile,
+      about,
+      experience,
+      platforms,
+      clients,
+      projects,
+      caseStudies,
+    });
     expect(all).not.toMatch(/\+251|932433954/);
+  });
+
+  it("keeps forbidden claims out of public content", () => {
+    const all = JSON.stringify({
+      profile,
+      about,
+      experience,
+      platforms,
+      clients,
+      projects,
+      caseStudies,
+    });
+    const forbidden = [
+      /fine[- ]?tun/i,
+      /human[- ]in[- ]the[- ]loop/i,
+      /\bHITL\b/i,
+      /10,?000\+? drivers/i,
+      /10K\+? drivers/i,
+      /fortune 500/i,
+      /patented/i,
+      /real estate/i,
+      /strapi/i,
+      /pinecone/i,
+      /milvus/i,
+      /pytorch/i,
+      /hugging face/i,
+    ];
+    for (const pattern of forbidden) expect(all, pattern.source).not.toMatch(pattern);
   });
 
   it("keeps the honest signal-engine result", () => {

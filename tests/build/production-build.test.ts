@@ -66,8 +66,9 @@ const htmlFiles = existsSync(out)
   : [];
 
 describe("production build", () => {
-  it("emits the home page, eight case studies, 404, and CNAME", () => {
+  it("emits the home page, about page, eight case studies, 404, and CNAME", () => {
     expect(existsSync(join(out, "index.html"))).toBe(true);
+    expect(existsSync(join(out, "about", "index.html"))).toBe(true);
     expect(existsSync(join(out, "404.html"))).toBe(true);
     for (const slug of cases) expect(existsSync(join(out, "work", slug, "index.html"))).toBe(true);
     expect(readFileSync(join(out, "CNAME"), "utf8").trim()).toBe("engida.is-a.dev");
@@ -84,7 +85,11 @@ describe("production build", () => {
   });
 
   it("marks only not-found pages noindex", () => {
-    const indexableHtmlFiles = ["index.html", ...cases.map((slug) => `work/${slug}/index.html`)];
+    const indexableHtmlFiles = [
+      "index.html",
+      "about/index.html",
+      ...cases.map((slug) => `work/${slug}/index.html`),
+    ];
     const notFoundFiles = ["404.html", "404/index.html", "_not-found/index.html"].filter((file) =>
       existsSync(join(out, file)),
     );
@@ -99,10 +104,11 @@ describe("production build", () => {
     }
   });
 
-  it("ships a nine-URL sitemap and an allowing robots file", () => {
+  it("ships a ten-URL sitemap and an allowing robots file", () => {
     const sitemap = readFileSync(join(out, "sitemap.xml"), "utf8");
-    expect((sitemap.match(/<url>/g) ?? []).length).toBe(9);
+    expect((sitemap.match(/<url>/g) ?? []).length).toBe(10);
     expect(sitemap).toContain("https://engida.is-a.dev/");
+    expect(sitemap).toContain("https://engida.is-a.dev/about/");
     expect(sitemap).not.toContain("github.io");
     expect(sitemap).not.toContain("localhost");
 

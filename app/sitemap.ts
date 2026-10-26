@@ -13,6 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    {
+      url: absoluteUrl("/about/"),
+      lastModified: "2026-10-26",
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     ...caseStudies.map((study) => ({
       url: absoluteUrl(`/work/${study.slug}/`),
       lastModified: "2026-10-25",

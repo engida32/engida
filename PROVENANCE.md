@@ -7,11 +7,13 @@ Every public claim maps to a source file and date. Values without a source stay 
 | Name, email, location | Engida Lishan, engida32lishan@gmail.com, Addis Ababa | career-ops/cv.md | 2026-10-18 | Email only; no phone on the site |
 | Headline | I build full-stack products, including AI features that survive production | User-approved copy 2026-10-25 | 2026-10-25 | Reframed from profile.yml; same claim |
 | Availability | Senior full-stack or AI engineering role; remote or Addis Ababa | career-ops/config/profile.yml | 2026-10-18 | From location_flexibility and visa_status |
-| Supporting line | Five years across fintech, commerce, and AI products | career-ops/cv.md | 2026-10-18 | Summary of role history |
+| Supporting line | Since 2019 across fintech, commerce, and AI products | career-ops/cv.md | 2026-10-18 | Summary of role history |
 | About facts | 500+ merchants, 100,000+ users, two years of AI platforms | career-ops/cv.md | 2026-10-18 | Matches experience rows |
+| About page | What I've built, how I work, earlier roles, and a dated now block | career-ops/cv.md; user-approved copy 2026-10-26 | 2026-10-26 | Text-only page; no photo or personal details beyond cv.md |
+| UpScale | Full-Stack Developer, Mar 2019 to Jan 2021; school management 30%, Adama FC pages 40% | career-ops/cv.md | 2026-10-18 | School management and Adama FC claims come from the CV |
 | GitHub and LinkedIn | github.com/engida32, linkedin.com/in/engida | career-ops/config/profile.yml | 2026-10-18 | Profile links |
 | X handle | x.com/engida_lish | docs/superpowers/specs/2026-10-25-portfolio-site-design.md | 2026-10-25 | User-supplied positioning |
-| CV path | /cv/engida-lishan-cv.pdf | docs/superpowers/plans/2026-10-25-portfolio-site.md | 2026-10-25 | Task 8 generates a sanitized PDF; master phone is removed and checked with pdftotext. Binary is not in Task 3 |
+| CV path | /cv/engida-lishan-cv.pdf | docs/superpowers/plans/2026-10-25-portfolio-site.md; career-ops/output/master-resume.json | 2026-10-26 | Regenerated 2026-10-26 from the latest master JSON with candidate.phone removed; checked with pdftotext for the phone and forbidden claims |
 | Turing role | Full-Stack Developer and AI Engineer, Nov 2024 to Sep 2026 | career-ops/cv.md | 2026-10-18 | Client names omitted |
 | Platform: Turing agent platform | Internal platform for releasing and evaluating browser-based agent environments | /home/emmrc-02/turing project/ui-gym-platform at 177d343; /home/emmrc-02/turing project/ots-documentation at f8b3265 | 2026-10-25 | User confirmed the Turing commit identity covers this work; platform was a team effort |
 | Turing platform role | Full-stack and AI engineering: release flows, task and assertion tooling, evaluation screens, access management, client variants | User confirmation 2026-10-25; /home/emmrc-02/turing project/ui-gym-platform at 177d343 | 2026-10-25 | Scope is user-supplied; system facts from the local repos |
@@ -85,3 +87,4 @@ Every public claim maps to a source file and date. Values without a source stay 
 | signal-engine role | Design and build | User-provided case-study brief 2026-10-25 | 2026-10-25 | Role is user-supplied |
 | signal-engine status | Private, in progress | User-provided case-study brief 2026-10-25 | 2026-10-25 | Status is user-supplied |
 | signal-engine build and validation | Binance stream, LightGBM, maker-only simulator, CPCV, PBO, DSR | /home/emmrc-02/OpenCode Workspace/btc-signal-engine/README.md | 2026-10-25 | README plus user-provided case-study brief |
+| Case-study outcomes | One-line outcome statements at the top of each case study | Existing case-study build, result, and context rows above | 2026-10-26 | Restatements of already sourced facts; no new claims |

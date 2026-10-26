@@ -46,6 +46,7 @@ export type CaseStudy = {
   role: string;
   status: string;
   summary: string;
+  outcome?: string;
   stack: string[];
   problem: string[];
   build: string[];

@@ -18,6 +18,7 @@ const roles = [
   "Senior Front-End Developer",
   "Software Developer",
   "Front-End Developer",
+  "Full-Stack Developer",
 ];
 
 async function expectDocumentOrder(before: Locator, after: Locator) {
@@ -36,7 +37,7 @@ async function expectDocumentOrder(before: Locator, after: Locator) {
   expect(follows).toBe(true);
 }
 
-test("shows every selected row and four roles", async ({ page }) => {
+test("shows every selected row and five roles", async ({ page }) => {
   await page.goto("/");
   const work = page.locator("#work");
   for (const name of workTitles) {
@@ -66,7 +67,7 @@ test("shows every selected row and four roles", async ({ page }) => {
       experience.getByRole("heading", { name: new RegExp(`^${role},`) }),
     ).toBeVisible();
   }
-  for (const company of ["Turing", "Kifiya", "Kepler Lab", "2F Capital"]) {
+  for (const company of ["Turing", "Kifiya", "Kepler Lab", "2F Capital", "UpScale"]) {
     await expect(
       experience.getByText(company, { exact: true }).first(),
     ).toBeVisible();

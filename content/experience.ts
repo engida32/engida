@@ -44,4 +44,14 @@ export const experience: ExperienceItem[] = [
     outcome: "50,000+ transactions processed through the app.",
     companyUrl: "https://2f-capital.com/",
   },
+  {
+    company: "UpScale",
+    role: "Full-Stack Developer",
+    start: "Mar 2019",
+    end: "Jan 2021",
+    location: "Addis Ababa",
+    scope:
+      "School management app and internal dashboards, plus the Adama FC admin dashboard and landing page.",
+    outcome: "Student engagement rose 30%, and the Adama FC pages lifted fan engagement 40%.",
+  },
 ];

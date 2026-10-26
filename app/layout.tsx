@@ -50,6 +50,11 @@ export const metadata: Metadata = {
     images: [absoluteUrl("/og.png")],
   },
   robots: allowIndexing() ? undefined : { index: false, follow: false },
+  icons: {
+    icon: [{ url: absoluteUrl("/favicon.png"), type: "image/png" }],
+    shortcut: absoluteUrl("/favicon.png"),
+    apple: absoluteUrl("/favicon.png"),
+  },
   verification: {
     ...(googleVerification ? { google: googleVerification } : {}),
     ...(bingVerification ? { other: { "msvalidate.01": bingVerification } } : {}),

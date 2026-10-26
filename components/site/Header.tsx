@@ -8,7 +8,7 @@ import { basePath } from "@/lib/site";
 const links = [
   { href: `${basePath()}/#work`, label: "Work" },
   { href: `${basePath()}/#experience`, label: "Experience" },
-  { href: `${basePath()}/#about`, label: "About" },
+  { href: `${basePath()}/about/`, label: "About" },
   { href: assetPath(profile.cvPath), label: "CV" },
   { href: `mailto:${profile.email}`, label: "Email" },
 ];
