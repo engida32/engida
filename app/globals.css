@@ -36,6 +36,7 @@
   --control-border-hover: #0b7a48;
   --control-surface: #efefe8;
   --control-surface-hover: #e8e8e0;
+  --site-scrollbar-thumb: #7d837c;
 }
 
 .dark {
@@ -69,6 +70,7 @@
   --control-border-hover: #7ee0a3;
   --control-surface: #121514;
   --control-surface-hover: #181c1a;
+  --site-scrollbar-thumb: #5f655f;
 }
 
 @theme inline {
@@ -119,6 +121,9 @@
 html {
   color-scheme: light;
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+  scrollbar-color: var(--site-scrollbar-thumb) transparent;
 }
 
 html.dark {
@@ -379,9 +384,39 @@ a {
   --stagger-delay: 200ms;
 }
 
+.back-to-top {
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 30;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 150ms ease-out,
+    visibility 150ms ease-out;
+}
+
+.back-to-top[data-visible="true"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+@media (min-width: 640px) {
+  .back-to-top {
+    right: 24px;
+    bottom: 24px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .back-to-top {
+    transition: none;
   }
 
   .js [data-reveal],
@@ -414,6 +449,7 @@ a {
 @media print {
   .site-header,
   .site-footer,
+  .back-to-top,
   [data-js-only] {
     display: none !important;
   }

@@ -3,7 +3,7 @@ import type { WorkItem } from "@/content/types";
 
 export function WorkList({ items }: { items: WorkItem[] }) {
   return (
-    <ul data-stagger="work" className="divide-y divide-site-border border-y border-site-border">
+    <ul data-stagger="work" className="divide-y divide-site-border border-t border-site-border">
       {items.map((item) => {
         const caseHref = item.caseStudySlug ? `/work/${item.caseStudySlug}/` : undefined;
         return (
@@ -24,7 +24,7 @@ export function WorkList({ items }: { items: WorkItem[] }) {
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                 {caseHref ? (
                   <span className="inline-flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                    <Link href={caseHref} className="work-title font-semibold">
+                    <Link href={caseHref} prefetch={false} className="work-title font-semibold">
                       {item.title}
                     </Link>
                     <span

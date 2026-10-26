@@ -92,3 +92,52 @@ test("control borders meet 3:1 in both themes", async ({ page }) => {
     expect(contrast(colors.border, colors.background), `${theme} background`).toBeGreaterThanOrEqual(3);
   }
 });
+
+test("scrollbar styling meets 3:1 and stays stable in both themes", async ({ page }) => {
+  function parseRgb(value: string) {
+    const hex = value.trim().match(/^#([0-9a-f]{6})$/i);
+    if (hex) {
+      return [0, 2, 4].map((index) => Number.parseInt(hex[1].slice(index, index + 2), 16));
+    }
+    return value.match(/\d+/g)!.slice(0, 3).map(Number);
+  }
+
+  function channel(value: number) {
+    const normalized = value / 255;
+    return normalized <= 0.03928
+      ? normalized / 12.92
+      : ((normalized + 0.055) / 1.055) ** 2.4;
+  }
+
+  function luminance(rgb: number[]) {
+    return 0.2126 * channel(rgb[0]) + 0.7152 * channel(rgb[1]) + 0.0722 * channel(rgb[2]);
+  }
+
+  function contrast(a: string, b: string) {
+    const first = luminance(parseRgb(a));
+    const second = luminance(parseRgb(b));
+    return (Math.max(first, second) + 0.05) / (Math.min(first, second) + 0.05);
+  }
+
+  for (const theme of ["light", "dark"] as const) {
+    await page.addInitScript((value) => localStorage.setItem("theme", value), theme);
+    await page.emulateMedia({ colorScheme: theme, reducedMotion: "reduce" });
+    await page.goto("/");
+    await expect(page.locator("html")).toHaveClass(new RegExp(theme));
+
+    const styles = await page.evaluate(() => {
+      const root = getComputedStyle(document.documentElement);
+      return {
+        thumb: root.getPropertyValue("--site-scrollbar-thumb").trim(),
+        width: root.scrollbarWidth,
+        gutter: root.scrollbarGutter,
+        background: getComputedStyle(document.body).backgroundColor,
+      };
+    });
+
+    expect(styles.thumb, `${theme} thumb token`).not.toBe("");
+    expect(styles.width, `${theme} scrollbar width`).toBe("thin");
+    expect(styles.gutter, `${theme} scrollbar gutter`).toBe("stable");
+    expect(contrast(styles.thumb, styles.background), `${theme} scrollbar thumb`).toBeGreaterThanOrEqual(3);
+  }
+});

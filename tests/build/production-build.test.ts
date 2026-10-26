@@ -138,6 +138,9 @@ describe("production build", () => {
         slug,
       ).toBe(true);
     }
+    for (const work of works) {
+      expect(work.dateCreated, String(work.url)).toMatch(/^\d{4}$/);
+    }
     expect(JSON.stringify(homeBlocks[0])).not.toMatch(/localhost|github\.io/);
   });
 
@@ -161,6 +164,7 @@ describe("production build", () => {
       );
       expect(work, file).toBeDefined();
       expect(work?.isPartOf).toEqual({ "@id": `${site}/#website` });
+      expect(work?.dateCreated, file).toMatch(/^\d{4}$/);
       expect(JSON.stringify(pageBlocks[0])).not.toMatch(/localhost|github\.io/);
     }
   });

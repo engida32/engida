@@ -58,7 +58,7 @@ export function MobileNav({ links }: { links: LinkItem[] }) {
             <span className="font-mono text-xs uppercase tracking-[0.08em] text-site-muted">
               Theme
             </span>
-            <ThemeToggle />
+            <ThemeToggle showTooltip={false} />
           </div>
           <ul className="mt-5 space-y-2 text-sm">
             <li>

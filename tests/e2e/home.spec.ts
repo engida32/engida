@@ -17,6 +17,7 @@ const roles = [
   "Full-Stack Developer and AI Engineer",
   "Senior Front-End Developer",
   "Software Developer",
+  "Lead Front-End Developer",
   "Front-End Developer",
   "Full-Stack Developer",
 ];
@@ -37,7 +38,7 @@ async function expectDocumentOrder(before: Locator, after: Locator) {
   expect(follows).toBe(true);
 }
 
-test("shows every selected row and five roles", async ({ page }) => {
+test("shows every selected row and six roles", async ({ page }) => {
   await page.goto("/");
   const work = page.locator("#work");
   for (const name of workTitles) {
@@ -67,7 +68,7 @@ test("shows every selected row and five roles", async ({ page }) => {
       experience.getByRole("heading", { name: new RegExp(`^${role},`) }),
     ).toBeVisible();
   }
-  for (const company of ["Turing", "Kifiya", "Kepler Lab", "2F Capital", "UpScale"]) {
+  for (const company of ["Turing", "Kifiya", "Kepler Lab", "JaktTech Engineering", "2F Capital", "UpScale"]) {
     await expect(
       experience.getByText(company, { exact: true }).first(),
     ).toBeVisible();
@@ -116,6 +117,7 @@ test("work rows put category above the title and keep an 80px date gutter", asyn
 });
 
 test("hero spacing and quick facts match the hierarchy", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 1024, height: 1000 });
   await page.goto("/");
 

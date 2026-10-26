@@ -16,8 +16,8 @@ describe("content counts", () => {
     expect(caseStudies).toHaveLength(8);
   });
 
-  it("has five selected roles", () => {
-    expect(experience).toHaveLength(5);
+  it("has six selected roles", () => {
+    expect(experience).toHaveLength(6);
   });
 });
 
@@ -78,6 +78,17 @@ describe("content integrity", () => {
       /hugging face/i,
     ];
     for (const pattern of forbidden) expect(all, pattern.source).not.toMatch(pattern);
+  });
+
+  it("includes the JaktTech role with CV dates and scope", () => {
+    const jaktTech = experience.find((item) => item.company === "JaktTech Engineering");
+    expect(jaktTech).toMatchObject({
+      role: "Lead Front-End Developer",
+      start: "Sep 2022",
+      end: "Nov 2023",
+      location: "Addis Ababa",
+    });
+    expect(jaktTech?.scope).toContain("SMS gateway");
   });
 
   it("keeps the honest signal-engine result", () => {
@@ -161,6 +172,20 @@ describe("approved content", () => {
     expect(bellboy?.context).toContain("I built the front end and admin");
   });
 
+  it("publishes no local paths or private repository names", () => {
+    const provenance = readFileSync("PROVENANCE.md", "utf8");
+    for (const marker of [
+      "/home/emmrc-02",
+      "career-ops",
+      "visa_status",
+      "turing project",
+      "btc-signal-engine",
+      "personal-works",
+    ]) {
+      expect(provenance, marker).not.toContain(marker);
+    }
+  });
+
   it("anchors every platform, client, and project row", () => {
     const provenance = readFileSync("PROVENANCE.md", "utf8");
     for (const item of platforms) {
@@ -195,13 +220,13 @@ describe("approved content", () => {
     const kifiya = experience.find((item) => item.company === "Kifiya");
     expect(kifiya?.scope).toContain("500+ merchants");
     expect(kifiya?.outcome).toBe(
-      "30% faster loads, 25% higher adoption, and releases 50% faster.",
+      "Platform results: 30% faster loads, 25% higher adoption, and 50% faster releases.",
     );
 
     const capital = experience.find((item) => item.company === "2F Capital");
     expect(capital?.scope).toContain("100,000+ users");
     expect(capital?.scope).not.toContain("10,000+ drivers");
-    expect(capital?.outcome).toBe("50,000+ transactions processed through the app.");
+    expect(capital?.outcome).toBe("The taxi platform processed 50,000+ transactions.");
 
     expect(caseStudyBySlug("che")?.result).toContain("30%");
     expect(caseStudyBySlug("che")?.result).toContain("25%");

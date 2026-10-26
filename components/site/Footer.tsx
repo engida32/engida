@@ -3,7 +3,7 @@ import { assetPath } from "@/lib/asset-path";
 
 export function Footer() {
   return (
-    <footer className="site-footer shell flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-site-border py-8 text-sm text-site-muted">
+    <footer className="site-footer shell flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-site-border pt-8 pb-20 text-sm sm:pt-8 sm:pb-8 text-site-muted">
       <a className="footer-link" href={`mailto:${profile.email}`}>
         Email
       </a>

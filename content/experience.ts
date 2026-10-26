@@ -21,7 +21,7 @@ export const experience: ExperienceItem[] = [
     scope:
       "B2B commerce for 500+ merchants with Next.js 14, TypeScript, Redux, and Tailwind.",
     outcome:
-      "30% faster loads, 25% higher adoption, and releases 50% faster.",
+      "Platform results: 30% faster loads, 25% higher adoption, and 50% faster releases.",
     companyUrl: "https://kifiya.com",
   },
   {
@@ -32,7 +32,17 @@ export const experience: ExperienceItem[] = [
     location: "Remote, South Korea",
     scope:
       "AI sound processing app with Next.js, React, OpenAI APIs, and AWS Lambda.",
-    outcome: "Render time fell 40%.",
+    outcome: "The sound app's render time fell 40%.",
+  },
+  {
+    company: "JaktTech Engineering",
+    role: "Lead Front-End Developer",
+    start: "Sep 2022",
+    end: "Nov 2023",
+    location: "Addis Ababa",
+    scope:
+      "Enterprise web apps for banks and insurance companies, plus an SMS gateway management system used across multiple organizations.",
+    outcome: "Internal operations improved 30% across the delivered systems.",
   },
   {
     company: "2F Capital",
@@ -41,7 +51,7 @@ export const experience: ExperienceItem[] = [
     end: "Sep 2022",
     location: "Addis Ababa",
     scope: "Taxi platform with 100,000+ users, plus Sewasew music streaming.",
-    outcome: "50,000+ transactions processed through the app.",
+    outcome: "The taxi platform processed 50,000+ transactions.",
     companyUrl: "https://2f-capital.com/",
   },
   {
@@ -52,6 +62,7 @@ export const experience: ExperienceItem[] = [
     location: "Addis Ababa",
     scope:
       "School management app and internal dashboards, plus the Adama FC admin dashboard and landing page.",
-    outcome: "Student engagement rose 30%, and the Adama FC pages lifted fan engagement 40%.",
+    outcome:
+      "The school platform lifted student engagement 30%, and the Adama FC pages lifted fan engagement 40%.",
   },
 ];

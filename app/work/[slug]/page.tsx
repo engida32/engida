@@ -41,7 +41,7 @@ export default async function WorkPage({ params }: { params: Promise<Params> }) 
           name: study.title,
           description: study.summary,
           url: absoluteUrl(`/work/${study.slug}/`),
-          dateCreated: study.year,
+          dateCreated: study.year.slice(0, 4),
           creator: { "@id": absoluteUrl("/#person") },
           keywords: study.stack.join(", "),
           isPartOf: { "@id": absoluteUrl("/#website") },

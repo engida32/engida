@@ -39,7 +39,7 @@ export function homeJsonLd() {
         name: study.title,
         description: study.summary,
         url: absoluteUrl(`/work/${study.slug}/`),
-        dateCreated: study.year,
+        dateCreated: study.year.slice(0, 4),
         creator: { "@id": personId },
         keywords: study.stack.join(", "),
         isPartOf: { "@id": siteId },

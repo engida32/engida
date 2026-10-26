@@ -1,12 +1,48 @@
 import { expect, test, type Locator } from "@playwright/test";
 
-test("theme choice persists across reloads", async ({ page }) => {
+test("theme toggle switches and persists", async ({ page }) => {
+  await page.addInitScript(() => {
+    if (!localStorage.getItem("theme")) localStorage.setItem("theme", "dark");
+  });
+  await page.emulateMedia({ colorScheme: "dark" });
   await page.goto("/");
-  await page.getByRole("button", { name: /theme/i }).click();
-  await page.getByRole("menuitem", { name: "Light" }).click();
+
+  const toggle = page.getByRole("button", { name: "Dark theme" });
+  await expect(page.locator("html")).toHaveClass(/dark/);
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+
+  await toggle.hover();
+  await expect(page.getByRole("tooltip")).toHaveText("Switch to light");
+
+  await toggle.click();
   await expect(page.locator("html")).toHaveClass(/light/);
+  await expect(toggle).toHaveAttribute("aria-pressed", "false");
+
   await page.reload();
   await expect(page.locator("html")).toHaveClass(/light/);
+  await expect(toggle).toHaveAttribute("aria-pressed", "false");
+});
+
+test("back to top appears after scrolling and restores focus", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+
+  const control = page.locator("button.back-to-top");
+  await expect(control).toBeHidden();
+  await expect(control).toHaveAttribute("aria-hidden", "true");
+  await expect(control).toHaveAttribute("tabindex", "-1");
+
+  await page.evaluate(() => window.scrollTo(0, window.innerHeight));
+  await expect(control).toBeHidden();
+
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+  await expect(control).toBeVisible();
+  await expect(control).toHaveAttribute("aria-hidden", "false");
+  await expect(control).toHaveAttribute("tabindex", "0");
+
+  await control.click();
+  await expect(page.locator("main")).toBeFocused();
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
 });
 
 test("mobile navigation opens and closes", async ({ page }) => {
@@ -39,8 +75,8 @@ test("reduced motion shows content immediately", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   const reveals = page.locator("[data-reveal]");
-  await expect(reveals).toHaveCount(4);
-  for (let i = 0; i < 4; i += 1) {
+  await expect(reveals).toHaveCount(3);
+  for (let i = 0; i < 3; i += 1) {
     const reveal = reveals.nth(i);
     await expect(reveal).toHaveClass(/is-visible/);
     await expect(reveal).toHaveCSS("opacity", "1");
@@ -236,5 +272,91 @@ test("reduced motion shows staggered items without delay", async ({ page }) => {
     await expect(items.nth(index)).toHaveCSS("transform", "none");
     await expect(items.nth(index)).toHaveCSS("transition-duration", "0s");
     await expect(items.nth(index)).toHaveCSS("transition-delay", "0s");
+  }
+});
+
+test("hero is not gated by a reveal animation", async ({ page }) => {
+  await page.goto("/");
+  const gated = await page
+    .locator(".hero-section")
+    .evaluate((element) => Boolean(element.closest("[data-reveal]")));
+  expect(gated).toBe(false);
+});
+
+test("back to top does not cover the mobile footer", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+
+  const control = page.locator("button.back-to-top");
+  await expect(control).toBeVisible();
+  const pill = await control.boundingBox();
+  const location = await page
+    .getByRole("contentinfo")
+    .getByText("Addis Ababa", { exact: true })
+    .boundingBox();
+  expect(pill).not.toBeNull();
+  expect(location).not.toBeNull();
+
+  const overlaps =
+    pill!.x < location!.x + location!.width &&
+    pill!.x + pill!.width > location!.x &&
+    pill!.y < location!.y + location!.height &&
+    pill!.y + pill!.height > location!.y;
+  expect(overlaps).toBe(false);
+});
+
+test("mobile menu does not open the theme tooltip", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await page.getByRole("button", { name: "Open menu" }).click();
+  await expect(page.getByRole("dialog")).toBeVisible();
+  await page.waitForTimeout(250);
+  await expect(page.getByRole("tooltip")).toHaveCount(0);
+});
+
+test("mobile headline avoids an isolated word", async ({ page }) => {
+  for (const width of [320, 360, 390]) {
+    await test.step(`${width}px`, async () => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto("/");
+      await page.evaluate(() => document.fonts.ready);
+
+      const lines = await page
+        .locator("h1 > span")
+        .filter({ hasText: "AI features" })
+        .evaluate((element) => {
+          const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+          const words: Array<{ text: string; top: number }> = [];
+          let node: Node | null;
+          while ((node = walker.nextNode())) {
+            const text = node.textContent ?? "";
+            const pattern = /\S+/g;
+            let match: RegExpExecArray | null;
+            while ((match = pattern.exec(text))) {
+              const range = document.createRange();
+              range.setStart(node, match.index);
+              range.setEnd(node, match.index + match[0].length);
+              const rect = range.getBoundingClientRect();
+              if (rect.width > 0) words.push({ text: match[0], top: Math.round(rect.top) });
+            }
+          }
+
+          const grouped: Array<{ top: number; words: string[] }> = [];
+          for (const word of words) {
+            let line = grouped.find((entry) => Math.abs(entry.top - word.top) < 2);
+            if (!line) {
+              line = { top: word.top, words: [] };
+              grouped.push(line);
+            }
+            line.words.push(word.text);
+          }
+          return grouped.map((entry) => entry.words.join(" "));
+        });
+
+      expect(lines.length).toBeLessThanOrEqual(5);
+      expect(lines).not.toContain("including");
+    });
   }
 });
