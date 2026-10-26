@@ -10,6 +10,7 @@ Every public claim maps to a source file and date. Values without a source stay 
 | Supporting line | Since 2019 across fintech, commerce, and AI products | career-ops/cv.md | 2026-10-18 | Summary of role history |
 | About facts | 500+ merchants, 100,000+ users, two years of AI platforms | career-ops/cv.md | 2026-10-18 | Matches experience rows |
 | About page | What I've built, how I work, earlier roles, and a dated now block | career-ops/cv.md; user-approved copy 2026-10-26 | 2026-10-26 | Text-only page; no photo or personal details beyond cv.md |
+| Global team background | Teams in South Korea, the United States, and Europe; independent contract work for a California-based AI company | User confirmation 2026-10-26 | 2026-10-26 | User-supplied; no company names or client details published |
 | UpScale | Full-Stack Developer, Mar 2019 to Jan 2021; school management 30%, Adama FC pages 40% | career-ops/cv.md | 2026-10-18 | School management and Adama FC claims come from the CV |
 | GitHub and LinkedIn | github.com/engida32, linkedin.com/in/engida | career-ops/config/profile.yml | 2026-10-18 | Profile links |
 | X handle | x.com/engida_lish | docs/superpowers/specs/2026-10-25-portfolio-site-design.md | 2026-10-25 | User-supplied positioning |

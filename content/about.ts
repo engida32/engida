@@ -19,7 +19,7 @@ export const about = {
     {
       title: "Earlier",
       paragraphs: [
-        "I started with school dashboards at UpScale in 2019, then moved through fintech, commerce, and AI tooling. I've worked remotely with a team in South Korea and with distributed teams since. I'm based in Addis Ababa.",
+        "I started with school dashboards at UpScale in 2019, then moved through fintech, commerce, and AI tooling. I've worked with teams in South Korea, the United States, and Europe, including independent contract work for a California-based AI company. I'm based in Addis Ababa.",
       ],
     },
   ],
