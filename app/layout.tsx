@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/site/ThemeProvider";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { BackToTop } from "@/components/site/BackToTop";
+import { HashScroll } from "@/components/site/HashScroll";
 import { absoluteUrl, allowIndexing, siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    creator: "@engida_lish",
+    creator: "@morganfreak32",
     title: "Engida Lishan | Full-stack engineer",
     description:
       "Full-stack engineer in Addis Ababa building AI, commerce, and fintech products with Next.js, Python, and pgvector.",
@@ -65,7 +66,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrains.variable}`}>
-      <body>
+      <body suppressHydrationWarning>
         <script
           dangerouslySetInnerHTML={{
             __html: "document.documentElement.classList.add('js')",
@@ -84,6 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </main>
           <Footer />
           <BackToTop />
+          <HashScroll />
         </ThemeProvider>
       </body>
     </html>

@@ -9,7 +9,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "border-0 bg-primary text-primary-foreground hover:bg-[color-mix(in_srgb,var(--primary)_88%,var(--site-text))]",
+          "border-0 bg-primary text-primary-foreground hover:bg-site-accent-hover",
         secondary:
           "border-control-border bg-control-surface text-site-text hover:border-control-border-hover hover:bg-control-surface-hover disabled:border-control-border",
         utility:

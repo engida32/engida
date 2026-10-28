@@ -24,7 +24,7 @@ for (const route of routes) {
   });
 }
 
-for (const route of ["/", "/work/bellboy/"]) {
+for (const route of routes) {
   test(`axe passes ${route} in light theme`, async ({ page }) => {
     await page.addInitScript(() => localStorage.setItem("theme", "light"));
     await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });

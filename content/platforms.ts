@@ -8,5 +8,6 @@ export const platforms: WorkItem[] = [
       "Internal platform for releasing and evaluating browser-based agent environments.",
     stack: ["FastAPI", "React", "PostgreSQL", "GCP Cloud Build", "Cloud Run", "LLM-as-judge"],
     caseStudySlug: "turing-agent-platform",
+    featured: true,
   },
 ];

@@ -1,3 +1,10 @@
+export type WorkImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
 export type WorkItem = {
   title: string;
   year: string;
@@ -8,6 +15,10 @@ export type WorkItem = {
   liveUrl?: string;
   sourceUrl?: string;
   note?: string;
+  noteInPreviewOnly?: boolean;
+  featured?: boolean;
+  visibility?: "internal";
+  image?: WorkImage;
 };
 
 export type ExperienceItem = {
@@ -19,6 +30,7 @@ export type ExperienceItem = {
   scope: string;
   outcome: string;
   companyUrl?: string;
+  metrics?: string[];
 };
 
 export type CaseStudyLink = {
@@ -49,12 +61,14 @@ export type CaseStudy = {
   summary: string;
   outcome?: string;
   stack: string[];
+  deliverables?: string[];
   problem: string[];
   build: string[];
   decisions?: string[];
   scope?: string;
   context?: string;
   diagram?: CaseStudyDiagram;
+  hero?: CaseStudyScreenshot;
   validation?: string[];
   result?: string;
   tradeoff?: string;

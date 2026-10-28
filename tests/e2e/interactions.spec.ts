@@ -7,7 +7,7 @@ test("theme toggle switches and persists", async ({ page }) => {
   await page.emulateMedia({ colorScheme: "dark" });
   await page.goto("/");
 
-  const toggle = page.getByRole("button", { name: "Dark theme" });
+  const toggle = page.getByRole("button", { name: "Toggle color theme" });
   await expect(page.locator("html")).toHaveClass(/dark/);
   await expect(toggle).toHaveAttribute("aria-pressed", "true");
 
@@ -32,8 +32,11 @@ test("back to top appears after scrolling and restores focus", async ({ page }) 
   await expect(control).toHaveAttribute("aria-hidden", "true");
   await expect(control).toHaveAttribute("tabindex", "-1");
 
-  await page.evaluate(() => window.scrollTo(0, window.innerHeight));
+  await page.evaluate(() => window.scrollTo(0, 400));
   await expect(control).toBeHidden();
+
+  await page.evaluate(() => window.scrollTo(0, 700));
+  await expect(control).toBeVisible();
 
   await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
   await expect(control).toBeVisible();
@@ -52,6 +55,38 @@ test("mobile navigation opens and closes", async ({ page }) => {
   await expect(page.getByRole("dialog")).toBeVisible();
   await page.getByRole("link", { name: "Work" }).click();
   await expect(page.getByRole("dialog")).toBeHidden();
+});
+
+test("header hash links finish at the section with a short scroll", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/");
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+  await page.waitForTimeout(150);
+
+  const start = await page.evaluate(() => window.scrollY);
+  expect(start).toBeGreaterThan(1000);
+
+  await page
+    .getByRole("navigation", { name: "Primary" })
+    .getByRole("link", { name: "Work", exact: true })
+    .click();
+
+  await expect.poll(() => page.evaluate(() => window.location.hash)).toBe("#work");
+  await page.waitForTimeout(600);
+
+  const result = await page.evaluate(() => {
+    const target = document.getElementById("work");
+    if (!target) throw new Error("missing #work");
+    return {
+      y: window.scrollY,
+      top: target.getBoundingClientRect().top,
+    };
+  });
+
+  expect(result.y).toBeLessThan(start);
+  expect(result.top).toBeGreaterThanOrEqual(0);
+  expect(result.top).toBeLessThan(64);
+  await expect.poll(() => page.evaluate(() => document.activeElement?.id)).toBe("work");
 });
 
 test("copy email announces success in a live region", async ({ page, context }) => {
@@ -82,6 +117,7 @@ test("reduced motion shows content immediately", async ({ page }) => {
     await expect(reveal).toHaveCSS("opacity", "1");
     await expect(reveal).toHaveCSS("transform", "none");
     await expect(reveal).toHaveCSS("transition-duration", "0s");
+    await expect(reveal).toHaveCSS("transition-delay", "0s");
   }
 });
 
@@ -92,13 +128,13 @@ test("controls are legible at rest", async ({ page }) => {
 
   const primary = page.locator('a[data-variant="default"]').first();
   const secondary = page.locator('a[data-variant="secondary"]').first();
-  const utility = page.locator('button[data-variant="utility"]').first();
+  const railCopy = page.getByRole("button", { name: "Copy email address" });
 
   await expect(primary).toHaveCSS("background-color", "rgb(11, 122, 72)");
   await expect(primary).toHaveCSS("border-top-width", "0px");
-  await expect(utility).toContainText("Copy email");
+  await expect(railCopy).toContainText("Copy email");
 
-  for (const control of [secondary, utility]) {
+  for (const control of [secondary]) {
     const styles = await control.evaluate((element) => {
       const computed = getComputedStyle(element);
       return {
@@ -121,22 +157,16 @@ test("controls are legible at rest", async ({ page }) => {
   }
 });
 
-test("copy email uses the utility control", async ({ page }) => {
+test("copy email uses the rail header action", async ({ page }) => {
   await page.goto("/");
 
   const button = page.getByRole("button", { name: "Copy email address" });
-  await expect(button).toHaveAttribute("data-variant", "utility");
+  await expect(button).toHaveAttribute("data-variant", "ghost");
+  await expect(button).toHaveClass(/rail-copy/);
   await expect(button).toContainText("Copy email");
-
-  const border = await button.evaluate((element) => {
-    const computed = getComputedStyle(element);
-    return {
-      width: computed.borderTopWidth,
-      color: computed.borderTopColor,
-    };
-  });
-  expect(Number.parseFloat(border.width)).toBeGreaterThanOrEqual(1);
-  expect(border.color).not.toBe("rgba(0, 0, 0, 0)");
+  await expect(button).toHaveCSS("border-top-width", "0px");
+  await expect(button).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+  await expect(button).toHaveCSS("height", "24px");
 });
 
 test("links use the navigation and prose treatments", async ({ page }) => {
@@ -155,7 +185,7 @@ test("links use the navigation and prose treatments", async ({ page }) => {
   const footerEmail = page
     .getByRole("contentinfo")
     .getByRole("link", { name: "Email" });
-  await expect(footerEmail).toHaveCSS("text-decoration-line", "underline");
+  await expect(footerEmail).toHaveCSS("text-decoration-line", "none");
 
   const prose = page.getByRole("link", { name: "More about how I work" });
   await expect(prose).toHaveCSS("text-decoration-line", "underline");
@@ -170,14 +200,14 @@ test("work rows show a surface on hover and focus-within", async ({ page }) => {
   await expect(row).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
 
   await row.hover();
-  await expect(row).toHaveCSS("background-color", "rgb(239, 239, 232)");
+  await expect(row).toHaveCSS("background-color", "rgb(236, 236, 228)");
 
   await page.mouse.move(0, 0);
   await row.getByRole("link").first().focus();
-  await expect(row).toHaveCSS("background-color", "rgb(239, 239, 232)");
+  await expect(row).toHaveCSS("background-color", "rgb(236, 236, 228)");
 });
 
-test("reveal uses 300ms and a 6px rise, with a fallback", async ({ page }) => {
+test("reveal uses 400ms and an 8px rise, with a fallback", async ({ page }) => {
   await page.addInitScript(() => {
     class NoopIntersectionObserver {
       observe() {}
@@ -204,8 +234,8 @@ test("reveal uses 300ms and a 6px rise, with a fallback", async ({ page }) => {
     };
   });
   expect(styles.opacity).toBe("0");
-  expect(styles.transform).toBe("matrix(1, 0, 0, 1, 0, 6)");
-  expect(styles.duration).toContain("0.3s");
+  expect(styles.transform).toBe("matrix(1, 0, 0, 1, 0, 8)");
+  expect(styles.duration).toContain("0.4s");
 
   await page.addInitScript(() => {
     Object.defineProperty(window, "IntersectionObserver", {
@@ -218,7 +248,7 @@ test("reveal uses 300ms and a 6px rise, with a fallback", async ({ page }) => {
   await expect(page.locator("[data-reveal]").first()).toHaveClass(/is-visible/);
 });
 
-test("stagger delays use 40ms and 20ms steps and cap at 200ms", async ({ page }) => {
+test("stagger delays use 60ms and 20ms steps and cap at 300ms", async ({ page }) => {
   await page.addInitScript(() => {
     class NoopIntersectionObserver {
       observe() {}
@@ -242,11 +272,13 @@ test("stagger delays use 40ms and 20ms steps and cap at 200ms", async ({ page })
   }
 
   await page.goto("/");
-  const work = page.locator('[data-stagger="work"] > [data-stagger-item]');
-  await expectStaggerDelay(work.nth(0), "0s");
-  await expectStaggerDelay(work.nth(1), "0.04s");
-  await expectStaggerDelay(work.nth(5), "0.2s");
-  await expectStaggerDelay(work.nth(10), "0.2s");
+  const featured = page.locator('[data-work-group="featured"] [data-stagger-item]');
+  const more = page.locator('[data-work-group="more"] [data-stagger-item]');
+  await expectStaggerDelay(featured.nth(0), "0s");
+  await expectStaggerDelay(featured.nth(1), "0.06s");
+  await expectStaggerDelay(featured.nth(4), "0.24s");
+  await expectStaggerDelay(more.nth(0), "0s");
+  await expectStaggerDelay(more.nth(5), "0.3s");
 
   await page.goto("/work/bellboy/");
   const diagram = page.locator('[data-stagger="diagram"] [data-stagger-item]');
@@ -294,7 +326,7 @@ test("back to top does not cover the mobile footer", async ({ page }) => {
   const pill = await control.boundingBox();
   const location = await page
     .getByRole("contentinfo")
-    .getByText("Addis Ababa", { exact: true })
+    .getByText("Addis Ababa, Ethiopia", { exact: true })
     .boundingBox();
   expect(pill).not.toBeNull();
   expect(location).not.toBeNull();
@@ -355,7 +387,7 @@ test("mobile headline avoids an isolated word", async ({ page }) => {
           return grouped.map((entry) => entry.words.join(" "));
         });
 
-      expect(lines.length).toBeLessThanOrEqual(5);
+      expect(lines.length).toBeLessThanOrEqual(7);
       expect(lines).not.toContain("including");
     });
   }

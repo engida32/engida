@@ -5,16 +5,16 @@ Every public claim maps to a source file and date. Values without a source stay 
 | Claim | Value | Source | Source date | Notes |
 |---|---|---|---|---|
 | Name, email, location | Engida Lishan, engida32lishan@gmail.com, Addis Ababa | CV source | 2026-10-18 | Email only; no phone on the site |
-| Headline | I build full-stack products, including AI features that survive production | User-approved copy 2026-10-25 | 2026-10-25 | Reframed from profile.yml; same claim |
-| Availability | Senior full-stack or AI engineering role; remote or Addis Ababa | CV profile source | 2026-10-18 | From the candidate's stated availability |
+| Headline | I build full-stack products and AI features that survive production | User-approved copy 2026-10-28 | 2026-10-28 | Reframed from profile.yml; same claim |
+| Availability | Open to senior full-stack or AI engineering roles; remote or Addis Ababa | CV profile source | 2026-10-18 | From the candidate's stated availability |
 | Supporting line | Since 2019 across fintech, commerce, and AI products | CV source | 2026-10-18 | Summary of role history |
 | About facts | 500+ merchants, 100,000+ users, two years of AI platforms | CV source | 2026-10-18 | Matches experience rows |
 | About page | What I've built, how I work, earlier roles, and a dated now block | CV source; user-approved copy 2026-10-26 | 2026-10-26 | Text-only page; no photo or personal details beyond cv.md |
 | Global team background | Teams in South Korea, the United States, and Europe; independent contract work for a California-based AI company | User confirmation 2026-10-26 | 2026-10-26 | User-supplied; no company names or client details published |
 | UpScale | Full-Stack Developer, Mar 2019 to Jan 2021; school management 30%, Adama FC pages 40% | CV source | 2026-10-18 | School management and Adama FC claims come from the CV |
 | GitHub and LinkedIn | github.com/engida32, linkedin.com/in/engida | CV profile source | 2026-10-18 | Profile links |
-| X handle | x.com/engida_lish | Internal planning note | 2026-10-25 | User-supplied positioning |
-| CV path | /cv/engida-lishan-cv.pdf | Internal planning note; CV build source | 2026-10-26 | Regenerated 2026-10-26 from the latest master JSON with candidate.phone removed; checked with pdftotext for the phone and forbidden claims |
+| X handle | x.com/morganfreak32 | User confirmation | 2026-10-28 | User-supplied handle |
+| CV path | /cv/engida-lishan-cv.pdf | Internal planning note; CV build source | 2026-10-28 | Replaced with a sanitized copy on 2026-10-28; pdftotext confirms the phone is absent and the contact line is current. |
 | Turing role | Full-Stack Developer and AI Engineer, Nov 2024 to Sep 2026 | CV source | 2026-10-18 | Client names omitted |
 | Platform: Turing agent platform | Internal platform for releasing and evaluating browser-based agent environments | Private work repository, ui-gym-platform at 177d343; Private work repository, ots-documentation at f8b3265 | 2026-10-25 | User confirmed the Turing commit identity covers this work; platform was a team effort |
 | Turing platform role | Full-stack and AI engineering: release flows, task and assertion tooling, evaluation screens, access management, client variants | User confirmation 2026-10-25; Private work repository, ui-gym-platform at 177d343 | 2026-10-25 | Scope is user-supplied; system facts from private work repositories |
@@ -35,6 +35,7 @@ Every public claim maps to a source file and date. Values without a source stay 
 | Client year: Ride Plus 2022-2023 | 2022-2023 | CV source role dates Mar 2021 to Sep 2022; user confirmation 2026-10-25 | 2026-10-25 | Stated timeline; corrects the earlier 2023-only row |
 | Ride Plus stack | React, MUI data grids, Docker, REST APIs | Private client repository, ride-plus-admin-ui-v2/package.json at d63aeb7 and Private client repository, ride-plus-bms-v2/package.json at 7b08141; user confirmation 2026-10-25 | 2026-10-25 | @mui/x-data-grid and Dockerfile in both repos; REST APIs from the dashboard |
 | Ride Plus scale | 42K+ driver records | User-provided admin screenshot 2026-10-25 | 2026-10-25 | Aggregate count only; names, phones, emails, plates, and TINs omitted |
+| Ride Plus dashboard image | Illustrative recreation of the admin operations dashboard | Generated from the product description 2026-10-28; user request | 2026-10-28 | Not a client screenshot; alt and caption identify it as illustrative |
 | Client: Central Plaza | Marketing site for a mixed-use property | Private client repository, central-plaza-web-app/package.json at 5af4e87 | 2026-10-25 | Live URL checked 200 |
 | Client year: Central Plaza 2024 | 2024 | Private client repository, central-plaza-web-app at 5af4e87 | 2026-10-25 | Year is the user-provided timeline, corroborated by the repo commit date |
 | Central Plaza stack | React, MUI, Sanity, GSAP | Private client repository, central-plaza-web-app/package.json at 5af4e87 | 2026-10-25 | gsap, @mui/material, sanity present |
@@ -71,6 +72,7 @@ Every public claim maps to a source file and date. Values without a source stay 
 | sewasew status | Client work | User-provided case-study brief 2026-10-25 | 2026-10-25 | Status is user-supplied |
 | sewasew build and decisions | Web listening experience, subscription management, shared state | User confirmation 2026-10-25; CV source | 2026-10-25 | User confirmed the web app and subscription scope |
 | sewasew product scale | 500K+ Google Play downloads, 4.2 rating | Public Google Play listing, checked 2026-10-25 | 2026-10-25 | Product scale, not personal impact |
+| Sewasew dashboard image | Illustrative recreation of the internal subscription and chart-of-accounts tool | Generated from the product description 2026-10-28; user request | 2026-10-28 | Not a client screenshot; alt and caption identify it as illustrative |
 | ride-plus problem | Dispatch needed one view of drivers, trips, and payments | User-provided screenshot 2026-10-25 | 2026-10-25 | Business problem is user-supplied |
 | ride-plus role | Front-end developer | User confirmation 2026-10-25 | 2026-10-25 | Role is user-supplied |
 | ride-plus status | Client work | User confirmation 2026-10-25 | 2026-10-25 | Status is user-supplied |
