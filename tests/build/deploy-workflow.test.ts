@@ -41,6 +41,15 @@ describe("deployment pipeline", () => {
     expect(deployJob).toContain("actions/checkout@");
   });
 
+  it("pins artifact actions that run on Node 24", () => {
+    expect(workflow).toContain(
+      "actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0",
+    );
+    expect(workflow).toContain(
+      "actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0",
+    );
+  });
+
   it("deploys Pages before WebDAV and verifies the public domains", () => {
     expect(indexOf("actions/deploy-pages@")).toBeLessThan(indexOf("node scripts/deploy-webdav.mjs"));
     expect(indexOf("node scripts/deploy-webdav.mjs")).toBeLessThan(
