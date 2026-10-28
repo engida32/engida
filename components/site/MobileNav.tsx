@@ -56,12 +56,12 @@ export function MobileNav({ links }: { links: LinkItem[] }) {
           <Menu aria-hidden="true" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" aria-modal="true">
+      <SheetContent side="right" aria-modal="true" className="overflow-y-auto">
         <SheetHeader>
           <SheetTitle>Menu</SheetTitle>
           <SheetDescription>Site navigation and contact links.</SheetDescription>
         </SheetHeader>
-        <nav aria-label="Mobile" className="mt-6">
+        <nav aria-label="Mobile" className="mt-6 px-4">
           <MotionConfig reducedMotion="user">
             <ul className="space-y-1">
               {navLinks.map((link, index) => (
@@ -88,57 +88,59 @@ export function MobileNav({ links }: { links: LinkItem[] }) {
           </MotionConfig>
         </nav>
         <div className="mt-8 border-t border-site-border pt-6">
-          <div className="flex items-center justify-between">
-            <span className="font-mono text-xs uppercase tracking-[0.08em] text-site-muted">
-              Theme
-            </span>
-            <ThemeToggle showTooltip={false} />
+          <div className="px-4 pb-6">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-xs uppercase tracking-[0.08em] text-site-muted">
+                Theme
+              </span>
+              <ThemeToggle showTooltip={false} />
+            </div>
+            <ul className="mt-5 space-y-2 text-sm">
+              <li>
+                <a
+                  href={profile.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-link tap-target"
+                >
+                  GitHub<span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-link tap-target"
+                >
+                  LinkedIn<span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={profile.x}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-link tap-target"
+                >
+                  X<span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              </li>
+            </ul>
+            <SheetClose asChild>
+              <a
+                href={`mailto:${profile.email}`}
+                className={buttonVariants({
+                  variant: "default",
+                  size: "lg",
+                  className:
+                    "mt-6 w-full font-mono text-xs uppercase tracking-[0.08em]",
+                })}
+              >
+                Email me
+              </a>
+            </SheetClose>
           </div>
-          <ul className="mt-5 space-y-2 text-sm">
-            <li>
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-link tap-target"
-              >
-                GitHub<span className="sr-only"> (opens in a new tab)</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-link tap-target"
-              >
-                LinkedIn<span className="sr-only"> (opens in a new tab)</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href={profile.x}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-link tap-target"
-              >
-                X<span className="sr-only"> (opens in a new tab)</span>
-              </a>
-            </li>
-          </ul>
-          <SheetClose asChild>
-            <a
-              href={`mailto:${profile.email}`}
-              className={buttonVariants({
-                variant: "default",
-                size: "lg",
-                className:
-                  "mt-6 w-full font-mono text-xs uppercase tracking-[0.08em]",
-              })}
-            >
-              Email me
-            </a>
-          </SheetClose>
         </div>
       </SheetContent>
     </Sheet>
