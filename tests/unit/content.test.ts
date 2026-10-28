@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { about } from "@/content/about";
 import { caseStudies, caseStudyBySlug } from "@/content/case-studies";
@@ -122,6 +122,38 @@ describe("content integrity", () => {
       location: "Addis Ababa",
     });
     expect(jaktTech?.scope).toContain("SMS gateway");
+  });
+
+  it("anchors every published image in provenance and on disk", () => {
+    const provenance = readFileSync("PROVENANCE.md", "utf8");
+    const images = new Set<string>();
+
+    for (const item of [...clients, ...projects]) {
+      if (item.image) images.add(item.image.src);
+    }
+    for (const study of caseStudies) {
+      if (study.hero) images.add(study.hero.src);
+      for (const screenshot of study.screenshots) images.add(screenshot.src);
+    }
+
+    expect(images.size).toBe(8);
+    for (const src of images) {
+      expect(existsSync(`public${src}`), src).toBe(true);
+      expect(provenance, src).toContain(src);
+    }
+  });
+
+  it("keeps unsupported and private-source claims out", () => {
+    const all = JSON.stringify({ clients, projects, caseStudies });
+    const provenance = readFileSync("PROVENANCE.md", "utf8");
+    const vector = projects.find((project) => project.title === "Vector Search Studio");
+
+    expect(all).not.toContain("Australia");
+    expect(provenance).toContain("JaktTech role");
+    expect(provenance).toContain("https://sewasewmusic.com/");
+    expect(provenance).toContain("https://github.com/engida32/vector-search-studio");
+    expect(provenance).not.toContain("Private project repository, README.md at 720ceb3");
+    expect(vector?.sourceUrl).toBe("https://github.com/engida32/vector-search-studio");
   });
 
   it("keeps the honest signal-engine result", () => {

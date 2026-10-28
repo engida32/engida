@@ -4,18 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "rm -rf out && next build",
-    "build:test": "rm -rf out && NEXT_PUBLIC_BASE_PATH= NEXT_PUBLIC_SITE_URL=http://localhost:4173 NEXT_PUBLIC_ALLOW_INDEXING=false next build",
-    "build:staging": "rm -rf out && NEXT_PUBLIC_BASE_PATH=/engida NEXT_PUBLIC_SITE_URL=https://engida32.github.io/engida NEXT_PUBLIC_ALLOW_INDEXING=true next build",
+    "build": "npm run build:prod",
     "build:prod": "rm -rf out && NEXT_PUBLIC_BASE_PATH= NEXT_PUBLIC_SITE_URL=https://engida.devs.et NEXT_PUBLIC_ALLOW_INDEXING=true next build && node scripts/write-cname.mjs",
     "deploy:webdav": "node scripts/deploy-webdav.mjs",
+    "verify:deploy": "node scripts/verify-deploy.mjs",
     "preview": "node scripts/serve-out.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:build": "npm run build:prod && vitest run --config vitest.build.config.ts",
+    "test:build": "vitest run --config vitest.build.config.ts",
     "test:e2e": "playwright test",
-    "check": "npm run lint && npm run typecheck && npm run test && npm run test:build && npm run build:test && npm run test:e2e"
+    "check": "npm run lint && npm run typecheck && npm run test && npm run build:prod && npm run test:build && npm run test:e2e"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

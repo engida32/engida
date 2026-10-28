@@ -21,6 +21,7 @@ Every public claim maps to a source file and date. Values without a source stay 
 | Turing platform clients | NVIDIA, Amazon, Salesforce, Microsoft | User confirmation 2026-10-25; branch names in a private work repository | 2026-10-25 | High-level examples only; no branch names or repo links published |
 | Kifiya metrics | 500+ merchants, 30% faster loads, 25% adoption, 50% faster releases | CV source | 2026-10-18 | Company link confirmed |
 | Kepler Lab | Jan 2023 to Dec 2023, 40% faster render | CV source | 2026-10-18 | Remote South Korea |
+| JaktTech role | Lead Front-End Developer, Sep 2022 to Nov 2023; enterprise apps for banks and insurers, SMS gateway; 30% internal operations improvement | CV source | 2026-10-18 | CV confirms the role, scope, and 30% outcome |
 | 2F Capital | 100,000+ users, 50,000+ transactions | CV source | 2026-10-18 | Company link confirmed; driver total omitted because the admin view shows 42K+ records |
 | Client: Bellboy | Delivery booking site and rider onboarding | Private client repository, belboy/landing-site/package.json at 689c78c and Private client repository, belboy/rider-application-form/package.json at e76571c | 2026-10-25 | Stack from both package.json files |
 | Client year: Bellboy 2024 | 2024 | Private client repository, belboy/admin-web at 17a3611, landing-site at 689c78c, rider-application-form at e76571c | 2026-10-25 | Year is the user-provided timeline, corroborated by repo commit dates in 2024 |
@@ -28,14 +29,15 @@ Every public claim maps to a source file and date. Values without a source stay 
 | Client: Che | B2B commerce front end for 500+ retailers and merchants | CV source; https://kifiya.com/che/ | 2026-10-25 | Kifiya/Che product context checked 200 |
 | Client year: Che 2023-2024 | 2023-2024 | CV source role dates Aug 2023 to Nov 2024 | 2026-10-25 | Year spans the role dates; user approved the case study |
 | Che stack | Next.js 14, TypeScript, Redux, TailwindCSS, Node.js APIs, PostgreSQL, AWS | CV source | 2026-10-25 | CV names the framework and release stack |
-| Client: Sewasew | Web music streaming and subscription management | CV source; https://sewasew.com | 2026-10-25 | Public product page checked 200 |
+| Che images | /work/che/che-card.webp, /work/che/che-plate.webp | Public Che product page, https://kifiya.com/che/, captured 2026-10-27 | 2026-10-27 | Public page screenshots; desktop card and desktop-plus-mobile plate. Not a mockup. |
+| Client: Sewasew | Web music streaming and subscription management | CV source; https://sewasewmusic.com/; https://subscription.sewasewmusic.com/ | 2026-10-28 | Both public product pages checked 200 |
 | Client year: Sewasew 2021-2022 | 2021-2022 | CV source role dates Mar 2021 to Sep 2022 | 2026-10-25 | Year spans the 2F role; user confirmed web app and subscription work |
 | Sewasew stack | Web front end, REST APIs, subscription flows | User confirmation 2026-10-25; CV source | 2026-10-25 | Framework was not verified, so no framework is named |
 | Client: Ride Plus | Dispatch, rider, and driver tools for a taxi platform | User-provided screenshot 2026-10-25; https://ride8294.com/ride-plus/ | 2026-10-25 | Internal admin URL and personal driver data omitted |
 | Client year: Ride Plus 2022-2023 | 2022-2023 | CV source role dates Mar 2021 to Sep 2022; user confirmation 2026-10-25 | 2026-10-25 | Stated timeline; corrects the earlier 2023-only row |
 | Ride Plus stack | React, MUI data grids, Docker, REST APIs | Private client repository, ride-plus-admin-ui-v2/package.json at d63aeb7 and Private client repository, ride-plus-bms-v2/package.json at 7b08141; user confirmation 2026-10-25 | 2026-10-25 | @mui/x-data-grid and Dockerfile in both repos; REST APIs from the dashboard |
 | Ride Plus scale | 42K+ driver records | User-provided admin screenshot 2026-10-25 | 2026-10-25 | Aggregate count only; names, phones, emails, plates, and TINs omitted |
-| Ride Plus dashboard image | Illustrative recreation of the admin operations dashboard | Generated from the product description 2026-10-28; user request | 2026-10-28 | Not a client screenshot; alt and caption identify it as illustrative |
+| Ride Plus dashboard image | /work/ride-plus/ride-plus-card.webp, /work/ride-plus/ride-plus-plate.webp; illustrative recreation of the admin operations dashboard | Generated from the product description 2026-10-28; user request | 2026-10-28 | Not a client screenshot; alt and caption identify it as illustrative |
 | Client: Central Plaza | Marketing site for a mixed-use property | Private client repository, central-plaza-web-app/package.json at 5af4e87 | 2026-10-25 | Live URL checked 200 |
 | Client year: Central Plaza 2024 | 2024 | Private client repository, central-plaza-web-app at 5af4e87 | 2026-10-25 | Year is the user-provided timeline, corroborated by the repo commit date |
 | Central Plaza stack | React, MUI, Sanity, GSAP | Private client repository, central-plaza-web-app/package.json at 5af4e87 | 2026-10-25 | gsap, @mui/material, sanity present |
@@ -48,9 +50,10 @@ Every public claim maps to a source file and date. Values without a source stay 
 | Project: Serpentine Arcade | Eight games, offline-first PWA, TV remotes, gamepads | github.com/engida32/serpentine at b8532fe, README.md | 2026-10-25 | Live URL checked 200 |
 | Serpentine Arcade stack | React, TypeScript, Vite, Supabase, Service Worker | github.com/engida32/serpentine at b8532fe, package.json | 2026-10-25 | Dependencies include react, vite, vite-plugin-pwa, @supabase/supabase-js |
 | Serpentine input and offline claims | Remote, keyboard, Gamepad API, service worker, localStorage | github.com/engida32/serpentine at b8532fe, README.md and src/ui/input.ts | 2026-10-25 | README states offline PWA and input support; input.ts implements the input layer |
+| Serpentine images | /work/serpentine/serpentine-card.webp, /work/serpentine/serpentine-plate.webp | Public Serpentine Arcade page, https://serpentine-arcade.vercel.app/, captured 2026-10-27 | 2026-10-27 | Public page screenshots; desktop card and desktop-plus-mobile plate. Not a mockup. |
 | Serpentine Slack webhook | Slack feedback webhook | github.com/engida32/serpentine at b8532fe, supabase/functions/notify-slack/index.ts | 2026-10-25 | Function file present at the cited SHA |
-| Project: Vector Search Studio | Semantic search over Supabase docs | Private project repository, README.md at 720ceb3 | 2026-10-25 | Source only |
-| Vector Search Studio stack | Next.js, TypeScript, pgvector, HNSW, Vitest | Private project repository, README.md at 720ceb3 | 2026-10-25 | README names vector(384), HNSW, and Vitest |
+| Project: Vector Search Studio | Semantic search over Supabase docs | Public GitHub repository, https://github.com/engida32/vector-search-studio, README.md at 720ceb3 | 2026-10-25 | Source only |
+| Vector Search Studio stack | Next.js, TypeScript, pgvector, HNSW, Vitest | Public GitHub repository, https://github.com/engida32/vector-search-studio, README.md at 720ceb3 | 2026-10-25 | README names vector(384), HNSW, and Vitest |
 | Project: Real-time signal engine | BTC prediction-market engine and terminal dashboard | Private project repository, README.md | 2026-10-25 | Private, in progress; no repo link |
 | Signal engine result | 48 to 50% out-of-sample on spot models | Private project repository, README.md | 2026-10-25 | README states out-of-sample spot models land at 48 to 50% |
 | bellboy problem | Quote inputs and verified rider onboarding | User-provided case-study brief 2026-10-25 | 2026-10-25 | Business problem is user-supplied; no repo proves it |
@@ -72,7 +75,7 @@ Every public claim maps to a source file and date. Values without a source stay 
 | sewasew status | Client work | User-provided case-study brief 2026-10-25 | 2026-10-25 | Status is user-supplied |
 | sewasew build and decisions | Web listening experience, subscription management, shared state | User confirmation 2026-10-25; CV source | 2026-10-25 | User confirmed the web app and subscription scope |
 | sewasew product scale | 500K+ Google Play downloads, 4.2 rating | Public Google Play listing, checked 2026-10-25 | 2026-10-25 | Product scale, not personal impact |
-| Sewasew dashboard image | Illustrative recreation of the internal subscription and chart-of-accounts tool | Generated from the product description 2026-10-28; user request | 2026-10-28 | Not a client screenshot; alt and caption identify it as illustrative |
+| Sewasew dashboard image | /work/sewasew/sewasew-card.webp, /work/sewasew/sewasew-plate.webp; illustrative recreation of the internal subscription and chart-of-accounts tool | Generated from the product description 2026-10-28; user request | 2026-10-28 | Not a client screenshot; alt and caption identify it as illustrative |
 | ride-plus problem | Dispatch needed one view of drivers, trips, and payments | User-provided screenshot 2026-10-25 | 2026-10-25 | Business problem is user-supplied |
 | ride-plus role | Front-end developer | User confirmation 2026-10-25 | 2026-10-25 | Role is user-supplied |
 | ride-plus status | Client work | User confirmation 2026-10-25 | 2026-10-25 | Status is user-supplied |
@@ -84,7 +87,7 @@ Every public claim maps to a source file and date. Values without a source stay 
 | vector-search-studio problem | Keyword search misses intent and hosted embeddings add keys and cost | User-provided case-study brief 2026-10-25 | 2026-10-25 | Business problem is user-supplied; no repo proves it |
 | vector-search-studio role | Design and build | User-provided case-study brief 2026-10-25 | 2026-10-25 | Role is user-supplied |
 | vector-search-studio status | Independent | User-provided case-study brief 2026-10-25 | 2026-10-25 | Status is user-supplied |
-| vector-search-studio build and decisions | Random-projection embedder, vector(384), HNSW cosine index | Private project repository, README.md at 720ceb3 | 2026-10-25 | README plus user-provided case-study brief |
+| vector-search-studio build and decisions | Random-projection embedder, vector(384), HNSW cosine index | Public GitHub repository, https://github.com/engida32/vector-search-studio, README.md at 720ceb3 | 2026-10-25 | README plus user-provided case-study brief |
 | vector-search-studio tradeoff and next | Weaker than a trained model; reranking and recall measurement | User-provided case-study brief 2026-10-25 | 2026-10-25 | Design decisions, not file facts |
 | signal-engine problem | Noisy one-second data, thin edges, flattering execution assumptions | User-provided case-study brief 2026-10-25 | 2026-10-25 | Business problem is user-supplied; no repo proves it |
 | signal-engine role | Design and build | User-provided case-study brief 2026-10-25 | 2026-10-25 | Role is user-supplied |
