@@ -79,7 +79,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Front end and admin",
     status: "Client work",
     summary:
-      "Delivery booking site and rider onboarding for a delivery company in Australia.",
+      "Delivery booking site and rider onboarding for a delivery company.",
     outcome:
       "A quote-to-booking flow and a rider onboarding flow that collects every required document before review.",
     stack: ["Next.js 14", "React", "MUI", "Tailwind", "react-query", "Formik", "Yup", "AWS S3"],

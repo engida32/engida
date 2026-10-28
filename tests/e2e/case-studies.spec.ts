@@ -9,7 +9,7 @@ const cases = [
   [
     "bellboy",
     "Bellboy",
-    "Delivery booking site and rider onboarding for a delivery company in Australia.",
+    "Delivery booking site and rider onboarding for a delivery company.",
   ],
   [
     "che",

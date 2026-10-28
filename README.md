@@ -17,6 +17,8 @@ npm run dev
 npm run check
 ```
 
+`check` builds the production export once, runs the unit and build tests against it, then runs Playwright against the same `out/` directory.
+
 ## Deployment
 
-Pushes to `main` deploy to GitHub Pages. `DEPLOY_TARGET` selects the staging or production build.
+Pull requests run the full check suite without deploying. Pushes to `main` run the same suite, deploy GitHub Pages first, mirror the same tested artifact to `engida.devs.et` over WebDAV, upload `.htaccess`, and verify both sites.
