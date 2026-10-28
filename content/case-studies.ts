@@ -20,6 +20,13 @@ export const caseStudies: CaseStudy[] = [
       "GitHub",
       "LLM-as-judge",
     ],
+    deliverables: [
+      "Release control plane",
+      "Task and assertion tooling",
+      "Evaluation screens",
+      "Access and audit",
+      "Client environment variants",
+    ],
     problem: [
       "Agent work needs realistic software to act in, a clean starting state, and a clear pass or fail signal.",
       "Each environment also needs its own release path, access rules, and logs that explain a failed run.",
@@ -76,6 +83,11 @@ export const caseStudies: CaseStudy[] = [
     outcome:
       "A quote-to-booking flow and a rider onboarding flow that collects every required document before review.",
     stack: ["Next.js 14", "React", "MUI", "Tailwind", "react-query", "Formik", "Yup", "AWS S3"],
+    deliverables: [
+      "Public quote and booking flow",
+      "Rider onboarding",
+      "Admin rate and commission screens",
+    ],
     problem: [
       "A delivery quote depends on distance, vehicle, and parcel size.",
       "Rider onboarding needs a verified phone number, a photo, a signature, and documents before anyone can review the application.",
@@ -119,6 +131,12 @@ export const caseStudies: CaseStudy[] = [
       "PostgreSQL",
       "AWS",
     ],
+    deliverables: [
+      "Storefront front end",
+      "Shared commerce components",
+      "API integration",
+      "AWS release automation",
+    ],
     problem: [
       "A B2B commerce platform serving 500+ retailers and merchants needed a front end that stayed fast as catalog and order data grew.",
     ],
@@ -142,9 +160,24 @@ export const caseStudies: CaseStudy[] = [
       kind: "flow",
       items: ["Next.js App Router", "Redux state", "Commerce APIs", "AWS release"],
     },
+    hero: {
+      src: "/work/che/che-card.webp",
+      alt: "Che product page with the Che heading, an introductory paragraph, a produce-stall photo, and the Che logo.",
+      width: 1200,
+      height: 800,
+      caption: "The public Che product page on desktop.",
+    },
     result: "Page loads fell 30%, merchant adoption rose 25%, and releases shipped 50% faster.",
     links: [{ label: "Che", href: "https://kifiya.com/che/" }],
-    screenshots: [],
+    screenshots: [
+      {
+        src: "/work/che/che-plate.webp",
+        alt: "The Che product page shown in a desktop browser beside a mobile phone.",
+        width: 1600,
+        height: 1000,
+        caption: "The public page is shown on desktop and mobile.",
+      },
+    ],
   },
   {
     slug: "sewasew",
@@ -153,32 +186,67 @@ export const caseStudies: CaseStudy[] = [
     role: "Front-end developer",
     status: "Client work",
     summary:
-      "Web music streaming experience and subscription management for an Ethiopian streaming service.",
-    outcome: "A web player and subscription flow that share one state model.",
+      "Web music streaming, subscription management, and an internal tool for users, subscriptions, and chart of accounts at an Ethiopian streaming service.",
+    outcome:
+      "A web player, a subscription flow, and an internal tool for users, subscriptions, and chart of accounts.",
     stack: ["Web front end", "REST APIs", "Subscription flows"],
+    deliverables: [
+      "Web player",
+      "Subscription management",
+      "Internal user and subscription management",
+      "Chart of accounts (COA)",
+      "API integration and states",
+    ],
     problem: [
-      "A streaming service needed a web player and a subscription flow that worked together, not as two separate products.",
+      "A streaming service needed a web player and a subscription flow that worked together, not as two separate products. The internal team also needed one place to manage users, subscriptions, chart of accounts, and related operations across the mobile and web products.",
     ],
     build: [
-      "Built the web listening experience and subscription management screens.",
+      "Built the landing page, the web listening experience, and the public subscription page.",
+      "Worked on the internal tool for user and subscription CRUD, chart of accounts (COA), and other internal management across the mobile and web products.",
       "Connected the front end to the streaming APIs and handled loading, empty, and error states.",
       "Worked with backend engineers on API integration and UI performance.",
     ],
     decisions: [
-      "Subscription state stayed visible in the account flow.",
-      "The web player and account screens shared the same state model.",
+      "Subscription state stays visible in the account flow.",
+      "The web player and the account screens share the same state model.",
     ],
     scope:
-      "I worked on the web application and subscription management, not the native mobile apps.",
+      "I worked on the landing page, the public subscription page, the internal tool for user and subscription management, chart of accounts (COA), and other internal operations for the mobile and web products. I did not build the native mobile apps.",
     context:
-      "Sewasew is an Ethiopian music streaming service with 500K+ Google Play downloads and a 4.2 rating. Those figures describe the product, not my work.",
+      "Sewasew is an Ethiopian music streaming service with 500K+ Google Play downloads. The internal tool supports users, subscriptions, chart of accounts, and other operations across the mobile and web products. The tool is not public, so the dashboard images here are illustrative recreations. The download figure describes the product, not my work.",
     diagram: {
       title: "Surfaces",
       kind: "group",
-      items: ["Web player", "Subscription management", "Streaming APIs"],
+      items: [
+        "Web player",
+        "Subscription management",
+        "Internal user and subscription management",
+        "Chart of accounts (COA)",
+        "Streaming APIs",
+      ],
     },
-    links: [{ label: "Sewasew", href: "https://sewasew.com" }],
-    screenshots: [],
+    hero: {
+      src: "/work/sewasew/sewasew-card.webp",
+      alt: "Mockup of the Sewasew internal dashboard with subscriber, revenue, plan mix, and chart-of-accounts views.",
+      width: 1200,
+      height: 800,
+      caption:
+        "Illustrative internal dashboard based on the subscription and chart-of-accounts tool. The internal tool is not public.",
+    },
+    links: [
+      { label: "Sewasew", href: "https://sewasewmusic.com/" },
+      { label: "Subscription", href: "https://subscription.sewasewmusic.com/" },
+    ],
+    screenshots: [
+      {
+        src: "/work/sewasew/sewasew-plate.webp",
+        alt: "Mockup of the Sewasew subscription dashboard in a desktop browser, showing revenue, plan mix, chart of accounts, and recent invoices.",
+        width: 1600,
+        height: 1000,
+        caption:
+          "The subscription and chart-of-accounts dashboard, recreated as an illustration. The internal tool is not public.",
+      },
+    ],
   },
   {
     slug: "ride-plus",
@@ -190,6 +258,12 @@ export const caseStudies: CaseStudy[] = [
       "Admin dashboard, rider and driver tools, and passenger surfaces for a taxi platform.",
     outcome: "One dashboard for 42K+ driver records, trips, and payments.",
     stack: ["React", "MUI data grids", "Docker", "REST APIs"],
+    deliverables: [
+      "Admin dashboard",
+      "Rider and driver tools",
+      "Passenger surfaces",
+      "Large operational tables",
+    ],
     problem: [
       "Dispatch teams needed one view of drivers, trips, and payments while riders and drivers used separate surfaces.",
     ],
@@ -210,9 +284,26 @@ export const caseStudies: CaseStudy[] = [
       kind: "group",
       items: ["Admin dashboard", "Rider app", "Driver tools", "Dispatch APIs"],
     },
+    hero: {
+      src: "/work/ride-plus/ride-plus-card.webp",
+      alt: "Mockup of the Ride Plus operations dashboard with driver, trip, payment, and activity views.",
+      width: 1200,
+      height: 800,
+      caption:
+        "Illustrative operations dashboard based on the Ride Plus admin work. The internal tool is not public.",
+    },
     result: "The dashboard handled 42K+ driver records alongside trip and payment views.",
     links: [{ label: "Ride Plus", href: "https://ride8294.com/ride-plus/" }],
-    screenshots: [],
+    screenshots: [
+      {
+        src: "/work/ride-plus/ride-plus-plate.webp",
+        alt: "Mockup of the Ride Plus operations dashboard in a desktop browser, showing trips, dispatch status, driver verification, and recent payouts.",
+        width: 1600,
+        height: 1000,
+        caption:
+          "The internal operations dashboard, recreated as an illustration. The client dashboard is not public.",
+      },
+    ],
   },
   {
     slug: "serpentine",
@@ -224,6 +315,12 @@ export const caseStudies: CaseStudy[] = [
       "Eight retro games in an offline-first PWA built for TV remotes and gamepads.",
     outcome: "Eight games that work offline across TV remotes, keyboards, and gamepads.",
     stack: ["React", "TypeScript", "Vite", "Supabase", "Service Worker"],
+    deliverables: [
+      "Eight games",
+      "Unified input layer",
+      "Offline service worker",
+      "Optional leaderboard and trophies",
+    ],
     problem: [
       "TV browsers, a handful of remote buttons, unreliable networks, and no install flow.",
     ],
@@ -240,11 +337,26 @@ export const caseStudies: CaseStudy[] = [
       kind: "flow",
       items: ["Input layer", "Game loop", "Service worker", "Optional Supabase"],
     },
+    hero: {
+      src: "/work/serpentine/serpentine-card.webp",
+      alt: "Serpentine Arcade game-selection screen with eight game cards and keyboard controls.",
+      width: 1200,
+      height: 800,
+      caption: "The Serpentine Arcade game-selection screen on desktop.",
+    },
     links: [
       { label: "Live", href: "https://serpentine-arcade.vercel.app/" },
       { label: "Source", href: "https://github.com/engida32/serpentine" },
     ],
-    screenshots: [],
+    screenshots: [
+      {
+        src: "/work/serpentine/serpentine-plate.webp",
+        alt: "The Serpentine Arcade game-selection screen shown in a desktop browser beside a mobile phone.",
+        width: 1600,
+        height: 1000,
+        caption: "The public page is shown on desktop and mobile.",
+      },
+    ],
   },
   {
     slug: "vector-search-studio",
@@ -256,6 +368,12 @@ export const caseStudies: CaseStudy[] = [
       "Semantic search over Supabase docs with pgvector and a local embedder. No API keys.",
     outcome: "Semantic search over Supabase docs with no API keys.",
     stack: ["Next.js", "TypeScript", "pgvector", "HNSW", "Vitest"],
+    deliverables: [
+      "Local embedder",
+      "pgvector schema and HNSW index",
+      "App Router search UI",
+      "CI tests",
+    ],
     problem: ["Keyword search misses intent, and hosted embeddings add keys and cost."],
     build: [
       "A 384-dimension random-projection embedder, a vector(384) column, an HNSW cosine index, SQL distance queries, an App Router UI, and tests in CI.",
@@ -284,6 +402,13 @@ export const caseStudies: CaseStudy[] = [
     outcome:
       "A validation pipeline that reports 48 to 50% out-of-sample instead of claiming an edge.",
     stack: ["Python", "LightGBM", "FastAPI", "React", "WebSockets"],
+    deliverables: [
+      "Market data and feature pipeline",
+      "Model and decision state",
+      "Execution simulator",
+      "Validation pipeline",
+      "WebSocket dashboard",
+    ],
     problem: [
       "Noisy one-second market data, thin edges, and execution assumptions that flatter a backtest.",
     ],

@@ -44,7 +44,7 @@ export function pageMetadata({
       title,
       description,
       images: [image],
-      creator: "@engida_lish",
+      creator: "@morganfreak32",
     },
     robots: allowIndexing()
       ? { index: true, follow: true }

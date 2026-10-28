@@ -101,7 +101,7 @@ describe("page metadata", () => {
     });
     expect(work.twitter).toMatchObject({
       card: "summary_large_image",
-      creator: "@engida_lish",
+      creator: "@morganfreak32",
     });
     expect(work.robots).toEqual({ index: true, follow: true });
   });

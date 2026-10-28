@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { MotionConfig, motion } from "motion/react";
 import { ThemeToggle } from "@/components/site/ThemeToggle";
@@ -9,26 +11,55 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { stripBasePath } from "@/lib/site";
 
 type LinkItem = { href: string; label: string };
 
 export function MobileNav({ links }: { links: LinkItem[] }) {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname() ?? "/";
+  const current = stripBasePath(pathname);
   const navLinks = links.filter((link) => !link.href.startsWith("mailto:"));
 
+  useEffect(() => {
+    if (!open) return;
+    const targets = [
+      document.getElementById("main"),
+      document.querySelector<HTMLElement>(".site-footer"),
+    ].filter((target): target is HTMLElement => Boolean(target));
+
+    for (const target of targets) target.setAttribute("inert", "");
+    return () => {
+      for (const target of targets) target.removeAttribute("inert");
+    };
+  }, [open]);
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 640px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    closeOnDesktop();
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
+
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button variant="ghost" size="icon" aria-label="Open menu">
           <Menu aria-hidden="true" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right">
+      <SheetContent side="right" aria-modal="true">
         <SheetHeader>
           <SheetTitle>Menu</SheetTitle>
+          <SheetDescription>Site navigation and contact links.</SheetDescription>
         </SheetHeader>
         <nav aria-label="Mobile" className="mt-6">
           <MotionConfig reducedMotion="user">
@@ -43,6 +74,9 @@ export function MobileNav({ links }: { links: LinkItem[] }) {
                   <SheetClose asChild>
                     <a
                       href={link.href}
+                      aria-current={
+                        link.label === "About" && current === "/about" ? "page" : undefined
+                      }
                       className="nav-link block py-2 text-base"
                     >
                       {link.label}
@@ -66,7 +100,7 @@ export function MobileNav({ links }: { links: LinkItem[] }) {
                 href={profile.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="nav-link"
+                className="nav-link tap-target"
               >
                 GitHub<span className="sr-only"> (opens in a new tab)</span>
               </a>
@@ -76,7 +110,7 @@ export function MobileNav({ links }: { links: LinkItem[] }) {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="nav-link"
+                className="nav-link tap-target"
               >
                 LinkedIn<span className="sr-only"> (opens in a new tab)</span>
               </a>
@@ -86,7 +120,7 @@ export function MobileNav({ links }: { links: LinkItem[] }) {
                 href={profile.x}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="nav-link"
+                className="nav-link tap-target"
               >
                 X<span className="sr-only"> (opens in a new tab)</span>
               </a>

@@ -5,7 +5,7 @@ export const about = {
     {
       title: "What I've built",
       paragraphs: [
-        "At Kifiya, I led front-end work on a B2B commerce platform used by 500+ merchants. At 2F Capital, I built the web front end for a taxi platform with 100,000+ users and worked on Sewasew, a music streaming product.",
+        "At Kifiya, I led front-end work on a B2B commerce platform used by 500+ merchants. At 2F Capital, I built the web front end for a taxi platform with 100,000+ users and worked on Sewasew, an Ethiopian music streaming service, including subscription management and an internal tool for users, subscriptions, and chart of accounts.",
         "At Turing, I worked on an internal platform for releasing and evaluating browser-based agent environments: release flows, task assertions, LLM-as-judge review, and client variants. Before that, I built school dashboards at UpScale and enterprise web apps at JaktTech.",
       ],
     },

@@ -23,7 +23,7 @@ export function ThemeToggle({ showTooltip = true }: { showTooltip?: boolean }) {
     <Button
       variant="ghost"
       size="icon"
-      aria-label="Dark theme"
+      aria-label="Toggle color theme"
       aria-pressed={isDark}
       onClick={() => setTheme(isDark ? "light" : "dark")}
     >

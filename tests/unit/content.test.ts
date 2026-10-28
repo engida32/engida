@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { about } from "@/content/about";
@@ -18,6 +19,38 @@ describe("content counts", () => {
 
   it("has six selected roles", () => {
     expect(experience).toHaveLength(6);
+  });
+});
+
+describe("portfolio structure", () => {
+  it("pins the five featured rows in display order", () => {
+    const featured = [...platforms, ...clients, ...projects]
+      .filter((item) => item.featured)
+      .map((item) => item.title);
+    expect(featured).toEqual([
+      "Turing agent platform",
+      "Che",
+      "Ride Plus",
+      "Serpentine Arcade",
+      "Real-time signal engine",
+    ]);
+  });
+
+  it("marks Nib and Aemro as internal with no public-link note", () => {
+    const internal = [...platforms, ...clients, ...projects].filter(
+      (item) => item.visibility === "internal",
+    );
+    expect(internal.map((item) => item.title)).toEqual(["Nib", "Aemro Motors"]);
+    for (const item of internal) expect(item.note).toBeUndefined();
+  });
+
+  it("stores metrics only as exact outcome substrings", () => {
+    for (const item of experience) {
+      for (const metric of item.metrics ?? []) {
+        expect(item.outcome, `${item.company}: ${metric}`).toContain(metric);
+      }
+    }
+    expect(experience.find((item) => item.company === "Turing")?.metrics).toBeUndefined();
   });
 });
 
@@ -146,6 +179,45 @@ describe("approved content", () => {
 
   it("points cvPath at the sanitized cv", () => {
     expect(profile.cvPath).toBe("/cv/engida-lishan-cv.pdf");
+  });
+
+  it("ships a CV without the phone number", () => {
+    let text: string;
+    try {
+      text = execFileSync("pdftotext", ["public/cv/engida-lishan-cv.pdf", "-"], {
+        encoding: "utf8",
+      });
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === "ENOENT") return;
+      throw error;
+    }
+    expect(text).not.toMatch(/\+251|932433954/);
+  });
+
+  it("keeps mockup notes in the preview only", () => {
+    for (const title of ["Ride Plus", "Sewasew"]) {
+      const item = clients.find((client) => client.title === title);
+      expect(item?.note).toBe("Mockup design. The client dashboard is not public.");
+      expect(item?.noteInPreviewOnly).toBe(true);
+    }
+
+    const signalEngine = projects.find(
+      (project) => project.title === "Real-time signal engine",
+    );
+    expect(signalEngine?.note).toBe("Private, in progress.");
+    expect(signalEngine?.noteInPreviewOnly).toBeUndefined();
+  });
+
+  it("does not put invented metrics in generated-image alt text", () => {
+    for (const title of ["Ride Plus", "Sewasew"]) {
+      const item = clients.find((client) => client.title === title);
+      expect(item?.image?.alt, title).not.toMatch(/\d{1,3},\d{3}/);
+    }
+    for (const slug of ["ride-plus", "sewasew"]) {
+      const study = caseStudyBySlug(slug);
+      expect(study?.hero?.alt, slug).not.toMatch(/\d{1,3},\d{3}/);
+      expect(study?.screenshots[0]?.alt, slug).not.toMatch(/\d{1,3},\d{3}/);
+    }
   });
 
   it("publishes no phone-like digit run", () => {

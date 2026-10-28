@@ -12,6 +12,15 @@ export function basePath(): string {
   return withLeadingSlash.replace(/\/+$/, "");
 }
 
+export function stripBasePath(pathname: string): string {
+  const normalized = pathname.replace(/\/+$/, "") || "/";
+  const prefix = basePath();
+  if (!prefix) return normalized;
+  if (normalized === prefix) return "/";
+  if (normalized.startsWith(`${prefix}/`)) return normalized.slice(prefix.length) || "/";
+  return normalized;
+}
+
 export function allowIndexing(): boolean {
   return process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true";
 }

@@ -8,8 +8,15 @@ export const projects: WorkItem[] = [
       "Eight retro games in an offline-first PWA built for TV remotes and gamepads.",
     stack: ["React", "TypeScript", "Vite", "Supabase"],
     caseStudySlug: "serpentine",
+    featured: true,
     liveUrl: "https://serpentine-arcade.vercel.app/",
     sourceUrl: "https://github.com/engida32/serpentine",
+    image: {
+      src: "/work/serpentine/serpentine-card.webp",
+      alt: "Serpentine Arcade game-selection screen with eight game cards and keyboard controls.",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     title: "Vector Search Studio",
@@ -27,6 +34,7 @@ export const projects: WorkItem[] = [
       "A BTC prediction-market engine and terminal dashboard, from feature pipeline to execution simulator.",
     stack: ["Python", "LightGBM", "FastAPI", "React", "WebSockets"],
     caseStudySlug: "signal-engine",
+    featured: true,
     note: "Private, in progress.",
   },
 ];

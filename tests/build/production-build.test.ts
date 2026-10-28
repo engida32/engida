@@ -113,6 +113,7 @@ describe("production build", () => {
     expect(sitemap).toContain("https://engida.devs.et/about/");
     expect(sitemap).not.toContain("github.io");
     expect(sitemap).not.toContain("localhost");
+    expect(sitemap).not.toContain("<lastmod>");
 
     const robots = readFileSync(join(out, "robots.txt"), "utf8");
     expect(robots).toContain("Sitemap: https://engida.devs.et/sitemap.xml");
@@ -161,10 +162,18 @@ describe("production build", () => {
       expect(pageBlocks, file).toHaveLength(1);
 
       const nodes = graphNodes(pageBlocks[0]);
+      const people = nodesOfType(nodes, "Person");
+      const sites = nodesOfType(nodes, "WebSite");
+      expect(people, file).toHaveLength(1);
+      expect(people[0]["@id"], file).toBe(`${site}/#person`);
+      expect(sites, file).toHaveLength(1);
+      expect(sites[0]["@id"], file).toBe(`${site}/#website`);
+
       const work = nodes.find(
         (node) => node["@type"] === "CreativeWork" && node.url === `${site}/work/${slug}/`,
       );
       expect(work, file).toBeDefined();
+      expect(work?.creator).toEqual({ "@id": `${site}/#person` });
       expect(work?.isPartOf).toEqual({ "@id": `${site}/#website` });
       expect(work?.dateCreated, file).toMatch(/^\d{4}$/);
       expect(JSON.stringify(pageBlocks[0])).not.toMatch(/localhost|github\.io/);
