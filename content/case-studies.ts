@@ -4,7 +4,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "turing-agent-platform",
     title: "Turing agent evaluation platform",
-    year: "2024-2026",
+    year: "2024-now",
     role: "Full-stack and AI engineering",
     status: "Turing, internal",
     summary:
@@ -116,14 +116,14 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "che",
     title: "Che",
-    year: "2023-2024",
-    role: "Senior Front-End Developer",
+    year: "2021-2022",
+    role: "Full-Stack Developer",
     status: "Client work",
     summary:
-      "B2B commerce front end for 500+ retailers and merchants, built with Next.js 14 and TypeScript.",
+      "B2B commerce platform for 500+ retailers and merchants, built with Next.js and TypeScript.",
     outcome: "A faster storefront for 500+ merchants, with releases 50% faster.",
     stack: [
-      "Next.js 14",
+      "Next.js",
       "TypeScript",
       "Redux",
       "TailwindCSS",
@@ -141,9 +141,9 @@ export const caseStudies: CaseStudy[] = [
       "A B2B commerce platform serving 500+ retailers and merchants needed a front end that stayed fast as catalog and order data grew.",
     ],
     build: [
-      "Built the front end in Next.js 14, TypeScript, Redux, and TailwindCSS, with a modular structure for shared commerce screens.",
-      "Used the App Router and React Server Components for server rendering and real-time data sync.",
-      "Connected the front end to Node.js and PostgreSQL APIs.",
+      "Built the storefront in Next.js, TypeScript, Redux, and TailwindCSS, with a modular structure for shared commerce screens.",
+      "Used server rendering and real-time data sync to keep catalog and order data fast.",
+      "Connected the storefront to Node.js and PostgreSQL APIs.",
       "Automated the AWS release path, cutting release cycles by 50%.",
     ],
     decisions: [
@@ -152,13 +152,13 @@ export const caseStudies: CaseStudy[] = [
       "Release automation instead of manual deploys.",
     ],
     scope:
-      "I led the front end and worked with backend engineers on the API contract. The credit, underwriting, and distributor operations systems were outside my scope.",
+      "I owned the storefront, API integration, and AWS release path, and worked with backend engineers on the API contract. The credit, underwriting, and distributor operations systems were outside my scope.",
     context:
       "The platform is part of Kifiya's Che retail ecosystem, which connects manufacturers, distributors, and retailers with commerce, credit, and payment services.",
     diagram: {
-      title: "Front-end path",
+      title: "Commerce path",
       kind: "flow",
-      items: ["Next.js App Router", "Redux state", "Commerce APIs", "AWS release"],
+      items: ["Next.js storefront", "Redux state", "Node.js and PostgreSQL APIs", "AWS release"],
     },
     hero: {
       src: "/work/che/che-card.webp",
@@ -182,7 +182,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "sewasew",
     title: "Sewasew",
-    year: "2021-2022",
+    year: "2019-2020",
     role: "Front-end developer",
     status: "Client work",
     summary:
@@ -251,7 +251,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "ride-plus",
     title: "Ride Plus",
-    year: "2022-2023",
+    year: "2019-2020",
     role: "Front-end developer",
     status: "Client work",
     summary:

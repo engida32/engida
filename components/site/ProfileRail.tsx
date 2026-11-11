@@ -12,8 +12,24 @@ import { profile } from "@/content/profile";
 import { assetPath } from "@/lib/asset-path";
 
 const facts = [
-  { label: "Based in", value: profile.location },
-  { label: "Focus", value: "AI product and platform engineering" },
+  {
+    label: "Open to",
+    value: (
+      <span className="rail-stack">
+        <span>{profile.availability.role}</span>
+        <span>{profile.availability.location}</span>
+      </span>
+    ),
+  },
+  {
+    label: "Focus",
+    value: (
+      <span className="rail-stack">
+        <span>AI agent release engineering</span>
+        <span>Full-stack product interfaces</span>
+      </span>
+    ),
+  },
   {
     label: "Stack",
     value: (

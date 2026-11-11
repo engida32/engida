@@ -25,6 +25,7 @@ export const projects: WorkItem[] = [
       "Semantic search over Supabase docs with pgvector and a local embedder. No API keys.",
     stack: ["Next.js", "TypeScript", "pgvector", "HNSW"],
     caseStudySlug: "vector-search-studio",
+    featured: true,
     sourceUrl: "https://github.com/engida32/vector-search-studio",
   },
   {
@@ -34,7 +35,14 @@ export const projects: WorkItem[] = [
       "A BTC prediction-market engine and terminal dashboard, from feature pipeline to execution simulator.",
     stack: ["Python", "LightGBM", "FastAPI", "React", "WebSockets"],
     caseStudySlug: "signal-engine",
-    featured: true,
     note: "Private, in progress.",
+  },
+  {
+    title: "Paismo",
+    year: "2023-2024",
+    description:
+      "Next-gen Human Capital Management platform for onboard, pay, and team management. Built a full-stack Next.js app with TypeScript, integrating payroll processing, employee onboarding workflows, and benefits administration.",
+    stack: ["Next.js", "TypeScript", "TailwindCSS", "MongoDB", "Stripe"],
+    liveUrl: "https://paismo.com",
   },
 ];

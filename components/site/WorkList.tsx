@@ -145,7 +145,7 @@ function WorkRow({
             <li
               key={tech}
               className={[
-                "rounded-full border border-site-border bg-site-surface font-mono text-xs text-site-muted",
+                "stack-chip",
                 featured ? "px-2 py-1" : "px-1.5 py-0.5",
               ].join(" ")}
             >

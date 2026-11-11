@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { ArrowRight } from "lucide-react";
 import { ExperienceList } from "@/components/site/ExperienceList";
 import { JsonLd } from "@/components/site/JsonLd";
@@ -24,29 +23,8 @@ export default function HomePage() {
               <h1>
                 <span className="hero-eyebrow">{profile.name}</span>
                 <span className="sr-only">. </span>
-                <span className="hero-headline">
-                  {profile.headline.split("full-stack").map((part, index, parts) => (
-                    <Fragment key={index}>
-                      {part}
-                      {index < parts.length - 1 ? (
-                        <span className="whitespace-nowrap">full-stack</span>
-                      ) : null}
-                    </Fragment>
-                  ))}
-                </span>
+                <span className="hero-headline">{profile.headline}</span>
               </h1>
-              <p className="hero-status">
-                <span className="hero-status-dot" aria-hidden="true" />
-                <span className="hero-status-copy">
-                  <span>{profile.availability.role}</span>
-                  <span className="hero-status-sep" aria-hidden="true">
-                    {" · "}
-                  </span>
-                  <span className="hero-status-location">
-                    {profile.availability.location}
-                  </span>
-                </span>
-              </p>
               <p className="hero-supporting">{profile.supporting}</p>
               <div className="hero-actions">
                 <Button
@@ -67,7 +45,7 @@ export default function HomePage() {
                   asChild
                   variant="secondary"
                   size="lg"
-                  className="hero-cta w-full font-mono text-xs uppercase tracking-[0.08em] sm:w-auto"
+                  className="hero-cta hero-cta-secondary w-full font-mono text-xs uppercase tracking-[0.08em] sm:w-auto"
                 >
                   <a href={`mailto:${profile.email}`}>Email me</a>
                 </Button>

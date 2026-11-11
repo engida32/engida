@@ -130,7 +130,7 @@ test("controls are legible at rest", async ({ page }) => {
   const secondary = page.locator('a[data-variant="secondary"]').first();
   const railCopy = page.getByRole("button", { name: "Copy email address" });
 
-  await expect(primary).toHaveCSS("background-color", "rgb(11, 122, 72)");
+  await expect(primary).toHaveCSS("background-color", "rgb(10, 122, 69)");
   await expect(primary).toHaveCSS("border-top-width", "0px");
   await expect(railCopy).toContainText("Copy email");
 
@@ -180,7 +180,7 @@ test("links use the navigation and prose treatments", async ({ page }) => {
   await expect(navWork).toHaveCSS("text-decoration-line", "none");
   await navWork.hover();
   await expect(navWork).toHaveCSS("text-decoration-line", "underline");
-  await expect(navWork).toHaveCSS("color", "rgb(11, 122, 72)");
+  await expect(navWork).toHaveCSS("color", "rgb(10, 122, 69)");
 
   const footerEmail = page
     .getByRole("contentinfo")
@@ -357,7 +357,7 @@ test("mobile headline avoids an isolated word", async ({ page }) => {
 
       const lines = await page
         .locator("h1 > span")
-        .filter({ hasText: "AI features" })
+        .filter({ hasText: "AI agent platforms" })
         .evaluate((element) => {
           const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
           const words: Array<{ text: string; top: number }> = [];

@@ -15,7 +15,7 @@ test("opens a compact preview from a case-study title", async ({ page }) => {
 
   await expect(dialog.locator('[data-slot="sheet-title"]')).toHaveText("Che");
   await expect(dialog.locator('[data-slot="sheet-description"]')).toHaveText(
-    "B2B commerce front end for 500+ retailers and merchants, built with Next.js 14 and TypeScript.",
+    "B2B commerce platform for 500+ retailers and merchants, built with Next.js and TypeScript.",
   );
 
   const image = dialog.locator("[data-preview-image]");

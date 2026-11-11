@@ -8,13 +8,14 @@ export const clients: WorkItem[] = [
       "Delivery booking site and rider onboarding for a delivery company.",
     stack: ["Next.js", "React", "MUI", "S3 uploads"],
     caseStudySlug: "bellboy",
+    featured: true,
   },
   {
     title: "Che",
-    year: "2023-2024",
+    year: "2021-2022",
     description:
-      "B2B commerce front end for 500+ retailers and merchants, built with Next.js 14 and TypeScript.",
-    stack: ["Next.js 14", "TypeScript", "Redux", "TailwindCSS", "AWS"],
+      "B2B commerce platform for 500+ retailers and merchants, built with Next.js and TypeScript.",
+    stack: ["Next.js", "TypeScript", "Redux", "TailwindCSS", "Node.js APIs", "PostgreSQL", "AWS"],
     caseStudySlug: "che",
     liveUrl: "https://kifiya.com/che/",
     featured: true,
@@ -27,7 +28,7 @@ export const clients: WorkItem[] = [
   },
   {
     title: "Sewasew",
-    year: "2021-2022",
+    year: "2019-2020",
     description:
       "Web player, subscription management, and an internal tool for users, subscriptions, chart of accounts, and mobile and web operations.",
     stack: ["Web front end", "REST APIs", "Subscription flows"],
@@ -44,12 +45,11 @@ export const clients: WorkItem[] = [
   },
   {
     title: "Ride Plus",
-    year: "2022-2023",
+    year: "2019-2020",
     description: "Dispatch, rider, and driver tools for a taxi platform.",
     stack: ["React", "MUI data grids", "Docker", "REST APIs"],
     caseStudySlug: "ride-plus",
     liveUrl: "https://ride8294.com/ride-plus/",
-    featured: true,
     note: "Mockup design. The client dashboard is not public.",
     noteInPreviewOnly: true,
     image: {
@@ -58,13 +58,6 @@ export const clients: WorkItem[] = [
       width: 1200,
       height: 800,
     },
-  },
-  {
-    title: "Central Plaza",
-    year: "2024",
-    description: "Marketing site for a mixed-use property in Addis Ababa.",
-    stack: ["React", "MUI", "Sanity", "GSAP"],
-    liveUrl: "https://central-plaza-web-app.vercel.app/",
   },
   {
     title: "Nib",
@@ -76,7 +69,8 @@ export const clients: WorkItem[] = [
   {
     title: "Aemro Motors",
     year: "2025",
-    description: "Spare-parts and workshop admin for a motor dealer.",
+    description:
+      "Spare-parts, workshop, job-card, and test-drive admin for a motor dealer.",
     stack: ["React", "Chakra", "CKEditor"],
     visibility: "internal",
   },

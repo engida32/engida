@@ -5,36 +5,35 @@ Every public claim maps to a source file and date. Values without a source stay 
 | Claim | Value | Source | Source date | Notes |
 |---|---|---|---|---|
 | Name, email, location | Engida Lishan, engida32lishan@gmail.com, Addis Ababa | CV source | 2026-10-18 | Email only; no phone on the site |
-| Headline | I build full-stack products and AI features that survive production | User-approved copy 2026-10-28 | 2026-10-28 | Reframed from profile.yml; same claim |
-| Availability | Open to senior full-stack or AI engineering roles; remote or Addis Ababa | CV profile source | 2026-10-18 | From the candidate's stated availability |
-| Supporting line | Since 2019 across fintech, commerce, and AI products | CV source | 2026-10-18 | Summary of role history |
-| About facts | 500+ merchants, 100,000+ users, two years of AI platforms | CV source | 2026-10-18 | Matches experience rows |
-| About page | What I've built, how I work, earlier roles, and a dated now block | CV source; user-approved copy 2026-10-26 | 2026-10-26 | Text-only page; no photo or personal details beyond cv.md |
-| Global team background | Teams in South Korea, the United States, and Europe; independent contract work for a California-based AI company | User confirmation 2026-10-26 | 2026-10-26 | User-supplied; no company names or client details published |
-| UpScale | Full-Stack Developer, Mar 2019 to Jan 2021; school management 30%, Adama FC pages 40% | CV source | 2026-10-18 | School management and Adama FC claims come from the CV |
+| Headline | I build full-stack products and AI agent platforms that hold up in production | User instruction 2026-11-11; CV source | 2026-11-11 | Balances full-stack product work with AI agent platform work; senior title appears in the availability line |
+| Availability | Open to Senior Full-Stack Developer, AI Engineer, and AI platform roles; remote or Addis Ababa | CV profile source; user instruction 2026-11-11 | 2026-11-11 | Target titles expanded to full-stack, AI engineering, and AI platform roles |
+| Supporting line | Six years across fintech, commerce, and AI | CV source; user instruction 2026-11-11 | 2026-11-11 | Shortened for the hero; the release-gates idea now lives in the profile rail Focus as AI agent release engineering |
+| About facts | 500+ merchants, 100,000+ users, over six years across fintech, commerce, and AI products | CV source; user instruction 2026-11-11 | 2026-11-11 | Matches experience rows |
+| About page | What I've built, how I work, earlier roles, and a dated now block | CV source; user-approved copy 2026-11-11 | 2026-11-11 | Text-only page; no photo or personal details beyond cv.md |
+| Global team background | Teams in South Korea and the United States; independent contract work for a California-based AI company | User confirmation 2026-10-26 | 2026-10-26 | User-supplied; Europe removed from public copy on 2026-11-11 because no role row supports it; no company names or client details published |
 | GitHub and LinkedIn | github.com/engida32, linkedin.com/in/engida | CV profile source | 2026-10-18 | Profile links |
 | X handle | x.com/morganfreak32 | User confirmation | 2026-10-28 | User-supplied handle |
-| CV path | /cv/engida-lishan-cv.pdf | Internal planning note; CV build source | 2026-10-28 | Replaced with a sanitized copy on 2026-10-28; pdftotext confirms the phone is absent and the contact line is current. |
-| Turing role | Full-Stack Developer and AI Engineer, Nov 2024 to Sep 2026 | CV source | 2026-10-18 | Client names omitted |
+| CV path | /cv/engida-lishan-cv.pdf | Internal planning note; CV build source | 2026-11-11 | Replaced with a sanitized copy on 2026-11-11; pdftotext confirms the phone is absent and the contact line is current. |
+| Turing role | Full-Stack Developer and AI Engineer, Nov 2024 to Present | CV source; user instruction 2026-11-11 | 2026-11-11 | Client names omitted |
 | Platform: Turing agent platform | Internal platform for releasing and evaluating browser-based agent environments | Private work repository, ui-gym-platform at 177d343; Private work repository, ots-documentation at f8b3265 | 2026-10-25 | User confirmed the Turing commit identity covers this work; platform was a team effort |
 | Turing platform role | Full-stack and AI engineering: release flows, task and assertion tooling, evaluation screens, access management, client variants | User confirmation 2026-10-25; Private work repository, ui-gym-platform at 177d343 | 2026-10-25 | Scope is user-supplied; system facts from private work repositories |
 | Turing platform clients | NVIDIA, Amazon, Salesforce, Microsoft | User confirmation 2026-10-25; branch names in a private work repository | 2026-10-25 | High-level examples only; no branch names or repo links published |
 | Kifiya metrics | 500+ merchants, 30% faster loads, 25% adoption, 50% faster releases | CV source | 2026-10-18 | Company link confirmed |
-| Kepler Lab | Jan 2023 to Dec 2023, 40% faster render | CV source | 2026-10-18 | Remote South Korea |
-| JaktTech role | Lead Front-End Developer, Sep 2022 to Nov 2023; enterprise apps for banks and insurers, SMS gateway; 30% internal operations improvement | CV source | 2026-10-18 | CV confirms the role, scope, and 30% outcome |
+| Kepler Lab | Oct 2022 to Sep 2023; DreamBience, an AI meditation web app that builds personalized guided sessions from three keywords; 40% faster render | CV source; user instruction 2026-11-11; https://www.producthunt.com/products/dreambience | 2026-11-11 | Remote South Korea; product description checked 2026-11-11 |
+| JaktTech role | Lead Front-End Developer, Oct 2020 to Sep 2021; enterprise apps for banks and insurers, SMS gateway; 30% internal operations improvement | CV source; user instruction 2026-11-11 | 2026-11-11 | CV confirms the role, scope, and 30% outcome |
 | 2F Capital | 100,000+ users, 50,000+ transactions | CV source | 2026-10-18 | Company link confirmed; driver total omitted because the admin view shows 42K+ records |
 | Client: Bellboy | Delivery booking site and rider onboarding | Private client repository, belboy/landing-site/package.json at 689c78c and Private client repository, belboy/rider-application-form/package.json at e76571c | 2026-10-25 | Stack from both package.json files |
 | Client year: Bellboy 2024 | 2024 | Private client repository, belboy/admin-web at 17a3611, landing-site at 689c78c, rider-application-form at e76571c | 2026-10-25 | Year is the user-provided timeline, corroborated by repo commit dates in 2024 |
 | Bellboy stack | Next.js, React, MUI, S3 uploads | Private client repository, belboy/landing-site/package.json at 689c78c, admin-web/package.json at 17a3611, rider-application-form/package.json at e76571c | 2026-10-25 | @aws-sdk/client-s3 in rider-application-form |
 | Client: Che | B2B commerce front end for 500+ retailers and merchants | CV source; https://kifiya.com/che/ | 2026-10-25 | Kifiya/Che product context checked 200 |
-| Client year: Che 2023-2024 | 2023-2024 | CV source role dates Aug 2023 to Nov 2024 | 2026-10-25 | Year spans the role dates; user approved the case study |
-| Che stack | Next.js 14, TypeScript, Redux, TailwindCSS, Node.js APIs, PostgreSQL, AWS | CV source | 2026-10-25 | CV names the framework and release stack |
+| Client year: Che 2021-2022 | 2021-2022 | CV source role dates Oct 2021 to Sep 2022; user instruction 2026-11-11 | 2026-11-11 | Year spans the role dates; user approved the case study |
+| Che stack | Next.js, TypeScript, Redux, TailwindCSS, Node.js APIs, PostgreSQL, AWS | CV source; user instruction 2026-11-11 | 2026-11-11 | Removed the Next.js 14 label because that release postdates the 2021-2022 role; full-stack tech added at user request |
 | Che images | /work/che/che-card.webp, /work/che/che-plate.webp | Public Che product page, https://kifiya.com/che/, captured 2026-10-27 | 2026-10-27 | Public page screenshots; desktop card and desktop-plus-mobile plate. Not a mockup. |
 | Client: Sewasew | Web music streaming and subscription management | CV source; https://sewasewmusic.com/; https://subscription.sewasewmusic.com/ | 2026-10-28 | Both public product pages checked 200 |
-| Client year: Sewasew 2021-2022 | 2021-2022 | CV source role dates Mar 2021 to Sep 2022 | 2026-10-25 | Year spans the 2F role; user confirmed web app and subscription work |
+| Client year: Sewasew 2019-2020 | 2019-2020 | CV source role dates Mar 2019 to Sep 2020; user instruction 2026-11-11 | 2026-11-11 | Year spans the 2F role; user confirmed web app and subscription work |
 | Sewasew stack | Web front end, REST APIs, subscription flows | User confirmation 2026-10-25; CV source | 2026-10-25 | Framework was not verified, so no framework is named |
 | Client: Ride Plus | Dispatch, rider, and driver tools for a taxi platform | User-provided screenshot 2026-10-25; https://ride8294.com/ride-plus/ | 2026-10-25 | Internal admin URL and personal driver data omitted |
-| Client year: Ride Plus 2022-2023 | 2022-2023 | CV source role dates Mar 2021 to Sep 2022; user confirmation 2026-10-25 | 2026-10-25 | Stated timeline; corrects the earlier 2023-only row |
+| Client year: Ride Plus 2019-2020 | 2019-2020 | CV source role dates Mar 2019 to Sep 2020; user instruction 2026-11-11 | 2026-11-11 | Stated timeline; corrected to the 2F role dates |
 | Ride Plus stack | React, MUI data grids, Docker, REST APIs | Private client repository, ride-plus-admin-ui-v2/package.json at d63aeb7 and Private client repository, ride-plus-bms-v2/package.json at 7b08141; user confirmation 2026-10-25 | 2026-10-25 | @mui/x-data-grid and Dockerfile in both repos; REST APIs from the dashboard |
 | Ride Plus scale | 42K+ driver records | User-provided admin screenshot 2026-10-25 | 2026-10-25 | Aggregate count only; names, phones, emails, plates, and TINs omitted |
 | Ride Plus dashboard image | /work/ride-plus/ride-plus-card.webp, /work/ride-plus/ride-plus-plate.webp; illustrative recreation of the admin operations dashboard | Generated from the product description 2026-10-28; user request | 2026-10-28 | Not a client screenshot; alt and caption identify it as illustrative |
@@ -44,9 +43,19 @@ Every public claim maps to a source file and date. Values without a source stay 
 | Client: Nib | Meeting and live-report tools for an insurance team | User-provided client list 2026-10-25 | 2026-10-25 | Description user-stated |
 | Client year: Nib 2025 | 2025 | Private client repository, Nib/nib-meetings at ed29036 and Private client repository, Nib/nib-live-report at 297c9d4 | 2026-10-25 | Year is the user-provided timeline, corroborated by the nib-meetings commit date |
 | Nib stack | React, Chakra, Recharts | Private client repository, Nib/nib-meetings/package.json at ed29036 and Private client repository, Nib/nib-live-report/package.json at 297c9d4 | 2026-10-25 | @chakra-ui/react and recharts in both package.json files |
-| Client: Aemro Motors | Spare-parts and workshop admin for a motor dealer | User-provided client list, approved design spec 2026-10-25 | 2026-10-25 | No repository or public source found; description and stack are user-stated with no independent source |
+| Client: Bank and insurance operations apps | Enterprise web apps for banks and insurance companies, focused on internal operations and process automation | CV source; user instruction 2026-11-11 | 2026-11-11 | Derived from the JaktTech role scope in cv.md |
+| Client year: Bank and insurance operations apps 2020-2021 | 2020-2021 | CV source role dates Oct 2020 to Sep 2021; user instruction 2026-11-11 | 2026-11-11 | Year spans the JaktTech role |
+| Bank and insurance operations apps stack | React, Next.js, Redux, Tailwind | User instruction 2026-11-11 | 2026-11-11 | User-stated stack for the JaktTech client work |
+| Client: SMS gateway | Multi-organization SMS gateway management system with a web dashboard and role-based access | CV source; user instruction 2026-11-11 | 2026-11-11 | Derived from the JaktTech role scope in cv.md |
+| Client year: SMS gateway 2020-2021 | 2020-2021 | CV source role dates Oct 2020 to Sep 2021; user instruction 2026-11-11 | 2026-11-11 | Year spans the JaktTech role |
+| SMS gateway stack | React, Next.js, REST APIs | User instruction 2026-11-11 | 2026-11-11 | User-stated stack for the JaktTech client work |
+| Client: Aemro Motors | Spare-parts, workshop, job-card, and test-drive admin for a motor dealer | User-provided client list, approved design spec 2026-10-25; user instruction 2026-11-11 | 2026-11-11 | No repository or public source found; description and stack are user-stated with no independent source |
 | Client year: Aemro Motors 2025 | 2025 | User-provided client list, approved design spec 2026-10-25 | 2026-10-25 | User-supplied only; no independent source |
 | Aemro Motors stack | React, Chakra, CKEditor | User-provided client list, approved design spec 2026-10-25 | 2026-10-25 | User-stated; no independent source |
+| Project: Paismo | HR and payroll management platform; Next.js, TypeScript, TailwindCSS, MongoDB, Stripe | CV source; user instruction 2026-11-11; https://paismo.com | 2026-11-11 | Project entry added for the portfolio |
+| Project year: Paismo 2023-2024 | 2023-2024 | CV source role dates Oct 2023 to Oct 2024; user instruction 2026-11-11 | 2026-11-11 | Year spans the Paismo role |
+| Paismo role | Senior Software Developer, Oct 2023 to Oct 2024 | CV source; user instruction 2026-11-11 | 2026-11-11 | Role and dates come from cv.md; the Paismo project row remains separate |
+| Paismo metrics | 200+ employees paid, 99.9% payroll accuracy, month-end close from 5 days to 1 day | CV source; user instruction 2026-11-11 | 2026-11-11 | Metrics are CV/user-stated, not website-verified; https://docs.paismo.com/ supports only a general 3-5 days to seconds reconciliation claim |
 | Project: Serpentine Arcade | Eight games, offline-first PWA, TV remotes, gamepads | github.com/engida32/serpentine at b8532fe, README.md | 2026-10-25 | Live URL checked 200 |
 | Serpentine Arcade stack | React, TypeScript, Vite, Supabase, Service Worker | github.com/engida32/serpentine at b8532fe, package.json | 2026-10-25 | Dependencies include react, vite, vite-plugin-pwa, @supabase/supabase-js |
 | Serpentine input and offline claims | Remote, keyboard, Gamepad API, service worker, localStorage | github.com/engida32/serpentine at b8532fe, README.md and src/ui/input.ts | 2026-10-25 | README states offline PWA and input support; input.ts implements the input layer |
@@ -67,9 +76,9 @@ Every public claim maps to a source file and date. Values without a source stay 
 | turing-agent-platform status | Turing, internal | User confirmation 2026-10-25 | 2026-10-25 | Internal work; no public demo |
 | turing-agent-platform build and decisions | Release orchestration, assertions, judge, clean sessions, scoped access | Private work repository, ui-gym-platform at 177d343; Private work repository, ots-documentation at f8b3265 | 2026-10-25 | System facts plus user-provided case-study brief |
 | che problem | B2B commerce front end needed to stay fast as catalog and order data grew | User-provided case-study brief 2026-10-25; CV source | 2026-10-25 | Business problem is user-supplied; CV confirms the platform and metrics |
-| che role | Senior Front-End Developer | CV source | 2026-10-18 | Role title confirmed |
+| che role | Full-Stack Developer | CV source; user instruction 2026-11-11 | 2026-11-11 | Title updated at user request; CV confirms the platform, stack, and metrics |
 | che status | Client work | User-provided case-study brief 2026-10-25 | 2026-10-25 | Status is user-supplied |
-| che build and decisions | Next.js App Router, RSC, Redux, AWS release automation | CV source | 2026-10-25 | CV confirms the stack and release work |
+| che build and decisions | Next.js, server rendering, Redux, Node.js and PostgreSQL APIs, AWS release automation | CV source; user instruction 2026-11-11 | 2026-11-11 | Removed Next.js 14 and App Router/RSC because they postdate the role; full-stack integration is in the CV |
 | sewasew problem | Web player and subscription flow needed to work as one product | User-provided case-study brief 2026-10-25 | 2026-10-25 | Business problem is user-supplied |
 | sewasew role | Front-end developer | User confirmation 2026-10-25 | 2026-10-25 | Role is user-supplied |
 | sewasew status | Client work | User-provided case-study brief 2026-10-25 | 2026-10-25 | Status is user-supplied |

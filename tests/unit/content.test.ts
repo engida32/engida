@@ -10,10 +10,10 @@ import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
 
 describe("content counts", () => {
-  it("has one platform row, seven client rows, three independent rows, and eight case studies", () => {
+  it("has one platform row, six client rows, four independent rows, and eight case studies", () => {
     expect(platforms).toHaveLength(1);
-    expect(clients).toHaveLength(7);
-    expect(projects).toHaveLength(3);
+    expect(clients).toHaveLength(6);
+    expect(projects).toHaveLength(4);
     expect(caseStudies).toHaveLength(8);
   });
 
@@ -29,10 +29,10 @@ describe("portfolio structure", () => {
       .map((item) => item.title);
     expect(featured).toEqual([
       "Turing agent platform",
+      "Bellboy",
       "Che",
-      "Ride Plus",
       "Serpentine Arcade",
-      "Real-time signal engine",
+      "Vector Search Studio",
     ]);
   });
 
@@ -117,8 +117,8 @@ describe("content integrity", () => {
     const jaktTech = experience.find((item) => item.company === "JaktTech Engineering");
     expect(jaktTech).toMatchObject({
       role: "Lead Front-End Developer",
-      start: "Sep 2022",
-      end: "Nov 2023",
+      start: "Oct 2020",
+      end: "Sep 2021",
       location: "Addis Ababa",
     });
     expect(jaktTech?.scope).toContain("SMS gateway");
@@ -175,7 +175,6 @@ describe("approved content", () => {
       "Che",
       "Sewasew",
       "Ride Plus",
-      "Central Plaza",
       "Nib",
       "Aemro Motors",
     ]);

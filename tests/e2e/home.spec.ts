@@ -1,25 +1,26 @@
 import { expect, test, type Locator } from "@playwright/test";
 
 const workTitles = [
-  "Turing agent platform", "Che", "Ride Plus", "Serpentine Arcade",
-  "Real-time signal engine", "Bellboy", "Sewasew", "Vector Search Studio",
-  "Central Plaza", "Nib", "Aemro Motors",
+  "Turing agent platform", "Bellboy", "Che", "Serpentine Arcade",
+  "Vector Search Studio", "Sewasew", "Ride Plus", "Real-time signal engine",
+  "Paismo", "Nib", "Aemro Motors",
 ];
 
 const caseStudyTitles = [
-  "Turing agent platform", "Che", "Ride Plus", "Serpentine Arcade",
-  "Real-time signal engine", "Bellboy", "Sewasew", "Vector Search Studio",
+  "Turing agent platform", "Bellboy", "Che", "Sewasew",
+  "Ride Plus", "Serpentine Arcade", "Vector Search Studio",
+  "Real-time signal engine",
 ];
 
-const plainTitles = ["Central Plaza", "Nib", "Aemro Motors"];
+const plainTitles = ["Paismo", "Nib", "Aemro Motors"];
 
 const roles = [
-  "Full-Stack Developer and AI Engineer",
-  "Senior Front-End Developer",
+  "Full-Stack Developer & AI Engineer",
+  "Senior Software Developer",
   "Software Developer",
+  "Full-Stack Developer",
   "Lead Front-End Developer",
   "Front-End Developer",
-  "Full-Stack Developer",
 ];
 
 async function expectDocumentOrder(before: Locator, after: Locator) {
@@ -52,10 +53,10 @@ test("shows every selected row and six roles", async ({ page }) => {
   }
   await expect(
     work.getByRole("link", {
-      name: "Live: Central Plaza (opens in a new tab)",
+      name: "Live: Che (opens in a new tab)",
       exact: true,
     }),
-  ).toHaveAttribute("href", "https://central-plaza-web-app.vercel.app/");
+  ).toHaveAttribute("href", "https://kifiya.com/che/");
   await expect(
     work.getByRole("link", {
       name: "Source: Vector Search Studio (opens in a new tab)",
@@ -68,7 +69,7 @@ test("shows every selected row and six roles", async ({ page }) => {
       experience.getByRole("heading", { name: role, exact: true }),
     ).toBeVisible();
   }
-  for (const company of ["Turing", "Kifiya", "Kepler Lab", "JaktTech Engineering", "2F Capital", "UpScale"]) {
+  for (const company of ["Turing", "Paismo", "Kepler Lab", "Kifiya", "JaktTech Engineering", "2F Capital"]) {
     await expect(
       experience.getByText(new RegExp(`^${company}`)).first(),
     ).toBeVisible();
@@ -86,18 +87,18 @@ test("groups five featured case studies ahead of six more rows", async ({ page }
   await expect(featured).toHaveCount(5);
   await expect(more).toHaveCount(6);
 
-  await expect(featured.getByRole("link", { name: /^(Turing agent platform|Che|Ride Plus|Serpentine Arcade|Real-time signal engine)$/ })).toHaveCount(5);
-  await expect(more.getByRole("link", { name: /^(Bellboy|Sewasew|Vector Search Studio)$/ })).toHaveCount(3);
+  await expect(featured.getByRole("link", { name: /^(Turing agent platform|Bellboy|Che|Serpentine Arcade|Vector Search Studio)$/ })).toHaveCount(5);
+  await expect(more.getByRole("link", { name: /^(Sewasew|Ride Plus|Real-time signal engine)$/ })).toHaveCount(3);
 
   const titles = async (group: Locator) =>
     group.locator("[data-work-title]").evaluateAll((links) =>
       links.map((link) => link.textContent?.trim()),
     );
   expect(await titles(featured)).toEqual([
-    "Turing agent platform", "Che", "Ride Plus", "Serpentine Arcade", "Real-time signal engine",
+    "Turing agent platform", "Bellboy", "Che", "Serpentine Arcade", "Vector Search Studio",
   ]);
   expect(await titles(more)).toEqual([
-    "Bellboy", "Sewasew", "Central Plaza", "Nib", "Aemro Motors", "Vector Search Studio",
+    "Sewasew", "Ride Plus", "Nib", "Aemro Motors", "Real-time signal engine", "Paismo",
   ]);
 });
 

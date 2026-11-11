@@ -14,7 +14,7 @@ const cases = [
   [
     "che",
     "Che",
-    "B2B commerce front end for 500+ retailers and merchants, built with Next.js 14 and TypeScript.",
+    "B2B commerce platform for 500+ retailers and merchants, built with Next.js and TypeScript.",
   ],
   [
     "sewasew",

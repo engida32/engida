@@ -20,14 +20,18 @@ test("profile rail carries facts and contact links", async ({ page }) => {
   const rail = page.locator('aside[aria-label="Profile and contact"]');
   await expect(rail).toBeVisible();
 
-  for (const label of ["Profile", "Based in", "Focus", "Stack", "Contact"]) {
+  for (const label of ["Profile", "Open to", "Focus", "Stack", "Contact"]) {
     await expect(rail.getByText(label, { exact: true })).toBeVisible();
   }
-  await expect(rail.getByText("Addis Ababa, Ethiopia", { exact: true })).toBeVisible();
-  await expect(rail.getByText("Available", { exact: true })).toBeVisible();
   await expect(
-    rail.getByText("AI product and platform engineering", { exact: true }),
+    rail.getByText("Senior Full-Stack Developer, AI Engineer, and AI platform roles", {
+      exact: true,
+    }),
   ).toBeVisible();
+  await expect(rail.getByText("Remote or Addis Ababa", { exact: true })).toBeVisible();
+  await expect(rail.getByText("Available", { exact: true })).toBeVisible();
+  await expect(rail.getByText("AI agent release engineering", { exact: true })).toBeVisible();
+  await expect(rail.getByText("Full-stack product interfaces", { exact: true })).toBeVisible();
   await expect(rail.getByText("TypeScript, React, Next.js", { exact: true })).toBeVisible();
   await expect(
     rail.getByText("Python, FastAPI, Postgres, pgvector", { exact: true }),
@@ -74,14 +78,14 @@ test("experience highlights only the published metrics", async ({ page }) => {
     nodes.map((node) => node.textContent?.trim()),
   );
   expect(texts).toEqual([
+    "200+ employees",
+    "99.9% accuracy",
+    "40%",
     "30% faster loads",
     "25% higher adoption",
     "50% faster releases",
-    "40%",
     "30%",
     "50,000+ transactions",
-    "30%",
-    "40%",
   ]);
 });
 
@@ -104,7 +108,7 @@ test("work titles stretch across the row while external actions stay clickable",
   expect(titleStyle.content).not.toBe("none");
   expect(titleStyle.inset).toBe("0px");
 
-  const live = page.getByRole("link", { name: "Live: Central Plaza (opens in a new tab)" });
+  const live = page.getByRole("link", { name: "Live: Che (opens in a new tab)" });
   await expect(live).toHaveCSS("position", "relative");
   await expect(live).toHaveCSS("z-index", "10");
 });
