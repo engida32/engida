@@ -323,13 +323,13 @@ describe("approved content", () => {
     const kifiya = experience.find((item) => item.company === "Kifiya");
     expect(kifiya?.scope).toContain("500+ merchants");
     expect(kifiya?.outcome).toBe(
-      "Platform results: 30% faster loads, 25% higher adoption, and 50% faster releases.",
+      "The platform saw 30% faster loads, 25% higher adoption, and 50% faster releases.",
     );
 
     const capital = experience.find((item) => item.company === "2F Capital");
     expect(capital?.scope).toContain("100,000+ users");
     expect(capital?.scope).not.toContain("10,000+ drivers");
-    expect(capital?.outcome).toBe("The taxi platform processed 50,000+ transactions.");
+    expect(capital?.outcome).toBe("The taxi platform handled 50,000+ transactions.");
 
     expect(caseStudyBySlug("che")?.result).toContain("30%");
     expect(caseStudyBySlug("che")?.result).toContain("25%");

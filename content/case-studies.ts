@@ -30,22 +30,22 @@ export const caseStudies: CaseStudy[] = [
     problem: [
       "Agent work needs realistic software to act in, a clean starting state, and a clear pass or fail signal.",
       "Each environment also needs its own release path, access rules, and logs that explain a failed run.",
-      "Doing that across several apps by hand does not scale.",
+      "Maintaining that by hand across four app families did not scale.",
     ],
     build: [
-      "Built the control plane: register a gym, connect its GitHub repo, provision Cloud Build, cut release branches and tags, deploy to Cloud Run, and stream build logs.",
-      "Added redeploy and cancel controls, back-merge tracking, access walls, notifications, audit history, and release notes.",
+      "Built the control plane: register an environment, connect its GitHub repo, provision Cloud Build, cut release branches and tags, deploy to Cloud Run, and stream build logs.",
+      "Added redeploy and cancel controls, back-merge tracking, access controls, notifications, audit history, and release notes.",
       "Built task and prompt workflows, assertion-based state checks, rubric scoring, LLM-as-judge review, golden reviews, and batch end-to-end runs.",
       "Worked across four environment families: support desk, email, CRM, and sales. Client examples included NVIDIA, Amazon, Salesforce, and Microsoft.",
     ],
     decisions: [
       "Releases are branch and tag based, so every environment has a reproducible version.",
-      "Assertions decide pass or fail; the judge adds a qualitative read, not the only signal.",
+      "Assertions decide pass or fail; the judge adds context, not the pass/fail decision.",
       "Each run starts from a clean state, so one session does not leak into the next.",
-      "Access is scoped per environment, not shared across every gym.",
+      "Access is scoped to each environment, not shared across all of them.",
     ],
     scope:
-      "I worked across the platform and the gym environments: release and deployment flows, task and assertion tooling, evaluation screens, access management, and client-specific variants. The platform was a team effort; the case study describes the system and the parts I built.",
+      "I worked across the platform and the environments: release and deployment flows, task and assertion tooling, evaluation screens, access management, and client-specific variants. I built part of this platform with a team; the case study describes the system and the parts I worked on.",
     diagram: {
       title: "Lifecycle",
       kind: "flow",
@@ -66,7 +66,7 @@ export const caseStudies: CaseStudy[] = [
       "Release logs, audit history, and access checks.",
     ],
     result:
-      "One workflow now covers register, release, run, inspect, and score. Client variants reused the same control plane instead of rebuilding the release path.",
+      "One workflow covers register, release, run, inspect, and score. Client variants reused the same control plane instead of rebuilding the release path.",
     tradeoff:
       "The platform is internal, so the case study shows architecture and workflow rather than a public demo.",
     links: [],
@@ -79,7 +79,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Front end and admin",
     status: "Client work",
     summary:
-      "Delivery booking site and rider onboarding for a delivery company.",
+      "Quote-to-booking site and rider onboarding for a delivery company.",
     outcome:
       "A quote-to-booking flow and a rider onboarding flow that collects every required document before review.",
     stack: ["Next.js 14", "React", "MUI", "Tailwind", "react-query", "Formik", "Yup", "AWS S3"],
@@ -121,7 +121,7 @@ export const caseStudies: CaseStudy[] = [
     status: "Client work",
     summary:
       "B2B commerce platform for 500+ retailers and merchants, built with Next.js and TypeScript.",
-    outcome: "A faster storefront for 500+ merchants, with releases 50% faster.",
+    outcome: "A storefront that loaded 30% faster for 500+ merchants, with releases 50% faster.",
     stack: [
       "Next.js",
       "TypeScript",
@@ -142,14 +142,14 @@ export const caseStudies: CaseStudy[] = [
     ],
     build: [
       "Built the storefront in Next.js, TypeScript, Redux, and TailwindCSS, with a modular structure for shared commerce screens.",
-      "Used server rendering and real-time data sync to keep catalog and order data fast.",
+      "Used server rendering and live data updates to keep catalog and order data current.",
       "Connected the storefront to Node.js and PostgreSQL APIs.",
       "Automated the AWS release path, cutting release cycles by 50%.",
     ],
     decisions: [
       "Server rendering for catalog pages, with client state only where interaction needed it.",
       "Shared components for repeated merchant workflows.",
-      "Release automation instead of manual deploys.",
+      "Automated the release path.",
     ],
     scope:
       "I owned the storefront, API integration, and AWS release path, and worked with backend engineers on the API contract. The credit, underwriting, and distributor operations systems were outside my scope.",
@@ -186,9 +186,9 @@ export const caseStudies: CaseStudy[] = [
     role: "Front-end developer",
     status: "Client work",
     summary:
-      "Web music streaming, subscription management, and an internal tool for users, subscriptions, and chart of accounts at an Ethiopian streaming service.",
+      "Web player, subscription management, and an internal operations tool for an Ethiopian music streaming service.",
     outcome:
-      "A web player, a subscription flow, and an internal tool for users, subscriptions, and chart of accounts.",
+      "The web player and subscription flow shared one state model, and the internal team had one tool for users, subscriptions, and chart of accounts.",
     stack: ["Web front end", "REST APIs", "Subscription flows"],
     deliverables: [
       "Web player",
@@ -198,11 +198,11 @@ export const caseStudies: CaseStudy[] = [
       "API integration and states",
     ],
     problem: [
-      "A streaming service needed a web player and a subscription flow that worked together, not as two separate products. The internal team also needed one place to manage users, subscriptions, chart of accounts, and related operations across the mobile and web products.",
+      "A streaming service needed a web player and a subscription flow that worked as one product. The internal team also needed one place to manage users, subscriptions, chart of accounts, and operations across the mobile and web products.",
     ],
     build: [
       "Built the landing page, the web listening experience, and the public subscription page.",
-      "Worked on the internal tool for user and subscription CRUD, chart of accounts (COA), and other internal management across the mobile and web products.",
+      "Worked on the internal tool for user and subscription management, chart of accounts (COA), and operations across the mobile and web products.",
       "Connected the front end to the streaming APIs and handled loading, empty, and error states.",
       "Worked with backend engineers on API integration and UI performance.",
     ],
@@ -211,9 +211,9 @@ export const caseStudies: CaseStudy[] = [
       "The web player and the account screens share the same state model.",
     ],
     scope:
-      "I worked on the landing page, the public subscription page, the internal tool for user and subscription management, chart of accounts (COA), and other internal operations for the mobile and web products. I did not build the native mobile apps.",
+      "I worked on the landing page, the public subscription page, and the internal tool for user and subscription management, chart of accounts (COA), and operations across the mobile and web products. I did not build the native mobile apps.",
     context:
-      "Sewasew is an Ethiopian music streaming service with 500K+ Google Play downloads. The internal tool supports users, subscriptions, chart of accounts, and other operations across the mobile and web products. The tool is not public, so the dashboard images here are illustrative recreations. The download figure describes the product, not my work.",
+      "Sewasew is an Ethiopian music streaming service with 500K+ Google Play downloads. The internal tool supports users, subscriptions, chart of accounts, and operations across the mobile and web products. The tool is not public, so the dashboard images here are illustrative recreations. The download figure describes the product, not my work.",
     diagram: {
       title: "Surfaces",
       kind: "group",
@@ -330,7 +330,7 @@ export const caseStudies: CaseStudy[] = [
     decisions: [
       "The game loop runs outside React.",
       "The backend is optional, so the arcade still works offline.",
-      "One canonical live URL.",
+      "One public URL for the arcade.",
     ],
     diagram: {
       title: "System",
@@ -427,9 +427,16 @@ export const caseStudies: CaseStudy[] = [
         "WebSocket view",
       ],
     },
-    validation: ["CPCV", "PBO", "DSR", "Leakage audit", "Triple-barrier labels", "Calibration"],
+    validation: [
+      "Combinatorial purged cross-validation (CPCV)",
+      "Probability of backtest overfitting (PBO)",
+      "Deflated Sharpe ratio (DSR)",
+      "Leakage audit",
+      "Triple-barrier labels",
+      "Calibration",
+    ],
     result:
-      "48 to 50% out-of-sample on spot models. I report it as a measurement, not an edge. The useful work is the validation pipeline and the per-bucket record.",
+      "48 to 50% out-of-sample on spot models. I report it as a measurement, not an edge. The validation pipeline and per-bucket results are the parts worth keeping.",
     links: [],
     screenshots: [],
   },

@@ -9,7 +9,7 @@ import { basePath } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
-    "About Engida Lishan, a full-stack engineer in Addis Ababa working on commerce, fintech, and AI products.",
+    "About Engida Lishan, a full-stack engineer in Addis Ababa who builds commerce, fintech, and AI products.",
   path: "/about/",
 });
 

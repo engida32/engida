@@ -5,7 +5,7 @@ export const clients: WorkItem[] = [
     title: "Bellboy",
     year: "2024",
     description:
-      "Delivery booking site and rider onboarding for a delivery company.",
+      "Quote-to-booking site and rider onboarding for a delivery company.",
     stack: ["Next.js", "React", "MUI", "S3 uploads"],
     caseStudySlug: "bellboy",
     featured: true,
@@ -30,7 +30,7 @@ export const clients: WorkItem[] = [
     title: "Sewasew",
     year: "2019-2020",
     description:
-      "Web player, subscription management, and an internal tool for users, subscriptions, chart of accounts, and mobile and web operations.",
+      "Web player, subscription management, and an internal tool for users, subscriptions, and chart of accounts.",
     stack: ["Web front end", "REST APIs", "Subscription flows"],
     caseStudySlug: "sewasew",
     liveUrl: "https://sewasewmusic.com/",

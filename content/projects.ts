@@ -41,7 +41,7 @@ export const projects: WorkItem[] = [
     title: "Paismo",
     year: "2023-2024",
     description:
-      "Next-gen Human Capital Management platform for onboard, pay, and team management. Built a full-stack Next.js app with TypeScript, integrating payroll processing, employee onboarding workflows, and benefits administration.",
+      "HR and payroll platform for onboarding, payroll, and team management. Built with Next.js and TypeScript, including payroll processing, onboarding workflows, and benefits administration.",
     stack: ["Next.js", "TypeScript", "TailwindCSS", "MongoDB", "Stripe"],
     liveUrl: "https://paismo.com",
   },

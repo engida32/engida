@@ -142,11 +142,11 @@ export function CaseStudyPage({
     { id: "build", label: "What I built" },
     ...(study.diagram ? [{ id: "diagram", label: study.diagram.title }] : []),
     ...(study.decisions?.length ? [{ id: "decisions", label: "Decisions" }] : []),
-    ...(study.context ? [{ id: "context", label: "Team context" }] : []),
+    ...(study.context ? [{ id: "context", label: "Team and scope" }] : []),
     ...(study.validation?.length ? [{ id: "validation", label: "Validation" }] : []),
     ...(study.result ? [{ id: "result", label: "Result" }] : []),
     ...(study.tradeoff ? [{ id: "tradeoff", label: "Tradeoff" }] : []),
-    ...(study.next?.length ? [{ id: "next", label: "What comes next" }] : []),
+    ...(study.next?.length ? [{ id: "next", label: "What I'd build next" }] : []),
     ...(study.screenshots.length ? [{ id: "screens", label: "Screens" }] : []),
     ...(study.links.length ? [{ id: "links", label: "Links" }] : []),
     { id: "contact", label: "Contact" },
@@ -194,7 +194,7 @@ export function CaseStudyPage({
             <ListSection id="decisions" title="Decisions" items={study.decisions} />
           ) : null}
           {study.context ? (
-            <Section id="context" title="Team context" items={[study.context]} />
+            <Section id="context" title="Team and scope" items={[study.context]} />
           ) : null}
           {study.validation?.length ? (
             <ListSection id="validation" title="Validation" items={study.validation} />
@@ -206,7 +206,7 @@ export function CaseStudyPage({
             <Section id="tradeoff" title="Tradeoff" items={[study.tradeoff]} />
           ) : null}
           {study.next?.length ? (
-            <ListSection id="next" title="What comes next" items={study.next} />
+            <ListSection id="next" title="What I'd build next" items={study.next} />
           ) : null}
 
           {study.screenshots.length > 0 ? (

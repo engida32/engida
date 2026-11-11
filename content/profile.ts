@@ -1,14 +1,14 @@
 export const profile = {
   name: "Engida Lishan",
   headline:
-    "I build full-stack products and AI agent platforms that hold up in production.",
+    "I build full-stack products and the systems that release and evaluate AI agents.",
   availability: {
     role: "Senior Full-Stack Developer, AI Engineer, and AI platform roles",
     location: "Remote or Addis Ababa",
   },
-  supporting: "Six years across fintech, commerce, and AI.",
+  supporting: "Since 2019: fintech, commerce, and AI products.",
   about:
-    "I started at 2F Capital, building the web front end for a taxi platform with 100,000+ users. Then a commerce platform for 500+ merchants, and two years of AI platforms. I work on the state that decides whether a product feels reliable: failed requests, bad model output, and the edge cases in between.",
+    "I started at 2F Capital on the web front end for a taxi platform with 100,000+ users, moved to a commerce platform for 500+ merchants, then spent two years on AI platforms. I work on failure paths: failed requests, bad model output, retries, and releases that land at the wrong time.",
   location: "Addis Ababa, Ethiopia",
   email: "engida32lishan@gmail.com",
   github: "https://github.com/engida32",

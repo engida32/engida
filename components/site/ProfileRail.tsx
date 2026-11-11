@@ -25,8 +25,8 @@ const facts = [
     label: "Focus",
     value: (
       <span className="rail-stack">
-        <span>AI agent release engineering</span>
-        <span>Full-stack product interfaces</span>
+        <span>AI agent release and evaluation systems</span>
+        <span>Full-stack product engineering</span>
       </span>
     ),
   },

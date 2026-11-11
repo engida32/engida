@@ -9,7 +9,7 @@ const cases = [
   [
     "bellboy",
     "Bellboy",
-    "Delivery booking site and rider onboarding for a delivery company.",
+    "Quote-to-booking site and rider onboarding for a delivery company.",
   ],
   [
     "che",
@@ -19,7 +19,7 @@ const cases = [
   [
     "sewasew",
     "Sewasew",
-    "Web music streaming, subscription management, and an internal tool for users, subscriptions, and chart of accounts at an Ethiopian streaming service.",
+    "Web player, subscription management, and an internal operations tool for an Ethiopian music streaming service.",
   ],
   [
     "ride-plus",
@@ -167,7 +167,7 @@ test("shows team context and system diagrams", async ({ page }) => {
   await expect(page.getByText(/The dashboard handled 42K\+ driver records/)).toBeVisible();
 
   await page.goto("/work/bellboy/");
-  await expect(page.getByRole("heading", { name: "Team context" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Team and scope" })).toBeVisible();
   await expect(page.getByText(/NestJS\/Prisma service/)).toBeVisible();
   await expect(page.getByRole("heading", { name: "Surfaces" })).toBeVisible();
   await expect(page.getByText("Team API", { exact: true })).toBeVisible();
@@ -175,7 +175,7 @@ test("shows team context and system diagrams", async ({ page }) => {
   await page.goto("/work/sewasew/");
   await expect(
     page.getByText(
-      "Worked on the internal tool for user and subscription CRUD, chart of accounts (COA), and other internal management across the mobile and web products.",
+      "Worked on the internal tool for user and subscription management, chart of accounts (COA), and operations across the mobile and web products.",
       { exact: true },
     ),
   ).toBeVisible();

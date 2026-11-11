@@ -357,7 +357,7 @@ test("mobile headline avoids an isolated word", async ({ page }) => {
 
       const lines = await page
         .locator("h1 > span")
-        .filter({ hasText: "AI agent platforms" })
+        .filter({ hasText: "release and evaluate AI agents" })
         .evaluate((element) => {
           const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
           const words: Array<{ text: string; top: number }> = [];

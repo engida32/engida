@@ -19,7 +19,7 @@ export const experience: ExperienceItem[] = [
     end: "Oct 2024",
     location: "USA (Remote)",
     scope:
-      "Built HR and payroll management platform combining People Directory, Time & Attendance, Scheduler, Goals & Performance, Leave Management, Payroll, and Recruitment into one platform. Connected payroll processing, tax filing automation, employee self-service portal, and benefits administration into one system.",
+      "Built an HR and payroll platform with People Directory, Time & Attendance, Scheduler, Goals & Performance, Leave Management, Payroll, and Recruitment. Brought payroll processing, tax filing, employee self-service, and benefits administration into the same product.",
     outcome:
       "Processed payroll for 200+ employees with 99.9% accuracy and reduced month-end close time from 5 days to 1 day.",
     metrics: ["200+ employees", "99.9% accuracy"],
@@ -33,7 +33,7 @@ export const experience: ExperienceItem[] = [
     location: "South Korea (Remote)",
     scope:
       "DreamBience, an AI meditation web app that builds personalized guided sessions from three user keywords, with Next.js, React, OpenAI APIs, and AWS Lambda.",
-    outcome: "The meditation app's render time fell 40%.",
+    outcome: "Cut the meditation app's render time by 40%.",
     metrics: ["40%"],
   },
   {
@@ -45,7 +45,7 @@ export const experience: ExperienceItem[] = [
     scope:
       "B2B commerce for 500+ merchants with Next.js, TypeScript, Redux, Tailwind, Node.js, PostgreSQL, and AWS.",
     outcome:
-      "Platform results: 30% faster loads, 25% higher adoption, and 50% faster releases.",
+      "The platform saw 30% faster loads, 25% higher adoption, and 50% faster releases.",
     metrics: ["30% faster loads", "25% higher adoption", "50% faster releases"],
     companyUrl: "https://kifiya.com",
   },
@@ -57,7 +57,7 @@ export const experience: ExperienceItem[] = [
     location: "Addis Ababa",
     scope:
       "Enterprise web apps for banks and insurance companies, plus an SMS gateway management system used across multiple organizations.",
-    outcome: "Internal operations improved 30% across the delivered systems.",
+    outcome: "I led work that improved internal operations by 30% across the delivered systems.",
     metrics: ["30%"],
   },
   {
@@ -68,7 +68,7 @@ export const experience: ExperienceItem[] = [
     location: "Addis Ababa",
     scope:
       "Taxi platform with 100,000+ users, plus subscription management and an internal tool for Sewasew, an Ethiopian music streaming service, covering users, subscriptions, and chart of accounts.",
-    outcome: "The taxi platform processed 50,000+ transactions.",
+    outcome: "The taxi platform handled 50,000+ transactions.",
     metrics: ["50,000+ transactions"],
     companyUrl: "https://2f-capital.com/",
   },

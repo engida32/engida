@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | Engida Lishan",
   },
   description:
-    "Full-stack engineer in Addis Ababa building AI, commerce, and fintech products with Next.js, Python, and pgvector.",
+    "Full-stack engineer in Addis Ababa building commerce, fintech, and AI products with Next.js, Python, and Postgres/pgvector.",
   alternates: { canonical: absoluteUrl("/") },
   openGraph: {
     type: "profile",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     locale: "en",
     title: "Engida Lishan | Full-stack engineer",
     description:
-      "Full-stack engineer in Addis Ababa building AI, commerce, and fintech products with Next.js, Python, and pgvector.",
+      "Full-stack engineer in Addis Ababa building commerce, fintech, and AI products with Next.js, Python, and Postgres/pgvector.",
     images: [{ url: absoluteUrl("/og.png"), width: 1200, height: 630, alt: "Engida Lishan, full-stack engineer" }],
   },
   twitter: {
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     creator: "@morganfreak32",
     title: "Engida Lishan | Full-stack engineer",
     description:
-      "Full-stack engineer in Addis Ababa building AI, commerce, and fintech products with Next.js, Python, and pgvector.",
+      "Full-stack engineer in Addis Ababa building commerce, fintech, and AI products with Next.js, Python, and Postgres/pgvector.",
     images: [absoluteUrl("/og.png")],
   },
   robots: allowIndexing() ? undefined : { index: false, follow: false },

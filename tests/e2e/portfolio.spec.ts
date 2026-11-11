@@ -30,8 +30,8 @@ test("profile rail carries facts and contact links", async ({ page }) => {
   ).toBeVisible();
   await expect(rail.getByText("Remote or Addis Ababa", { exact: true })).toBeVisible();
   await expect(rail.getByText("Available", { exact: true })).toBeVisible();
-  await expect(rail.getByText("AI agent release engineering", { exact: true })).toBeVisible();
-  await expect(rail.getByText("Full-stack product interfaces", { exact: true })).toBeVisible();
+  await expect(rail.getByText("AI agent release and evaluation systems", { exact: true })).toBeVisible();
+  await expect(rail.getByText("Full-stack product engineering", { exact: true })).toBeVisible();
   await expect(rail.getByText("TypeScript, React, Next.js", { exact: true })).toBeVisible();
   await expect(
     rail.getByText("Python, FastAPI, Postgres, pgvector", { exact: true }),
