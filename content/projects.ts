@@ -45,4 +45,20 @@ export const projects: WorkItem[] = [
     stack: ["Next.js", "TypeScript", "TailwindCSS", "MongoDB", "Stripe"],
     liveUrl: "https://paismo.com",
   },
+  {
+    title: "Pocket Approve",
+    year: "2026",
+    description:
+      "Watches coding-agent permission requests and sends the decision back from a phone or desktop. Self-hosted and local-first, with no silent approval.",
+    stack: ["JavaScript", "Node.js"],
+    sourceUrl: "https://github.com/engida32/pocket-approve",
+  },
+  {
+    title: "Payload Cache Service",
+    year: "2026",
+    description:
+      "FastAPI service that reuses transformed strings and payload identifiers, so repeated transformer calls are cached at both levels.",
+    stack: ["Python", "FastAPI", "SQLModel", "Postgres", "Docker"],
+    sourceUrl: "https://github.com/engida32/payload-cache-service",
+  },
 ];

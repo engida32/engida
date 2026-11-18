@@ -10,10 +10,10 @@ import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
 
 describe("content counts", () => {
-  it("has one platform row, six client rows, four independent rows, and eight case studies", () => {
+  it("has one platform row, six client rows, six independent rows, and eight case studies", () => {
     expect(platforms).toHaveLength(1);
     expect(clients).toHaveLength(6);
-    expect(projects).toHaveLength(4);
+    expect(projects).toHaveLength(6);
     expect(caseStudies).toHaveLength(8);
   });
 

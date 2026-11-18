@@ -32,9 +32,9 @@ test("profile rail carries facts and contact links", async ({ page }) => {
   await expect(rail.getByText("Available", { exact: true })).toBeVisible();
   await expect(rail.getByText("AI agent release and evaluation systems", { exact: true })).toBeVisible();
   await expect(rail.getByText("Full-stack product engineering", { exact: true })).toBeVisible();
-  await expect(rail.getByText("TypeScript, React, Next.js", { exact: true })).toBeVisible();
+  await expect(rail.getByText("TypeScript, React, Next.js, Node.js", { exact: true })).toBeVisible();
   await expect(
-    rail.getByText("Python, FastAPI, Postgres, pgvector", { exact: true }),
+    rail.getByText("Python, FastAPI, Postgres, pgvector, GCP", { exact: true }),
   ).toBeVisible();
 
   await expect(rail.getByRole("link", { name: "engida32lishan@gmail.com" })).toHaveAttribute(

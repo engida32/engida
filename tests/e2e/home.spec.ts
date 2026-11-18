@@ -3,7 +3,7 @@ import { expect, test, type Locator } from "@playwright/test";
 const workTitles = [
   "Turing agent platform", "Bellboy", "Che", "Serpentine Arcade",
   "Vector Search Studio", "Sewasew", "Ride Plus", "Real-time signal engine",
-  "Paismo", "Nib", "Aemro Motors",
+  "Paismo", "Nib", "Aemro Motors", "Pocket Approve", "Payload Cache Service",
 ];
 
 const caseStudyTitles = [
@@ -85,7 +85,7 @@ test("groups five featured case studies ahead of six more rows", async ({ page }
   const featured = page.locator('[data-work-group="featured"] [data-stagger-item]');
   const more = page.locator('[data-work-group="more"] [data-stagger-item]');
   await expect(featured).toHaveCount(5);
-  await expect(more).toHaveCount(6);
+  await expect(more).toHaveCount(8);
 
   await expect(featured.getByRole("link", { name: /^(Turing agent platform|Bellboy|Che|Serpentine Arcade|Vector Search Studio)$/ })).toHaveCount(5);
   await expect(more.getByRole("link", { name: /^(Sewasew|Ride Plus|Real-time signal engine)$/ })).toHaveCount(3);
@@ -99,6 +99,7 @@ test("groups five featured case studies ahead of six more rows", async ({ page }
   ]);
   expect(await titles(more)).toEqual([
     "Sewasew", "Ride Plus", "Nib", "Aemro Motors", "Real-time signal engine", "Paismo",
+    "Pocket Approve", "Payload Cache Service",
   ]);
 });
 
