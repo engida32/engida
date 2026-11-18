@@ -34,8 +34,8 @@ const facts = [
     label: "Stack",
     value: (
       <span className="rail-stack">
-        <span>TypeScript, React, Next.js</span>
-        <span>Python, FastAPI, Postgres, pgvector</span>
+        <span>TypeScript, React, Next.js, Node.js</span>
+        <span>Python, FastAPI, Postgres, pgvector, GCP</span>
       </span>
     ),
   },
