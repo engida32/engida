@@ -1,6 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import { extname } from "node:path";
 import { request as httpsRequest } from "node:https";
+import { describeFailure, isImmutableAsset, shouldSkipUpload } from "./upload-plan.mjs";
 
 const baseUrl = (process.env.WEBDAV_URL || "").replace(/\/+$/, "");
 const username = process.env.WEBDAV_USER || "";
@@ -93,7 +94,7 @@ function request(method, remotePath, body, headers = {}) {
         const chunks = [];
         res.on("data", (chunk) => chunks.push(chunk));
         res.on("end", () => {
-          resolve({ status: res.statusCode || 0, body: Buffer.concat(chunks) });
+          resolve({ status: res.statusCode || 0, headers: res.headers, body: Buffer.concat(chunks) });
         });
       },
     );
@@ -191,9 +192,24 @@ const uploaded = new Set();
 for (const file of localFiles) {
   const body = await readFile(file.absolutePath);
   const type = contentTypes.get(extname(file.remotePath).toLowerCase()) || "application/octet-stream";
+
+  if (isImmutableAsset(file.remotePath)) {
+    const head = await withRetry(`HEAD ${file.remotePath}`, () => request("HEAD", file.remotePath));
+    const remoteLength = Number(head.headers?.["content-length"]);
+    if (shouldSkipUpload({
+      remotePath: file.remotePath,
+      localSize: body.length,
+      remoteStatus: head.status,
+      remoteLength,
+    })) {
+      uploaded.add(file.remotePath);
+      continue;
+    }
+  }
+
   const response = await withRetry(`PUT ${file.remotePath}`, () => request("PUT", file.remotePath, body, { "Content-Type": type }));
   if (![200, 201, 204].includes(response.status)) {
-    throw new Error(`PUT ${file.remotePath} failed: HTTP ${response.status}`);
+    throw new Error(describeFailure(`PUT ${file.remotePath}`, response));
   }
   uploaded.add(file.remotePath);
 }
