@@ -118,7 +118,13 @@
   --color-control-surface-hover: var(--control-surface-hover);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
-  --font-heading: var(--font-jetbrains-mono);
+  --font-heading: var(--font-sans);
+  --font-display: var(--font-sans);
+  --font-headline: var(--font-sans);
+  --font-body: var(--font-sans);
+  --font-label: var(--font-sans);
+  --font-caption: var(--font-sans);
+  --font-code: var(--font-mono);;
   --radius-sm: 2px;
   --radius-md: 4px;
   --radius-lg: 4px;

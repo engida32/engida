@@ -1,7 +1,7 @@
 export const profile = {
   name: "Engida Lishan",
   headline:
-    "I build full-stack products and the systems that release and evaluate AI agents.",
+    "I build full-stack products and AI release pipelines that power agent platforms.",
   availability: {
     role: "Senior Full-Stack Developer, AI Engineer, and AI platform roles",
     location: "Remote or Addis Ababa",
