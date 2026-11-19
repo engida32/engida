@@ -12,42 +12,23 @@ describe("upload plan", () => {
     expect(isImmutableAsset("/index.html")).toBe(false);
   });
 
-  it("skips an immutable asset whose remote length already matches", () => {
-    expect(
-      shouldSkipUpload({
-        remotePath: "/_next/static/media/font.woff2",
-        localSize: 6800,
-        remoteStatus: 200,
-        remoteLength: 6800,
-      }),
-    ).toBe(true);
+  it("skips an immutable asset listed in the previous manifest", () => {
+    const manifest = ["/_next/static/media/font.woff2", "/index.html"];
+
+    expect(shouldSkipUpload("/_next/static/media/font.woff2", manifest)).toBe(true);
   });
 
-  it("uploads when the remote copy is missing or a different size", () => {
-    const base = { remotePath: "/_next/static/media/font.woff2", localSize: 6800 };
-
-    expect(shouldSkipUpload({ ...base, remoteStatus: 404, remoteLength: 0 })).toBe(false);
-    expect(shouldSkipUpload({ ...base, remoteStatus: 200, remoteLength: 6799 })).toBe(false);
-    expect(shouldSkipUpload({ ...base, remoteStatus: 200, remoteLength: Number.NaN })).toBe(false);
+  it("uploads an immutable asset the previous manifest does not list", () => {
+    expect(shouldSkipUpload("/_next/static/media/new-font.woff2", ["/_next/static/chunks/old.js"])).toBe(false);
+    expect(shouldSkipUpload("/_next/static/media/font.woff2", [])).toBe(false);
   });
 
   it("never skips files that are not hashed", () => {
-    expect(
-      shouldSkipUpload({
-        remotePath: "/index.html",
-        localSize: 2000,
-        remoteStatus: 200,
-        remoteLength: 2000,
-      }),
-    ).toBe(false);
-    expect(
-      shouldSkipUpload({
-        remotePath: "/cv/engida-lishan-cv.pdf",
-        localSize: 60998,
-        remoteStatus: 200,
-        remoteLength: 60998,
-      }),
-    ).toBe(false);
+    const manifest = ["/index.html", "/cv/engida-lishan-cv.pdf", "/engida-manifest.json"];
+
+    expect(shouldSkipUpload("/index.html", manifest)).toBe(false);
+    expect(shouldSkipUpload("/cv/engida-lishan-cv.pdf", manifest)).toBe(false);
+    expect(shouldSkipUpload("/engida-manifest.json", manifest)).toBe(false);
   });
 
   it("includes the server message in a failure", () => {
