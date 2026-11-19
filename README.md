@@ -1,5 +1,8 @@
 # Engida Lishan portfolio
 
+[![deploy](https://github.com/engida32/engida/actions/workflows/deploy.yml/badge.svg)](https://github.com/engida32/engida/actions/workflows/deploy.yml)
+![License: MIT](https://img.shields.io/badge/license-MIT-blue)
+
 Static portfolio and case studies for Engida Lishan: https://engida.devs.et/
 
 Built with Next.js App Router, Tailwind CSS, and shadcn/ui. The static export is mirrored to `engida.devs.et` over WebDAV, with GitHub Pages kept as a backup.
