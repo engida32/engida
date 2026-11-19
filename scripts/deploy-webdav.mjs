@@ -1,7 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import { extname } from "node:path";
 import { request as httpsRequest } from "node:https";
-import { describeFailure, shouldSkipUpload } from "./upload-plan.mjs";
+import { describeFailure, isImmutableAsset, shouldSkipUpload } from "./upload-plan.mjs";
 
 const baseUrl = (process.env.WEBDAV_URL || "").replace(/\/+$/, "");
 const username = process.env.WEBDAV_USER || "";
@@ -128,12 +128,23 @@ async function withRetry(label, operation) {
 }
 
 async function uploadFile(remotePath, body, type) {
-  const put = () => withRetry(`PUT ${remotePath}`, () => request("PUT", remotePath, body, { "Content-Type": type }));
+  const put = (contentType = type) => withRetry(
+    `PUT ${remotePath}`,
+    () => request("PUT", remotePath, body, { "Content-Type": contentType }),
+  );
   let response = await put();
 
   if ([406, 409, 412].includes(response.status)) {
     await withRetry(`DELETE ${remotePath}`, () => request("DELETE", remotePath));
     response = await put();
+  }
+
+  // The host rejects some font payloads sent as font/woff2 with 406. The same
+  // bytes are accepted as application/octet-stream, and the mirror keeps its
+  // own Content-Type map for the header the server serves from.
+  if (response.status === 406 && type !== "application/octet-stream") {
+    await sleep(2000);
+    response = await put("application/octet-stream");
   }
 
   if (![200, 201, 204].includes(response.status)) {
@@ -204,6 +215,7 @@ for (const directory of directories) {
 
 const previousManifest = await readPreviousManifest();
 const uploaded = new Set();
+const failures = [];
 for (const file of localFiles) {
   const body = await readFile(file.absolutePath);
   const type = contentTypes.get(extname(file.remotePath).toLowerCase()) || "application/octet-stream";
@@ -213,8 +225,13 @@ for (const file of localFiles) {
     continue;
   }
 
-  await uploadFile(file.remotePath, body, type);
-  uploaded.add(file.remotePath);
+  try {
+    await uploadFile(file.remotePath, body, type);
+    uploaded.add(file.remotePath);
+  } catch (error) {
+    if (!isImmutableAsset(file.remotePath)) throw error;
+    failures.push(error instanceof Error ? error.message : String(error));
+  }
 }
 
 const stale = previousManifest.filter((remotePath) => !uploaded.has(remotePath) && !isProtected(remotePath));
@@ -231,3 +248,9 @@ const manifestBody = Buffer.from(`${JSON.stringify(manifest, null, 2)}\n`);
 await uploadFile(manifestPath, manifestBody, "application/json; charset=utf-8");
 
 console.log(`Uploaded ${localFiles.length} files, removed ${stale.length} stale files, and updated the manifest.`);
+
+if (failures.length > 0) {
+  console.error(`${failures.length} immutable asset(s) could not be uploaded:`);
+  for (const failure of failures) console.error(`- ${failure}`);
+  process.exitCode = 1;
+}
