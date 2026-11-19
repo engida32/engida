@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/site/ThemeProvider";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -8,15 +8,18 @@ import { HashScroll } from "@/components/site/HashScroll";
 import { absoluteUrl, allowIndexing, siteUrl } from "@/lib/site";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "../public/fonts/inter-latin-wght-normal.woff2",
+  weight: "100 900",
   variable: "--font-inter",
   display: "swap",
 });
 
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "600"],
+const jetbrains = localFont({
+  src: [
+    { path: "../public/fonts/jetbrains-mono-latin-400-normal.woff2", weight: "400" },
+    { path: "../public/fonts/jetbrains-mono-latin-600-normal.woff2", weight: "600" },
+  ],
   variable: "--font-jetbrains-mono",
   display: "swap",
 });
