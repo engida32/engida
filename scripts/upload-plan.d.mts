@@ -1,11 +1,6 @@
 export function isImmutableAsset(remotePath: string): boolean;
 
-export function shouldSkipUpload(input: {
-  remotePath: string;
-  localSize: number;
-  remoteStatus: number;
-  remoteLength: number;
-}): boolean;
+export function shouldSkipUpload(remotePath: string, previousManifest: string[]): boolean;
 
 export function describeFailure(
   label: string,

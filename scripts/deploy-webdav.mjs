@@ -1,7 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import { extname } from "node:path";
 import { request as httpsRequest } from "node:https";
-import { describeFailure, isImmutableAsset, shouldSkipUpload } from "./upload-plan.mjs";
+import { describeFailure, shouldSkipUpload } from "./upload-plan.mjs";
 
 const baseUrl = (process.env.WEBDAV_URL || "").replace(/\/+$/, "");
 const username = process.env.WEBDAV_USER || "";
@@ -94,7 +94,7 @@ function request(method, remotePath, body, headers = {}) {
         const chunks = [];
         res.on("data", (chunk) => chunks.push(chunk));
         res.on("end", () => {
-          resolve({ status: res.statusCode || 0, headers: res.headers, body: Buffer.concat(chunks) });
+          resolve({ status: res.statusCode || 0, body: Buffer.concat(chunks) });
         });
       },
     );
@@ -125,6 +125,20 @@ async function withRetry(label, operation) {
   }
 
   throw lastError || new Error(`${label} failed`);
+}
+
+async function uploadFile(remotePath, body, type) {
+  const put = () => withRetry(`PUT ${remotePath}`, () => request("PUT", remotePath, body, { "Content-Type": type }));
+  let response = await put();
+
+  if ([406, 409, 412].includes(response.status)) {
+    await withRetry(`DELETE ${remotePath}`, () => request("DELETE", remotePath));
+    response = await put();
+  }
+
+  if (![200, 201, 204].includes(response.status)) {
+    throw new Error(describeFailure(`PUT ${remotePath}`, response));
+  }
 }
 
 async function collectFiles(dir, prefix = "") {
@@ -188,33 +202,21 @@ for (const directory of directories) {
   await ensureCollection(directory);
 }
 
+const previousManifest = await readPreviousManifest();
 const uploaded = new Set();
 for (const file of localFiles) {
   const body = await readFile(file.absolutePath);
   const type = contentTypes.get(extname(file.remotePath).toLowerCase()) || "application/octet-stream";
 
-  if (isImmutableAsset(file.remotePath)) {
-    const head = await withRetry(`HEAD ${file.remotePath}`, () => request("HEAD", file.remotePath));
-    const remoteLength = Number(head.headers?.["content-length"]);
-    if (shouldSkipUpload({
-      remotePath: file.remotePath,
-      localSize: body.length,
-      remoteStatus: head.status,
-      remoteLength,
-    })) {
-      uploaded.add(file.remotePath);
-      continue;
-    }
+  if (shouldSkipUpload(file.remotePath, previousManifest)) {
+    uploaded.add(file.remotePath);
+    continue;
   }
 
-  const response = await withRetry(`PUT ${file.remotePath}`, () => request("PUT", file.remotePath, body, { "Content-Type": type }));
-  if (![200, 201, 204].includes(response.status)) {
-    throw new Error(describeFailure(`PUT ${file.remotePath}`, response));
-  }
+  await uploadFile(file.remotePath, body, type);
   uploaded.add(file.remotePath);
 }
 
-const previousManifest = await readPreviousManifest();
 const stale = previousManifest.filter((remotePath) => !uploaded.has(remotePath) && !isProtected(remotePath));
 
 for (const remotePath of stale) {
@@ -226,9 +228,6 @@ for (const remotePath of stale) {
 
 const manifest = [...uploaded].sort();
 const manifestBody = Buffer.from(`${JSON.stringify(manifest, null, 2)}\n`);
-const manifestResponse = await withRetry("PUT manifest", () => request("PUT", manifestPath, manifestBody, { "Content-Type": "application/json; charset=utf-8" }));
-if (![200, 201, 204].includes(manifestResponse.status)) {
-  throw new Error(`PUT ${manifestPath} failed: HTTP ${manifestResponse.status}`);
-}
+await uploadFile(manifestPath, manifestBody, "application/json; charset=utf-8");
 
 console.log(`Uploaded ${localFiles.length} files, removed ${stale.length} stale files, and updated the manifest.`);

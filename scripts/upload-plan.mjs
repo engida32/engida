@@ -5,10 +5,8 @@ export function isImmutableAsset(remotePath) {
   return remotePath.startsWith(immutablePrefix);
 }
 
-export function shouldSkipUpload({ remotePath, localSize, remoteStatus, remoteLength }) {
-  if (!isImmutableAsset(remotePath)) return false;
-  if (remoteStatus !== 200) return false;
-  return Number.isFinite(remoteLength) && remoteLength === localSize;
+export function shouldSkipUpload(remotePath, previousManifest) {
+  return isImmutableAsset(remotePath) && previousManifest.includes(remotePath);
 }
 
 export function describeFailure(label, response) {
