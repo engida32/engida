@@ -5,6 +5,8 @@
 
 Static portfolio and case studies for Engida Lishan: https://engida.devs.et/
 
+![Home page: headline, copy-email control, and the selected-work section](.github/assets/screenshot.png)
+
 Built with Next.js App Router, Tailwind CSS, and shadcn/ui. The static export is mirrored to `engida.devs.et` over WebDAV, with GitHub Pages kept as a backup.
 
 ## What is in here
